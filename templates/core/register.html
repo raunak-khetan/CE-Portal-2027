@@ -1,0 +1,604 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register - {{ event.name }}</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QX9VT4R4Z7');
+    </script>
+    <script>
+      window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+    {% csrf_token %}
+    <!-- The csrf_token above is for JS access only; the form itself includes its own token -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2cdfdf2a91.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'core/styles.css' %}"
+    />
+    <link
+			rel="icon"
+			type="image/x-icon"
+			href="{% static 'core/favicon.ico' %}"
+		/>
+    <link rel="stylesheet" href="{% static 'core/combined.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'core/style.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/landing/comp.css' %}" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'core/favicon.ico' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'core/register.css' %}"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: "Saotorpes";
+        src: url("{% static 'core/fonts/SaoTorpes.otf' %}") format("opentype");
+      }
+      * , body{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+      }
+      /* Carousel Styles for Competitions */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .section-title {
+        font-family: 'Saotorpes', sans-serif;
+        font-size: 2.5rem;
+        color: #D4FF00;
+        text-align: center;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding: 0 20px;
+      }
+
+      .carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Override the grid layout for carousel */
+      .carousel .comp-card {
+        min-width: 280px;
+        max-width: 280px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin: 0; /* Remove any default margins */
+      }
+
+      /* Ensure badges are positioned correctly */
+      .carousel .badge-type {
+        top: 40px;
+      }
+
+      .pagination-arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .pagination {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        background-color: #444;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background-color: #bdf522;
+      }
+
+      .nav-arrows {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .nav-btn {
+        background: #222;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-btn.right {
+        background: #bdf522;
+        color: #000;
+      }
+
+      .nav-btn:hover {
+        background: #bdf522;
+        color: #000;
+      }
+
+      .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .carousel {
+          gap: 16px;
+          scroll-padding: 0 16px;
+        }
+
+        .carousel .comp-card {
+          min-width: 240px;
+          max-width: 240px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 30px;
+        }
+
+        .pagination-arrows {
+          padding: 0 16px;
+        }
+
+        .nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .carousel {
+          gap: 12px;
+          scroll-padding: 0 12px;
+        }
+
+        .carousel .comp-card {
+          min-width: 200px;
+          max-width: 200px;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <!-- Competition landing starts-->
+  <body>
+    <header class="navbar">
+      <div class="navbar-header">
+        <div class="navbar-left">
+          <img
+            src="{% static 'core/landing/logo.png' %}"
+            class="logo"
+            alt="Logo"
+          />
+          <span>ALCHERINGA</span>
+        </div>
+
+    </header>
+
+    <div class="top-section" id="top-section">
+      <div class="event-banner">
+        {% if event.image %}
+          <!-- Use the event's specific image if available -->
+          <img
+            src="{{ event.image.url }}"
+            alt="{{ event.name }}"
+          />
+        {% elif city.image %}
+          <!-- Fallback to city image if event image is not available -->
+          <img
+            src="{{ city.image.url }}"
+            alt="{{ event.name }}"
+          />
+        {% else %}
+          <!-- Final fallback to a default static image -->
+          <img
+            src="{% static 'core/asset/CompetitionPhoto.png' %}"
+            alt="{{ event.name }}"
+          />
+        {% endif %}
+      </div>
+    </div>
+    <div class="event-container">
+      <h1 class="event-title">{{ event.name }}</h1>
+      <p class="event-subtitle">{{ event.event_type }}</p>
+      <div class="event-details">
+        <div class="left-info">
+          <p class="event-date">
+            <img src="{%static 'core/asset/calendar.png' %}" alt="calendar" />{{ city.time|date:'D, d M Y' }}
+          </p>
+          <p class="event-location">
+            <img src="{%static 'core/asset/marker-pin-01.png' %}" alt="pin" />
+            {{ city.venue }}
+          </p>
+
+          <h3 class="about-the-event" id="about-the-event">About the Event</h3>
+          <p class="event-description">{{ event.description|linebreaksbr }}</p>
+        </div>
+        <div class="right-info">
+          <h3 class="event-state">{{ city.name }}</h3>
+          <div class="info-box">
+            <div class="info-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="#BDF522"
+                class="bi bi-people"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"
+                />
+              </svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">Team Size</span>
+            
+              {% if event.event_type == 'solo' %}
+                <span class="info-value">1 member</span>
+              {% else %}
+                {% if event.min_participants and event.max_participants %}
+                  <span class="info-value">{{ event.min_participants }}-{{ event.max_participants }} members</span>
+                {% elif event.min_participants and not event.max_participants %}
+                  <span class="info-value">Minimum :{{ event.min_participants }}</span>
+                {% elif event.max_participants and not event.min_participants %}
+                  <span class="info-value">Maximum {{ event.max_participants }} members</span>
+                {% else %}
+                  <span class="info-value">Any</span>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+
+          <a
+            href="{% url 'registrationpage' city.name event.name %}"
+            class="register-btn"
+            >Register</a
+          >
+          <button class="copy-btn">
+            <img src="link-broken-01.png" alt="" />
+            <span class="copy-link">Copy link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--upcoming events ashish ends-->
+
+      <section class="city-competitions" id="city-all">
+        <h2 class="section-title">Upcoming Competitions</h2>
+        <div class="carousel-container">
+          <div class="carousel" id="competitions-carousel">
+            
+           
+            
+            {% for competition in competitions %}
+              <article class="comp-card">
+                <div class="card-media">
+                  <img src="{{ competition.image }}" alt="{{ competition.title }}" class="comp-img">
+                  <span class="badge">{{ competition.type|upper }}</span>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{ competition.title }}</h3>
+                  <p class="event-subtitle">{{ competition.type }}</p>
+                  <ul class="card-details">
+                    <li><span class="detail-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar4" viewBox="0 0 16 16">
+                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                    </svg></span> <span class="detail-value">{{ competition.date }}</span></li>
+                    {% if competition.venue %}
+                    <li><span class="detail-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg></span> <span class="detail-value">{{ competition.venue }}, {{competition.city}}</span></li>
+                    {% endif %}
+                  </ul>
+                  <div class="card-actions">
+                    <img src="{% static 'core/asset/star2.png' %}" alt="{{ competition.title }}" class="style-img"/>
+                    <img src="{% static 'core/asset/flower2.png' %}" alt="{{ competition.title }}" class="comp-img"/>
+                    {% if not competition.city.collab %}
+                    <a class="register-btn" href="{% url 'detailspage' competition.city competition.title %}">Details</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+          
+          <div class="pagination-arrows">
+            <div class="nav-arrows" style="margin-left:auto;">
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--upcoming events ashish ends-->
+
+    <div class="alcher-blocks">
+      <section class="footer-block">
+        <footer class="footer">
+          <div class="container">
+            <div class="footer-grid">
+              <!-- Left Section - Main Message -->
+              <div class="main-message">
+                <h2 class="main-title">
+                  THE JOURNEY<br />
+                  CONTINUES,<br />
+                  SEE YOU AT<br />
+                  ALCHERINGA!
+                </h2>
+                <button class="register-btn" onclick="document.getElementById('top-section').scrollIntoView({ behavior: 'smooth' });">
+                  Register
+                </button>
+              </div>
+
+              <!-- Middle Section - Useful Links -->
+              <div class="section-container">
+                <h3 class="section-title">Useful Links</h3>
+                <nav class="links-nav">
+                  <ul class="nav-list">
+                    <li>
+                      <a href="#top-section" class="nav-link">
+                        <span>About the event</span>
+                        <img
+                          src="{% static 'core/asset/arrow-up-right.svg' %}"
+                          alt="External link"
+                          class="external-icon"
+                        />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#city-all" class="nav-link">
+                        <span>Upcoming Events</span>
+                        <img
+                          src="{% static 'core/asset/arrow-up-right.svg' %}"
+                          alt="External link"
+                          class="external-icon"
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Right Section - Contact -->
+              <div class="section-container">
+                <h3 class="section-title">Contact Us</h3>
+                <div class="contacts">
+                  <ul class="contact-list">
+                    <li class="contact-item">
+                      <div class="contact-name">Shashank Daga</div>
+                      <div class="contact-phone">+91 82409 50055</div>
+                    </li>
+                    <li class="contact-item">
+                      <div class="contact-name">Khushi Gupta</div>
+                      <div class="contact-phone">+91 98648 75424</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+              <div class="bottom-content">
+                <!-- Copyright -->
+                <div class="copyright">
+                  © 2025 Alcheringa, IIT Guwahati. All rights reserved.
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                  <a href="https://www.instagram.com/alcheringaiitg/" class="social-link" aria-label="Instagram">
+                    <img
+                      src="{% static 'core/asset/insta.svg' %}"
+                      alt="Instagram"
+                      class="social-icon"
+                    />
+                  </a>
+                  <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" class="social-link" aria-label="YouTube">
+                    <img
+                      src="{% static 'core/asset/youtube.svg' %}"
+                      alt="Youtube"
+                      class="social-icon"
+                    />
+                  </a>
+                  <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" class="social-link" aria-label="LinkedIn">
+                    <img
+                      src="{% static 'core/asset/linkedin.svg' %}"
+                      alt="LinkedIn"
+                      class="social-icon"
+                    />
+                  </a>
+                  <a href="https://x.com/alcheringaiitg" class="social-link" aria-label="X">
+                    <img
+                      src="{% static 'core/asset/x.svg' %}"
+                      alt="X"
+                      class="social-icon"
+                    />
+                  </a>
+                  <a href="https://www.facebook.com/alcheringaiitg" class="social-link" aria-label="Facebook">
+                    <img
+                      src="{% static 'core/asset/facebook.svg' %}"
+                      alt="Facebook"
+                      class="social-icon"
+                    />
+                  </a>
+                </div>
+
+                <!-- Credits -->
+                <div class="credits">Developed by Team Web Operations</div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="{%static 'core/register.js' %}"></script>
+    <script src="{% static 'core/combined.js' %}"></script>
+    <script src="{% static 'core/script.js' %}"></script>
+
+    <!-- Carousel JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('competitions-carousel');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const pagination = document.getElementById('carousel-pagination');
+        
+        if (!carousel || !prevBtn || !nextBtn || !pagination) return;
+
+        const cards = carousel.querySelectorAll('.comp-card');
+        const cardWidth = 300; // card width + gap
+        const visibleCards = Math.floor(carousel.clientWidth / cardWidth);
+        const totalPages = Math.ceil(cards.length / visibleCards);
+        let currentPage = 0;
+
+        // Create pagination dots
+        function createPaginationDots() {
+          pagination.innerHTML = '';
+          for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToPage(i));
+            pagination.appendChild(dot);
+          }
+        }
+
+        // Update pagination dots
+        function updatePaginationDots() {
+          const dots = pagination.querySelectorAll('.dot');
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentPage);
+          });
+        }
+
+        // Go to specific page
+        function goToPage(page) {
+          currentPage = Math.max(0, Math.min(page, totalPages - 1));
+          const scrollPosition = currentPage * cardWidth * visibleCards;
+          carousel.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updatePaginationDots();
+          updateNavigationButtons();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+          prevBtn.disabled = currentPage === 0;
+          nextBtn.disabled = currentPage === totalPages - 1;
+        }
+
+        // Previous button click
+        prevBtn.addEventListener('click', () => {
+          if (currentPage > 0) {
+            goToPage(currentPage - 1);
+          }
+        });
+
+        // Next button click
+        nextBtn.addEventListener('click', () => {
+          if (currentPage < totalPages - 1) {
+            goToPage(currentPage + 1);
+          }
+        });
+
+        // Handle scroll events to update pagination
+        carousel.addEventListener('scroll', () => {
+          const scrollPosition = carousel.scrollLeft;
+          const newPage = Math.round(scrollPosition / (cardWidth * visibleCards));
+          if (newPage !== currentPage) {
+            currentPage = newPage;
+            updatePaginationDots();
+            updateNavigationButtons();
+          }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          const newVisibleCards = Math.floor(carousel.clientWidth / cardWidth);
+          if (newVisibleCards !== visibleCards) {
+            location.reload(); // Simple solution for now
+          }
+        });
+
+        // Initialize
+        createPaginationDots();
+        updateNavigationButtons();
+      });
+    </script>
+
+    <!-- Competition landing end-->
+  </body>
+</html>

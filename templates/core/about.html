@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Alcher</title>
+    <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Sao Torpes';
+            src: url("{% static 'core/fonts/SaoTorpes.otf' %}") format('opentype');
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar (reuse from landing.html) -->
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="{% static 'core/landing/logo.png' %}" alt="Logo" class="logo">
+        <span class="logo-text">ALCHERINGA</span>
+    </div>
+    <div class="nav-links">
+        <a href="{% url 'about_alcher' %}">About Alcher</a>
+        <img src="{% static 'core/landing/search.svg' %}" alt="Search" class="search">
+    </div>
+</nav>
+
+<!-- About Section -->
+<section class="about-section">
+    <!-- Left: Image + shapes -->
+    <div class="about-left">
+        <div class="image-frame">
+            <img src="{% static 'core/landing/about-image.png' %}" alt="About Alcher" class="about-img">
+        </div>
+        <img src="{% static 'core/landing/Vector.svg' %}" class="shape-vector" alt="Vector shape">
+        <img src="{% static 'core/landing/Star.svg' %}" class="shape-star" alt="Star shape">
+    </div>
+
+    <!-- Right: Text -->
+    <div class="about-right">
+        <h2 class="about-heading">ALCHERINGA -- NORTH EAST INDIA'S BIGGEST FEST</h2>
+        <p class="about-desc">
+            Alcheringa is the annual cultural festival of IIT Guwahati, an electrifying celebration of art, music,
+            dance, and drama. Join us for an unforgettable experience where talent converges and creativity knows no bounds.
+        </p>
+    </div>
+</section>
+
+</body>
+</html>

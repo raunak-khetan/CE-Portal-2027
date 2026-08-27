@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'core/thankyou.css' %}" />
+  <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Sao Torpes';
+      src: url("{% static 'core/fonts/SaoTorpes.otf' %}") format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+  <title>Thank You</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QX9VT4R4Z7');
+  </script>
+</head>
+<body>
+
+  <div class="alcher-blocks">
+
+    <div class="thank-you">
+      <h1>Thank You for Registering!</h1>
+      <p>We’ve received your submission successfully.</p>
+      <a href="{% url 'prelimspage' %}" class="btn">Go to Home</a>
+    </div>
+
+    <!-- other page sections (e.g., highway-block, sponsors-block) go here -->
+
+    <!-- Footer Block (full width band = #161616) -->
+    <section class="footer-block">
+      <footer class="footer" role="contentinfo">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="main-message">
+              <h2 class="main-title">
+                THE JOURNEY<br>
+                CONTINUES,<br>
+                SEE YOU AT<br>
+                ALCHERINGA!
+              </h2>
+              <button class="register-btn" onclick="window.location.href='/#competition-section';">
+                  Register
+              </button>
+            </div>
+
+            <div class="section-container">
+              <h3 class="section-title">Useful Links</h3>
+              <nav class="links-nav">
+                <ul class="nav-list">
+                  <li><a href="#about" class="nav-link"><span>About Us</span><img src="{% static 'core/asset/arrow-up-right.png' %}" alt="" class="external-icon"></a></li>
+                  <li><a href="#competition-section" class="nav-link"><span>Schedule</span><img src="{% static 'core/asset/arrow-up-right.png' %}" alt="" class="external-icon"></a></li>
+                  <li><a href="#sponsors-section" class="nav-link"><span>Sponsors</span><img src="{% static 'core/asset/arrow-up-right.png' %}" alt="" class="external-icon"></a></li>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="section-container">
+              <h3 class="section-title">Contact Us</h3>
+              <div class="contacts">
+                <ul class="contact-list">
+                  <li class="contact-item">
+                    <div class="contact-name">Shashank Daga</div>
+                    <div class="contact-detail"><img src="{% static 'core/asset/phone.png' %}" alt="Phone" class="contact-icon"><div class="contact-phone">+91 82409 50055</div></div>
+                    <div class="contact-detail"><img src="{% static 'core/asset/mail.png' %}" alt="Email" class="contact-icon"><div class="contact-phone">shashank.d@alcheringa.co.in</div></div>
+                  </li>
+
+                  <li class="contact-item">
+                    <div class="contact-name">Khushi Gupta</div>
+                    <div class="contact-detail"><img src="{% static 'core/asset/phone.png' %}" alt="Phone" class="contact-icon"><div class="contact-phone">+91 98648 75424</div></div>
+                    <div class="contact-detail"><img src="{% static 'core/asset/mail.png' %}" alt="Email" class="contact-icon"><div class="contact-phone">khushi.g@alcheringa.co.in</div></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer bottom -->
+          <div class="footer-bottom">
+            <div class="bottom-content">
+              <div class="copyright">© 2025 Alcheringa, IIT Guwahati. All rights reserved.</div>
+              <div class="social-links">
+                <a href="https://www.instagram.com/alcheringaiitg/" class="social-link" aria-label="Instagram"><img src="{% static 'core/asset/insta.svg' %}" alt="Instagram" class="social-icon"></a>
+                <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" class="social-link" aria-label="YouTube"><img src="{% static 'core/asset/youtube.svg' %}" alt="Youtube" class="social-icon"></a>
+                <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" class="social-link" aria-label="LinkedIn"><img src="{% static 'core/asset/linkedin.svg' %}" alt="LinkedIn" class="social-icon"></a>
+                <a href="https://x.com/alcheringaiitg" class="social-link" aria-label="X"><img src="{% static 'core/asset/x.svg' %}" alt="X" class="social-icon"></a>
+                <a href="https://www.facebook.com/alcheringaiitg" class="social-link" aria-label="Facebook"><img src="{% static 'core/asset/facebook.svg' %}" alt="Facebook" class="social-icon"></a>
+              </div>
+              <div class="credits">Developed by Team Web Operations</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+  </div>
+
+  <script src="{% static 'core/combined.js' %}"></script>
+</body>
+</html>

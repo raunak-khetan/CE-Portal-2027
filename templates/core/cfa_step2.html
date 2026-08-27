@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Step 2 - College and Fest Information</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="{% static 'cfa/style_base.css' %}" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QX9VT4R4Z7');
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="{% static 'core/landing/logo.png' %}" class="logo" alt="Logo" />
+      <span>ALCHERINGA</span>
+    </div>
+    <div class="navbar-right">
+    </div>
+  </header>
+  
+
+  <!-- Steps progress -->
+  <div class="steps-container">
+    <!-- Step 1: Completed -->
+    <div class="step completed">
+      <div class="circle">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p>Step 1</p>
+      <span>Basic Information</span>
+    </div>
+  
+    <div class="line completed"></div>
+  
+    <!-- Step 2: Active -->
+    <div class="step active">
+      <div class="circle">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p>Step 2</p>
+      <span>College and Fest Information</span>
+    </div>
+  
+    <div class="line"></div>
+  
+    <!-- Step 3: Upcoming -->
+    <div class="step">
+      <div class="circle">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p>Step 3</p>
+      <span>Fest Operations</span>
+    </div>
+  </div>
+  
+
+  
+
+  <!-- Form -->
+  <div class="form-container">
+    <!-- Back Arrow -->
+<a href="{% url 'cfa_step1' %}" class="back-arrow">&#8592; </a>
+
+    <h2 class="form-title">College and Fest Information</h2>
+
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-grid">
+        <!-- Column 1 -->
+        <div class="form-column">
+          <div class="form-group">
+            <label for="college_name">College name</label>
+            <input type="text" id="college_name" name="college_name" placeholder="Enter your college name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="fest_name">College fest name</label>
+            <input type="text" id="fest_name" name="fest_name" placeholder="Your college fest name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="fest_dates">College fest dates (tentative)</label>
+            <input type="text" id="fest_dates" name="fest_dates" placeholder="College fest dates" required />
+          </div>
+
+          <div class="form-group">
+            <label for="expected_footfall">Expected footfall</label>
+            <input type="text" id="expected_footfall" name="expected_footfall" placeholder="Expected footfall" required />
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="form-column">
+          <div class="form-group">
+            <label for="college_designation">Your college designation</label>
+            <input type="text" id="college_designation" name="college_designation" placeholder="Your college designation" required />
+          </div>
+
+          <div class="form-group">
+            <label for="fest_address">College fest address</label>
+            <input type="text" id="fest_address" name="fest_address" placeholder="College fest address" required />
+          </div>
+
+          <div class="form-group">
+            <label for="fest_days">Number of days of fest</label>
+            <input type="number" id="fest_days" name="number_of_days" placeholder="Number of days of fest" min="1" required />
+          </div>
+
+          <div class="form-group">
+            <label for="social_links">Website/ Social media links</label>
+            <input type="url" id="social_links" name="social_links" placeholder="Website/ Social media links" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right-aligned button -->
+      <div class="form-footer">
+        <button type="submit" class="btn-next">Next</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Step 3 - Fest Operations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="{% static 'cfa/style_base.css' %}" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QX9VT4R4Z7');
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="{% static 'core/landing/logo.png' %}" class="logo" alt="Logo" />
+      <span>ALCHERINGA</span>
+    </div>
+    <div class="navbar-right">
+    </div>
+  </header>
+  
+
+  <!-- Steps Progress -->
+  <div class="steps-container">
+    <!-- Step 1: Completed -->
+    <div class="step completed">
+      <div class="circle">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p>Step 1</p>
+      <span>Basic Information</span>
+    </div>
+  
+    <div class="line completed"></div>
+  
+    <!-- Step 2: Completed -->
+    <div class="step completed">
+      <div class="circle">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p>Step 2</p>
+      <span>College and Fest Information</span>
+    </div>
+  
+    <div class="line completed"></div>
+  
+    <!-- Step 3: Active (no tick) -->
+    <div class="step active">
+      <div class="circle"></div>
+      <p>Step 3</p>
+      <span>Fest Operations</span>
+    </div>
+  </div>
+  
+  
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <a href="{% url 'cfa_step2' %}" class="back-arrow">&#8592;</a>
+
+    <h2>Fest Operations</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>Does your college fest conduct competitions?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="competitions" value="yes" required />
+            <span class="custom-radio">Yes</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="competitions" value="no" />
+            <span class="custom-radio">No</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="team_size">Organizing team size</label>
+          <input type="text" id="team_size" name="team_size" placeholder="Organizing team size" />
+        </div>
+
+        <div class="form-group">
+          <label for="fest_address">College fest address</label>
+          <input type="text" id="fest_address" name="fest_address" placeholder="College fest address" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="expectations">Your expectations from this collaboration</label>
+        <textarea id="expectations" name="expectations" rows="5" placeholder="100-150 words"></textarea>
+      </div>
+
+      <div class="form-footer">
+        <button type="submit" class="btn-next">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

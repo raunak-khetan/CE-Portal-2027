@@ -1,0 +1,291 @@
+<!--raunak start -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register - {{ event.name }}</title>
+  <script>window.CSRF_TOKEN = '{{ csrf_token }}';</script>
+  {% csrf_token %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://kit.fontawesome.com/2cdfdf2a91.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+  <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
+  <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}" />
+  <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'core/register.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QX9VT4R4Z7');
+</script>
+<body>
+
+<header class="navbar">
+  <div class="navbar-header">
+    <div class="navbar-left">
+      <img src="{% static 'core/landing/logo.png' %}" class="logo" alt="Logo" />
+      <span>ALCHERINGA</span>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <main>
+    <form method="post" action="{% url 'registrationpage' city.name event.name %}" novalidate>
+      {% csrf_token %}
+     
+
+      {% if form.non_field_errors %}
+      <div class="form-errors">
+        <ul>
+          {% for error in form.non_field_errors %}
+            <li style="color: red;">{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if event.event_type == 'team' %}
+      <div class="card">
+        <h2 class="section-title">Team Details</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>Team Name</label>
+            {{ team_name_form.team_name }}
+          </div>
+          <div class="field">
+            <label>Team Size</label>
+            <input id="team-size" type="number" value="1" min="1" max="{{ max_participants }}" disabled>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="card">
+        <h2 class="section-title">Member Details</h2>
+
+        <!-- Leader (always MEMBER 1) -->
+        <div class="member-card">
+          <h3 class="member-heading">Member 1</h3>
+          <div class="field">
+            <label>Name</label>
+            {% if event.event_type == 'team' %}
+              {{ team_form.name }}
+            {% else %}
+              {{ form.name }}
+            {% endif %}
+          </div>
+
+          <div class="field"><label>Email</label>
+            {% if event.event_type == 'team' %}
+              {{ team_form.email.as_widget }}
+            {% else %}
+              {{ form.email.as_widget }}
+            {% endif %}
+          </div>
+          <div class="field"><label>Phone number</label>
+            {% if event.event_type == 'team' %}
+              {{ team_form.phone_no.as_widget }}
+            {% else %}
+              {{ form.phone_no.as_widget }}
+            {% endif %}
+          </div>
+
+          <div class="field gender">
+            <label>Gender</label>
+            <div class="gender-group">
+              {% if event.event_type == 'team' %}
+                {% for radio in team_form.gender %}
+                  <label class="gender-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% else %}
+                {% for radio in form.gender %}
+                  <label class="gender-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="field"><label>College/Institute Name</label>
+            {% if event.event_type == 'team' %}
+              {{ team_form.institute_name.as_widget }}
+            {% else %}
+              {{ form.institute_name.as_widget }}
+            {% endif %}
+          </div>
+          <div class="field"><label>Course Enrolled</label>
+            {% if event.event_type == 'team' %}
+              {{ team_form.program_enrolled.as_widget }}
+            {% else %}
+              {{ form.program_enrolled.as_widget }}
+            {% endif %}
+          </div>
+
+          <div class="field disability">
+            <label>Are you a person with disability (PwD)?</label>
+            <div class="disability-group">
+              {% if event.event_type == 'team' %}
+                {% for radio in team_form.is_disabled %}
+                  <label class="disability-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% else %}
+                {% for radio in form.is_disabled %}
+                  <label class="disability-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="field year">
+            <label>Graduating Year</label>
+            <div class="year-group">
+              {% if event.event_type == 'team' %}
+                {% for radio in team_form.year_of_passing %}
+                  <label class="year-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% else %}
+                {% for radio in form.year_of_passing %}
+                  <label class="year-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Members -->
+        {% if event.event_type == 'team' %}
+          {{ member_formset.management_form }}
+          <div id="members-container">
+            {% for mform in member_formset %}
+            <div class="member-card" data-member-index="{{ forloop.counter }}">
+              <div class="member-header">
+                <h3>Member {{ forloop.counter|add:1 }}</h3>
+                <button type="button" class="remove-member-btn" data-remove>
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </div>
+              <div class="field"><label>Name</label> {{ mform.name}}</div>
+              <div class="field"><label>Email</label> {{ mform.email }}</div>
+              <div class="field"><label>Phone number</label> {{ mform.phone_no }}</div>
+
+              <div class="field gender">
+                <label>Gender</label>
+                <div class="gender-group">
+                  {% for radio in mform.gender %}
+                  <label class="gender-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="field"><label>College/Institute Name</label> {{ mform.institute_name}}</div>
+              <div class="field"><label>Course Enrolled</label> {{ mform.program_enrolled }}</div>
+
+              <div class="field disability">
+                <label>PwD</label>
+                <div class="disability-group">
+                  {% for radio in mform.is_disabled %}
+                  <label class="disability-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="field year">
+                <label>Graduating Year</label>
+                <div class="year-group">
+                  {% for radio in mform.year_of_passing %}
+                  <label class="year-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <template id="empty-member-template">
+            <div class="member-card" data-member-index="__NUM__">
+              <div class="member-header">
+                <h3>MEMBER __NUM__</h3>
+                <button type="button" class="remove-member-btn" data-remove>
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </div>
+              <div class="field"><label>Name</label> {{ member_formset.empty_form.name|safe }}</div>
+              <div class="field"><label>Email</label> {{ member_formset.empty_form.email|safe }}</div>
+              <div class="field"><label>Phone number</label> {{ member_formset.empty_form.phone_no|safe }}</div>
+              <div class="field gender">
+                <label>Gender</label>
+                <div class="gender-group">
+                  {% for radio in member_formset.empty_form.gender %}
+                  <label class="gender-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="field"><label>College/Institute Name</label> {{ member_formset.empty_form.institute_name.as_widget|safe }}</div>
+              <div class="field"><label>Course Enrolled</label> {{ member_formset.empty_form.program_enrolled.as_widget|safe }}</div>
+              <div class="field disability">
+                <label>PwD</label>
+                <div class="disability-group">
+                  {% for radio in member_formset.empty_form.is_disabled %}
+                  <label class="disability-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="field year">
+                <label>Graduating Year</label>
+                <div class="year-group">
+                  {% for radio in member_formset.empty_form.year_of_passing %}
+                  <label class="year-box">{{ radio.tag }} <span>{{ radio.choice_label }}</span></label>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <div class="actions">
+            <button id="add-member" type="button" class="add-member-btn">
+              <i class="fas fa-plus"></i> Add Member
+            </button>
+            <button type="submit" class="register-btn">Register</button>
+          </div>
+        {% else %}
+          <div class="actions" style="justify-content:flex-end;">
+            <button type="submit" class="register-btn">Register</button>
+          </div>
+        {% endif %}
+      </div>
+    </form>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="card">
+      <h3 class="section-title">{{ event.name }}</h3>
+      <ul class="meta">
+        <li>
+          <div class="meta-icon">📅</div>
+          <div class="meta-about"><div class="info">Date</div>{{ city.time|date:'l, d F Y' }}</div>
+        </li>
+        <li>
+          <div class="meta-icon">📍</div>
+          <div class="meta-about"><div class="info">Venue</div>{{ city.venue }}</div>
+        </li>
+        <div class="meta-city"><li><span>{{ city.name }}</span></li></div>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<script src="{% static 'core/script.js' %}"></script>
+</body>
+</html>
+<!--raunak end -->

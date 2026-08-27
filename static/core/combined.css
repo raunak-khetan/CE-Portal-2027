@@ -1,0 +1,710 @@
+/* Font declarations */
+@font-face {
+    font-family: 'Sao Torpes';
+    src: url('fonts/saotorpes.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('fonts/Lexend[wght].ttf') format('truetype-variations');
+    font-weight: 400 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Reset and base styles */
+.alcher-blocks * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alcher-blocks body {
+    background-color: #161616;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== BLOCK STRUCTURE ===== */
+.alcher-blocks {
+    background-color: #161616;
+}
+.alcher-blocks .highway-block {
+    background-color: #161616;
+    padding: 100px 0;
+   
+    width: 1392px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.alcher-blocks .sponsors-block {
+    background-color: #161616;
+    padding: 60px 0;
+}
+
+.alcher-blocks .footer-block {
+    background-color: #202020;
+    padding: 60px 0 60px 0;
+    margin-top: 0;
+}
+
+/* ===== HIGHWAY SECTION ===== */
+.alcher-blocks .container {
+    padding: 0;
+    max-width: 1392px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.alcher-blocks .title {
+    font-family: 'Sao Torpes', serif;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: -20px;
+    letter-spacing: 0%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 120%;
+}
+
+.alcher-blocks .slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.alcher-blocks .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.alcher-blocks .slide-track {
+    display: flex;
+    gap: 0px;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: fit-content;
+    align-items: center;
+}
+
+.alcher-blocks .slide {
+    flex-shrink: 0;
+    width: 258px;
+    height: 387px;
+    border-radius: 14px;
+    padding: 8px;
+    position: relative;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.alcher-blocks .slide:hover {
+    transform: perspective(1000px) rotateY(-5deg) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.alcher-blocks .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: transform 0.4s ease;
+}
+
+.alcher-blocks .slide:hover img {
+    transform: scale(1.05);
+}
+
+
+
+/* Pure CSS auto-slide animation */
+@keyframes infiniteSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2800px); }
+}
+
+.alcher-blocks .slide-track {
+    animation: infiniteSlide 60s linear infinite;
+}
+
+.alcher-blocks .slide-track:hover {
+    animation-play-state: paused;
+}
+
+/* ===== SPONSORS SECTION ===== */
+.alcher-blocks .sponsors-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .sponsors-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: normal;
+    color: #BDF522;
+    margin-bottom: 4rem;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    line-height: 120%;
+}
+
+.alcher-blocks .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.alcher-blocks .sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 120px;
+    padding: 0.5rem;
+}
+
+.alcher-blocks .logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ===== FOOTER SECTION ===== */
+.alcher-blocks .footer {
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.alcher-blocks .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.alcher-blocks .main-message {
+    text-align: left;
+}
+
+.alcher-blocks .main-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.alcher-blocks .register-btn {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 135%;
+    letter-spacing: -3%;
+    color: #161616;
+    background-color: #BDF522;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    height: fit-content;
+    min-height: 48px;
+    margin-left: 0;
+}
+
+.alcher-blocks .register-btn:hover {
+    background-color: #BDF522;
+}
+
+.alcher-blocks .section-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #BDF522;
+    margin-bottom: 1.2rem;
+    margin-left: 0;
+}
+
+.alcher-blocks .links-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.alcher-blocks .nav-link {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.alcher-blocks .nav-link:hover {
+    color: #BDF522;
+}
+
+.alcher-blocks .external-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.alcher-blocks .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .section-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.alcher-blocks .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alcher-blocks .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alcher-blocks .contact-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+
+.alcher-blocks .contact-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.alcher-blocks .contact-phone {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+    font-weight: 400;
+    color: #cccccc;
+}
+
+/* Footer Bottom */
+.alcher-blocks .bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.alcher-blocks .copyright {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+.alcher-blocks .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.alcher-blocks .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.alcher-blocks .social-link:hover {
+    background-color: rgba(189, 245, 34, 0.2);
+}
+
+.alcher-blocks .social-icon {
+    width: 2rem;
+    height: 2rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .credits {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Desktop - Side by side layout */
+@media (min-width: 1024px) {
+    .alcher-blocks .footer-grid {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .alcher-blocks .main-message {
+        flex: 2;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .alcher-blocks .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        flex-wrap: nowrap;
+    }
+    
+    .alcher-blocks .contact-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Mobile-specific layout changes */
+@media (max-width: 1023px) {
+    .alcher-blocks .footer-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .alcher-blocks .main-message {
+        width: 100%;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+    
+    /* Add line below main message */
+    .alcher-blocks .main-message::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2),
+    .alcher-blocks .footer-grid > div:nth-child(3) {
+        width: 100%;
+        padding-left: 0;
+        text-align: left;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+    
+    /* Add line below useful links section */
+    .alcher-blocks .footer-grid > div:nth-child(2)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Remove the before pseudo-elements */
+    .alcher-blocks .footer-grid > div:nth-child(2)::before,
+    .alcher-blocks .footer-grid > div:nth-child(3)::before {
+        display: none;
+    }
+    
+    /* Make useful links horizontal */
+    .alcher-blocks .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    /* Make contact items horizontal */
+    .alcher-blocks .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 150px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .alcher-blocks .highway-block {
+        padding: 80px 0;
+        width: 100%;
+        gap: 60px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .container {
+        padding: 20px 10px;
+    }
+    
+    .alcher-blocks .title {
+        margin-bottom: 40px;
+        margin-top: -15px;
+        font-size: 28px;
+    }
+    
+    .alcher-blocks .slide {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .alcher-blocks .slide-track {
+        gap: 15px;
+        animation: infiniteSlide 50s linear infinite;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 3rem;
+    }
+    
+    .alcher-blocks .main-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alcher-blocks .highway-block {
+        padding: 60px 0;
+        width: 100%;
+        gap: 40px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .slide {
+        width: 160px;
+        height: 240px;
+    }
+
+    .alcher-blocks .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        margin-top: -10px;
+    }
+
+    .alcher-blocks .slide-track {
+        animation: infiniteSlide 45s linear infinite;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 2rem;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 220px;
+        height: 140px;
+    }
+    
+    .alcher-blocks .main-title {
+        font-size: 28px;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation */
+.alcher-blocks .slide img {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Enhanced visual effects */
+.alcher-blocks .slider-container::before,
+.alcher-blocks .slider-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.alcher-blocks .slider-container::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+}
+
+.alcher-blocks .slider-container::after {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+}
+
+/*about section images*/
+.about-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Optional: add rounded corners */
+
+    object-fit:fill;
+}
+
+

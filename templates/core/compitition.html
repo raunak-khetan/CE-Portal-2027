@@ -1,0 +1,413 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:url" content="prelims.alcheringa.in" />
+		<meta
+			property="og:description"
+			content="Do you think you are the best in your city and want to compete with the best of the rest of the cities in the country? With the vision of giving everyone a platform to compete at a national level by bringing in only the best talent from all over India to Alcheringa IIT Guwahati, we present to you the City Auditions known as 'Highway to Alcher'."
+		/>
+		<meta
+			name="description"
+			content="Do you think you are the best in your city and want to compete with the best of the rest of the cities in the country? With the vision of giving everyone a platform to compete at a national level by bringing in only the best talent from all over India to Alcheringa IIT Guwahati, we present to you the City Auditions known as 'Highway to Alcher'."
+		/>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="{% static 'core/favicon.ico' %}"
+		/>
+		<title>Highway to Alcher</title>
+		<link rel="stylesheet" href="{% static 'core/style.css' %}" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	</head>
+	<body>
+		<nav>
+			<div class="nav-logo">
+				<a href="/"
+					><img
+						src="{% static 'core/asset/alcher-logo.png' %}"
+						alt="Alcher Logo"
+				/></a>
+			</div>
+			<div class="navigators">
+				<ul>
+					<li class="hideOnMobile"><a href="/#about-alcheri">ABOUT US</a></li>
+					<li class="hideOnMobile"><a href="/#schedule1">SCHEDULE</a></li>
+					<li class="hideOnMobile"><a href="/#sponsers1">SPONSORS</a></li>
+					<li class="hideOnMobile"><a href="/#contect1">CONTACT</a></li>
+					<!-- <button class="hideOnMobile">REGISTER</button> -->
+					<li id="menubtn1" class="menuBtn" onclick="showSidebar()">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							height="5vw"
+							viewBox="0 -960 960 960"
+							width="5vw"
+							fill="#5f6368"
+						>
+							<path
+								d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+							/>
+						</svg>
+					</li>
+				</ul>
+
+				<ul class="hamburger">
+					<li id="closebtn1" class="closeBtn" onclick="hideSidebar()">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							height="8vw"
+							viewBox="0 -960 960 960"
+							width="8vw"
+							fill="#5f6368"
+						>
+							<path
+								d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+							/>
+						</svg>
+					</li>
+					<li><a class="ham-link" href="/#about-alcheri" onclick="hideSidebar()">ABOUT US</a></li>
+					<li><a class="ham-link" href="/#schedule1" onclick="hideSidebar()">SCHEDULE</a></li>
+					<li><a class="ham-link" href="/#sponsers1" onclick="hideSidebar()">SPONSORS</a></li>
+					<li><a class="ham-link" href="/#contect1" onclick="hideSidebar()">CONTACT</a></li>
+					<!-- <li><button>REGISTER</button></li> -->
+				</ul>
+			</div>
+		</nav>
+
+		<div class="alcheringa-iitg-header">
+			<div class="left-flower">
+				<img
+					style="width: 8vw"
+					src="{% static 'core/asset/flower.png' %}"
+					alt="Flower"
+				/>
+			</div>
+
+			<div class="left-lief">
+				<img
+					style="width: 7vw"
+					src="{% static 'core/asset/leif.png' %}"
+					alt="Leaf"
+				/>
+			</div>
+
+			<div class="right-lief">
+				<img
+					style="width: 8vw"
+					src="{% static 'core/asset/leif.png' %}"
+					alt="Leaf"
+				/>
+			</div>
+
+			<div class="bottom-leif">
+				<img
+					style="width: 8vw"
+					src="{% static 'core/asset/leif.png' %}"
+					alt="Leaf"
+				/>
+			</div>
+
+			<div class="bottom-flower">
+				<img
+					style="width: 8vw"
+					src="{% static 'core/asset/flower.png' %}"
+					alt="Flower"
+				/>
+			</div>
+
+			<div class="right-star">
+				<img
+					style="width: 14vw"
+					src="{% static 'core/asset/star.png' %}"
+					alt="Star"
+				/>
+			</div>
+
+			<div class="left-star">
+				<img
+					style="width: 14vw"
+					src="{% static 'core/asset/star.png' %}"
+					alt="Star"
+				/>
+			</div>
+
+			<div class="highway-to-alcher-header">
+				<div class="highway-to-alcher-inner">
+					<div class="Alcheringa-IITG">
+						ALCHERINGA
+						<p>IIT Guwahati</p>
+					</div>
+					<div class="presents">Presents</div>
+					<div class="imgHighway"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="registeration-city">
+			<div class="deshboard dash">
+				<div class="func">
+					<div class="city-img-header">
+						<a class="comp-img">
+							<img
+								id="head-img"
+								src="{% static 'core/asset/'%}{{curr_city.name|slugify}}.png"
+								{%
+								comment
+								%}
+								src="{% static 'core/asset/'%}{{curr_city.name|slugify}}.png"
+								{%
+								endcomment
+								%}
+								alt="{{ curr_city.name }}"
+							/>
+						</a>
+					</div>
+					<div id="drop-btn" class="drop-down">
+						<img src="{% static 'core/asset/vector.svg' %}" alt="" />
+					</div>
+				</div>
+				<ul class="ul">
+					{% for city in cities %} {% if city.name != curr_city.name %}
+					<li class="{{ city.name|slugify }}">
+						<a href="/competitions/{{ city.name|slugify }}">
+							<img
+								src="{% static 'core/asset/'%}{{city.name|slugify}}.png"
+								{%
+								comment
+								%}
+								src="{% static 'core/asset/'%}{{city.name|slugify}}.png"
+								{%
+								endcomment
+								%}
+								alt="{{ city.name }}"
+							/>
+						</a>
+					</li>
+					{% endif %} {% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div id="sponsers1" class="spons-heading venue">
+			<h1 >Venue: {{ curr_city.venue }}</h1>
+			<h1>Date: {{ curr_city.time }}</h1>
+		</div>
+		<div class=comptemp>
+			<div class="cartsdiv">
+				{% for competition in events %}
+				<div class="cart">
+					<div id="ye-wala" class="about-cart">
+						<div class="img-of-women">
+							<img
+								src="{% static 'core/asset/women.png' %}"
+								alt="Competition Image"
+							/>
+						</div>
+
+						<div class="cart-content">
+							<div class="cart-header">
+								{{ competition.name }}
+								<p>{{ competition.type }}</p>
+							</div>
+
+							<div class="content-of-cart">{{ competition.description }}</div>
+
+							<div class="cart-buttons">
+								<button class="cart-register">
+									<a href="/competitions/{{ curr_city.name }}/{{ competition }}"
+										>REGISTER</a
+									>
+								</button>
+								<button class="cart-GUIDELINES" onclick="window.open('{{ curr_city.guidelines }}', '_blank')">GUIDELINES</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div id="aftermovie" class="aftermovie ug">
+			<h2 id="aftermovie-text">ALCHERINGA AFTER MOVIE</h2>
+			<iframe
+				width="560"
+				height="315"
+				src="https://www.youtube.com/embed/CWhFx8v1mg8?si=Xd-olNrgVU2Ihk56&amp;controls=0"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+			<div id="contect1" class="bottom">
+				<div class="foo-left">
+					<ul>
+						<li><a href="#about-alcheri">ABOUT US</a></li>
+						<li><a href="#schedule1">SCHEDULE</a></li>
+						<li><a href="#sponsers1">SPONSORS</a></li>
+					</ul>
+				</div>
+				<div class="foo-middle">
+					<img
+						id="alcherimg"
+						src="{% static 'core/asset/alcher logo 2.png' %}"
+						alt="Alcheringa Logo"
+					/>
+					<h2>ALCHERINGA</h2>
+					<ul id="toRemoveList">
+						<li>
+							<a href="https://www.instagram.com/alcheringaiitg/?hl=en">
+								<img
+									src="{% static 'core/asset/insta-d.svg' %}"
+									alt="Instagram"
+								/>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://www.linkedin.com/company/alcheringaiitguwahati/mycompany/"
+							>
+								<img
+									src="{% static 'core/asset/link-d.svg' %}"
+									alt="LinkedIn"
+								/>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/alcheringaiitg/">
+								<img src="{% static 'core/asset/fb-d.svg' %}" alt="Facebook" />
+							</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/alcheringaiitg">
+								<img src="{% static 'core/asset/twit-d.svg' %}" alt="Twitter" />
+							</a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@alcheringaIITG">
+								<img src="{% static 'core/asset/yt-d.svg' %}" alt="YouTube" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="foo-right">
+					<div class="contact">
+						<h2>Contact Us</h2>
+					</div>
+					<div class="head-names">
+						<div class="head">
+							<p>Shashank Daga</p>
+							<p>PR Head</p>
+							<p>+91 82409 50055</p>
+						</div>
+						<div class="head">
+							<p>Khushi Gupta</p>
+							<p>PR Head</p>
+							<p>+91 98648 75424</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="aftermovie ug mobile-only">
+			<h2 id="aftermovie-text">ALCHERINGA AFTER MOVIE</h2>
+			<iframe
+				width="560"
+				height="315"
+				src="https://www.youtube.com/embed/CWhFx8v1mg8?si=Xd-olNrgVU2Ihk56&amp;controls=0"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+
+			<div class="bottom">
+				<div class="foo-top">
+					<div class="foo-top-left">
+						<ul>
+							<a href="#about-alcheri"><li>ABOUT US</li> </a>
+							<a href="#schedule1"><li>SCHEDULE</li> </a>
+							<a href="#sponsers1"> <li>SPONSORS</li> </a>
+						</ul>
+					</div>
+					<div class="foo-top-right">
+						<div class="head">
+							<p>Shashank Daga</p>
+							<p>PR Head</p>
+
+							<p class="para">
+								<img
+									id="phone"
+									src="{% static 'core/asset/phone.svg' %}"
+									alt=""
+								/>+91 82409 50055
+							</p>
+						</div>
+						<div class="head">
+							<p>Khushi Gupta</p>
+							<p>PR Head</p>
+
+							<p class="para2">
+								<img
+									id="phone"
+									src="{% static 'core/asset/phone.svg' %}"
+									alt=""
+								/>+91 98648 75424
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="foo-bottom">
+					<ul>
+						<a href="https://www.instagram.com/alcheringaiitg/?hl=en"
+							><img src="{% static 'core/asset/link-m.svg' %}"
+						/></a>
+						<a
+							href="https://www.linkedin.com/company/alcheringaiitguwahati/mycompany/"
+							><img
+								src="{% static 'core/asset/insta-m.svg' %}"
+								src="asset/insta-m.svg"
+								alt=""
+						/></a>
+						<a href="https://www.facebook.com/alcheringaiitg/   "
+							><img
+								id="fb"
+								src="{% static 'core/asset/fb-m.svg' %}"
+								src="asset/fb-m.svg"
+								alt=""
+						/></a>
+						<a href="https://twitter.com/alcheringaiitg"
+							><img
+								src="{% static 'core/asset/twit-m.svg' %}"
+								src="asset/twit-m.svg"
+								alt=""
+						/></a>
+						<a href="https://www.youtube.com/@alcheringaIITG"
+							><img
+								id="yt"
+								src="{% static 'core/asset/yt-m.svg' %}"
+								src="asset/yt-m.svg"
+								alt=""
+						/></a>
+					</ul>
+
+					<a href="https://alcheringa.in/"
+						><img
+							id="mobile-alcher"
+							src="{% static 'core/asset/mobile-alcher.png' %}"
+							src="asset/mobile-alcher.png"
+							alt=""
+					/></a>
+				</div>
+			</div>
+		</div>
+
+		<script src="{% static 'core/script2.js' %}"></script>
+	</body>
+</html>

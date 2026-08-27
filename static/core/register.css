@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
+@font-face {
+  font-family: "Sao Torpes";
+  src: url("fonts/SaoTorpes.woff2") format("woff2"),
+    url("fonts/SaoTorpes.woff") format("woff"),
+    url("fonts/SaoTorpes.ttf") format("truetype"),
+    url("fonts/SaoTorpes.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #141414;
+  font-family: "Lexend", sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+.top-section {
+  height: 600px;
+  width: 100%;
+  background-color: #373737;
+  position: relative; 
+}
+
+.event-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+}
+
+.event-banner {
+  position: absolute;
+  left: 50%;
+  top: 114px;
+  transform: translateX(-50%);
+  width: 90%; 
+  max-width: 710px; 
+}
+
+.event-banner img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5/4;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+}
+
+.event-title {
+  font-family: "Sao Torpes";
+  text-align: center;
+  color: #bdf522;
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: 125px;
+  font-style: normal;
+}
+
+.event-subtitle {
+  font-family: "Lexend";
+  text-align: center;
+  color: #bdf522;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 30px;
+}
+
+.event-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+}
+
+.left-info,
+.right-info {
+  background-color: #202020;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.left-info {
+  max-width: 686px;
+  padding: 47px 42px;
+  min-width: 300px;
+  flex: 1; 
+}
+.right-info{
+  max-width: 336px; 
+  padding: 38px 22px;
+  min-width: 280px;
+  flex: 0 1 336px;
+}
+
+.event-date {
+  font-family: "Lexend";
+  font-weight: 500;
+  font-size: 26px;
+  padding-bottom: 12px;
+  color: #bdf522;
+}
+.event-location {
+  font-family: "Lexend";
+  font-weight: 500;
+  font-size: 26px;
+  padding-bottom: 32px;
+  color: #bdf522;
+}
+.about-the-event {
+  font-family: "Lexend";
+  font-weight: 400;
+  font-size: 18px;
+  padding-bottom: 17px;
+}
+.event-description {
+  font-family: "Lexend";
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff99;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+.event-guidelines {
+  font-family: "Lexend";
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff99;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.event-state {
+  font-family: "Sao Torpes";
+  color:#fff;
+  font-size: 28px;
+  font-weight: 400;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f5f5f599;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  margin-bottom: 24px;
+}
+
+.info-icon {
+  background-color: #bdf5220a;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 14px;
+  color: #f5f5f599;
+  font-family: "Lexend";
+  font-weight: 400;
+}
+
+.info-value {
+  font-size: 18px;
+  color: #f5f5f5;
+  font-family: "Lexend";
+  font-weight: 400;
+}
+
+.register-btn {
+  margin-top: 12px;
+  background: #BDF522;
+  color: #000000;
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: block;
+  text-decoration: none;
+  font-family: "Lexend";
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* Add Member Button - matches the design from image */
+.add-member-btn,
+button[type="button"].add-member-btn {
+  background: #2A2A2A !important;
+  color: #BDF522 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 16px 24px !important;
+  font-family: "Lexend" !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.3s ease !important;
+  height: 56px !important;
+  width: 161px !important;
+}
+
+.add-member-btn:hover,
+button[type="button"].add-member-btn:hover {
+  background: #3A3A3A !important;
+  color: #BDF522 !important;
+}
+
+
+
+/* Remove Member Button - red color, positioned on right */
+.remove-member-btn,
+button[type="button"].remove-member-btn {
+  background-color: #ff3b3b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  font-family: "Lexend" !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.remove-member-btn:hover,
+button[type="button"].remove-member-btn:hover {
+  background-color: #ff5252 !important;
+  color: #ffffff !important;
+}
+
+.remove-member-btn i {
+  font-size: 12px;
+}
+
+/* Member header layout */
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.member-header h3 {
+  color: #bdf522;
+  font-family: "Lexend";
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Actions container */
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.copy-btn {
+  background-color: #202020;
+  border: 1px solid #bdf5225c;
+  color: #bdf522;
+  padding: 16px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 292px;
+  text-align: center;
+  font-family: "Lexend";
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main-message {
+  text-align: left;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.register-btn {
+  align-self: flex-start; /* aligns the button with text */
+}
+
+.city-competitions {
+  background-color: #1a1a1a; /* Dark background like the event detail page */
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 90%;
+  margin: 40px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid #2e2e2e; /* Optional: subtle border */
+}
+
+.city-competitions .section-title {
+  font-size: 2rem;
+  color: #bdf522;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Style each card within the carousel */
+.carousel .comp-card {
+  background-color:#000000;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.carousel .comp-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Optional: Make carousel container more responsive */
+.carousel-container {
+  overflow: hidden;
+  padding: 10px;
+}
+.carousel .comp-card .register-btn {
+  background-color: #2e2e2e;  /* Dark grey background */
+  color:#bdf522;               /* White text */
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: lighter;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.carousel .comp-card .register-btn:hover {
+  background-color: #444; /* Slightly lighter grey on hover */
+}
+
+
+
+@media (max-width: 768px) {
+  .event-container {
+    padding: 0 15px;
+  }
+  .event-banner {
+    top: 80px;
+    width: 95%;
+  }
+  .event-title {
+    margin-top: 100px;
+  }
+  .event-details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .left-info,
+  .right-info {
+    padding: 30px 25px;
+    max-width: 100%;
+  }
+  .event-date,
+  .event-location {
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-section {
+    height: 300px;
+  }
+  .event-container {
+    padding: 0 10px;
+  }
+  .event-banner{
+    top: 90px;
+    width: 100%;
+  }
+  .event-title{
+    margin-top: 50px;
+    font-size: 28px;
+  }
+  .left-info, .right-info{
+    padding: 20px 15px;
+  }
+  .info-icon{
+    padding: 10px;
+  }
+  .register-btn, .copy-btn{
+    padding: 14px 20px;
+  }
+  .event-date , .event-location{
+    font-size: 18px;
+  }
+
+}
