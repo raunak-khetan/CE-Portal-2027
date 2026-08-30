@@ -13,7 +13,7 @@
 			name="description"
 			content="Do you think you are the best in your city and want to compete with the best of the rest of the cities in the country? With the vision of giving everyone a platform to compete at a national level by bringing in only the best talent from all over India to Alcheringa IIT Guwahati, we present to you the City Auditions known as 'Highway to Alcher'. Join India’s biggest college cultural festival today!"
 		/>
-  <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  <link rel="stylesheet" href="{% static 'core/home.css' %}">
   <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
   <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}" />
   <link rel="stylesheet" href="{% static 'core/combined.css' %}" />
@@ -30,14 +30,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-  <style>
-        @font-face {
-            font-family: 'Sao Torpes';
-            src: url("{% static 'core/fonts/SaoTorpes.otf' %}") format('opentype');
-            font-weight: normal;
-            font-style: normal;
-        }
-    </style>
     <title>Alcheringa City Eliminations Portal | Alcheringa IIT Guwahati</title>
     <meta name="description" content="Participate in Alcheringa’s City Eliminations – the nationwide hunt for top performers to represent your city at Alcheringa, IIT Guwahati. Register, compete, and get details on events, venues, and ambassador opportunities. Join India’s biggest college cultural festival today!">
     <meta name="keywords" content="Alcheringa, City Eliminations, IIT Guwahati, college fest, campus ambassador, cultural competitions, youth festival, caportal, city auditions, talent hunt, India college events, arts, music, dance, drama, fashion, haute couture, vogue nation, rocko pheonix, registration, ambassador program">
@@ -64,699 +56,100 @@
     </script>
 </head>
 <body>
-
-<!-- ashish start -->
-
-  <header class="navbar">
-        <div class="navbar-header">
-          <div class="navbar-left">
-            <img src="{% static 'core/landing/logo.png' %}" class="logo" alt="Logo" />
-            <span>ALCHERINGA</span>
+  <!-- santosh start -->
+  <section id="competition-section" class="competition page">
+    <div class="all-matter-part">
+      <div class="competition-header">
+        <h1 class="competitions-heading">Find Competitions in Your City</h1>
+        <div class="city-select">
+          <div class="heading-location">
+            <span class="location-icon" aria-hidden="true">
+              <img src="{% static 'core/asset/location.png' %}" alt="location" class="location-icon-image" />
+            </span>
+            <span class="select-location-text">Select a location</span>
           </div>
-      
-          <div class="hamburger">&#9776;</div>
-        </div>
-      
-        <div class="navbar-right" id="nav-menu">
-          <a href="#about">About Alcher</a>
-          <input type="text" id="navbar-search" placeholder="Search..." style="display: none;" />
-        </div>
-      </header>
-
-
-  
-   <!-- Hero Section -->
-<section class="hero">
-    <div class="hero-line">
-        <span class="hero-word">HIGHWAY</span>
-        <img src="{% static 'core/landing/shape-purple.svg' %}" alt="shape-purple" class="hero-shape">
-    </div>
-
-    <div class="hero-line compact">
-        <img src="{% static 'core/landing/shape-pink.svg' %}" alt="shape-pink" class="hero-shape">
-        <img src="{% static 'core/landing/shape-orange.svg' %}" alt="shape-orange" class="hero-shape">
-        <img src="{% static 'core/landing/shape-green.svg' %}" alt="shape-green" class="hero-shape">
-        <span class="hero-word">TO</span>
-    </div>
-
-    <div class="hero-line">
-        <span class="hero-word">ALCHER</span>
-        <img src="{% static 'core/landing/shape-green2.svg' %}" alt="shape-green2" class="hero-shape">
-        <img src="{% static 'core/landing/shape-orange2.png' %}" alt="shape-orange2" class="hero-shape">
-    </div>
-</section>
-
-<section class="stats">
-    <div class="stat-item">
-      <div class="number-plus">
-        <span class="counter" data-target="18">0</span><span class="plus">+</span>
-      </div>
-      <p class="label">Cities</p>
-    </div>
-    <div class="stat-item">
-      <div class="number-plus">
-        <span class="counter" data-target="300">0</span><span class="plus">+</span>
-      </div>
-      <p class="label">Colleges</p>
-    </div>
-    <div class="stat-item">
-      <div class="number-plus">
-        <span class="counter" data-target="45">0</span><span class="plus">+</span>
-      </div>
-      <p class="label">Competitions</p>
-    </div>
-  </section>
-
-
-   <!-- About Section -->
-    <section id="about" class="about-section" style="position: relative;">
-        <img src="{% static 'core/landing/Star.svg' %}" alt="Star" class="about-star">
-        <div class="about-container">
-            <div class="about-image-wrapper">
-                <!-- Yellow blob -->
-                <img src="{% static 'core/landing/Vector.svg' %}" alt="Yellow Shape" class="about-vector">
-                
-                <!-- Main image -->
-
-
-                <div class="about-carousel">
-                  {% for image in about_images %}
-                    <img src="{{ image.image.url }}" class="about-slide {% if forloop.first %}active{% endif %}">
-                  {% endfor %}
-                </div>
-                
-              <div class="slider-controls">
-                  <div class="about-dots">
-                      {% for image in about_images %}
-                          <span class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.counter0 }}"></span>
-                      {% endfor %}
-                  </div>
-              
-                  
-                  
-                
-                <!-- Star on top-right -->
-                
-                <!-- Arrows -->
-                <div class="slider-nav">
-                    <div class="nav-circle dark about-prev">&#8592;</div>
-                    <div class="nav-circle pink about-next">&#8594;</div>
-                  </div>
-                  </div>
-            </div>
-    
-            <div class="about-text">
-                <h2>ALCHERINGA -- NORTH <br> EAST INDIA'S BIGGEST FEST</h2>
-                <p>
-                    Alcheringa is the annual cultural festival of IIT Guwahati, an electrifying celebration of art, music, dance, and drama. Join us for an unforgettable experience where talent converges and creativity knows no bounds.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    
-<!-- ashish end -->
-
-<!-- raunak start -->
-
-  <main class="first-page">
-  <div class="star" >
-    <img class="decor-star" src="{% static 'core/asset/star.png' %}" alt="" />
-  </div>
- <div class="container">
-  <div class="highway-page">
-    <h1 class="heading">Highway To Alcher</h1>
-    <p  class="para">Highway to Alcher is your direct route to the spotlight at Alcheringa, IIT Guwahati's annual cultural fest! This pan-India competition series unearths the nation's brightest talents, giving them a chance to perform on the grand stage. Get ready to showcase your skills and kickstart your journey to stardom!</p>
-  </div>
-    <a class="register-btn" href="#competition-section">Register</a>
-</div>
-
-<div class="image-container">
-<div class="image-1" data-images='["{% static "core/asset/hero.png" %}","{% static "core/asset/hero1.png" %}","{% static "core/asset/hero2.png" %}","{% static "core/asset/hero3.png" %}","{% static "core/asset/hero4.png" %}","{% static "core/asset/hero5.png" %}"]' data-start-index="0">
-  
-  <img src="{% static 'core/asset/hero.png' %}" alt="Crowd enjoying event" class="image" />
-</div>
-<img class="flower" src="{% static 'core/asset/flower.png' %}" alt="" />
-
-<div class="image-nav">
-  <div>
-  <button class="slidebtn" aria-label="Previous">&#8592;</button>
-  <button class="slidebtn" aria-label="Next">&#8594;</button>
-</div>
-  <div class="slide-dots" aria-hidden="true"></div>
-</div>
-</div>
-</main>
-  
-  <section id="competition-section" class="competition-page">
-    <div class="competition-header">
-      <h2 class="heading">FIND COMPETITIONS IN</h2>
-      <div class="city-select">
-        <span class="location-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
-            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-          </svg>
-        </span>
-        <span class="location">Choose a location</span>
-        <button id="competitionsCityButton" class="city-button" type="button" aria-haspopup="listbox" aria-expanded="false">
-          <img src="{% static 'core/asset/icon.png' %}" alt="arrow" class="" /> 
-        </button>
-        <ul id="competitionsCityList" class="city-dropdown" role="listbox" aria-labelledby="competitionsCityButton" hidden>
-          <li role="option" data-value="city-all" class="is-active">All</li>
-          {% for city in cities %}
-          <li role="option" data-value="city-{{ city.name|slugify }}">{{ city.name }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-
-    <!-- All competitions aggregated view (default) -->
-    <section class="city-competitions" id="city-all">
-      <div class="cards-grid">
-        {% for city in cities %}
-          {% for event in city.events.all %}
-
-            <article class="comp-card" data-index="{{ forloop.counter }}">
-              <div class="card-media">
-        
-                {% if event.image %}
-                  <img
-                    src="{{ event.image.url }}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% elif city.image %}
-                  <img
-                    src="{{ city.image.url }}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% else %}
-                  <img
-                    src="{% static 'core/asset/CompetitionPhoto.png' %}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% endif %}
-                <span class="badge">{{ event.event_type|upper }}</span>
-                <span class="badge badge-type">{% if event.event_type == 'team' %}Group{% else %}Solo{% endif %}</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">{{ event.name }}</h3>
-                <p class="card-event-type">{{event.event_type}}</p>
-                <ul class="card-details">
-                  <li>
-                    <span class="detail-label">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar4" viewBox="0 0 16 16">
-                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-                      </svg>
-                    </span> 
-                    <span class="detail-value">{{ city.time|date:'D, d M, Y' }}</span>
-                  </li>
-                  {% if city.venue %}
-                  <li>
-                    <span class="detail-label">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                      </svg>
-                    </span> 
-                    <span class="detail-value">{{ city.venue }}, {{city.name}}</span>
-                  </li>
-                  {% endif %}
-                </ul>
-                <div class="card-actions">
-                  <img src="{% static 'core/asset/star2.png' %}" alt="decoration" class="style-img"/>
-                  <img src="{% static 'core/asset/flower2.png' %}" alt="decoration" class="comps-img"/>
-                  {% if not city.collab %}
-                  <a class="register-btn" href="{% url 'detailspage' city.name event.name %}">Details</a>
-                  {% endif %}
-                </div>
-              </div>
-            </article>
-          {% endfor %}
-        {% endfor %}
-      </div>
-      <div class="load-more-container" style="text-align: center; margin: 2rem 0;">
-        <button id="loadMoreAll" class="load-more-btn" style="display: none;">Show More</button>
-      </div>
-    </section>
-
-    <!-- Individual city sections (hidden by default) -->
-    {% for city in cities %}
-      <section class="city-competitions is-hidden" id="city-{{ city.name|slugify }}">
-        <div class="cards-grid">
-          {% for event in city.events.all %}
-
-            <article class="comp-card" data-index="{{ forloop.counter }}">
-              <div class="card-media">
-                {% if event.image %}
-                  <img
-                    src="{{ event.image.url }}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% elif city.image %}
-                  <img
-                    src="{{ city.image.url }}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% else %}
-                  <img
-                    src="{% static 'core/asset/CompetitionPhoto.png' %}"
-                    alt="{{ event.name }}"
-                    class="comp-img"
-                  />
-                {% endif %}
-                <span class="badge">{{ event.event_type|upper }}</span>
-                <span class="badge badge-type">{% if event.event_type == 'team' %}Group{% else %}Solo{% endif %}</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">{{ event.name }}</h3>
-                <p class="card-event-type">{{event.event_type}}</p>
-                <ul class="card-details">
-                  <li>
-                    <span class="detail-label">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar4" viewBox="0 0 16 16">
-                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-                      </svg>
-                    </span> 
-                    <span class="detail-value">{{ city.time |date:'D, d M, Y' }}</span>
-                  </li>
-                  {% if city.venue %}
-                  <li>
-                    <span class="detail-label">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                      </svg>
-                    </span> 
-                    <span class="detail-value">{{ city.venue }}, {{city.name}}</span>
-                  </li>
-                  {% endif %}
-                </ul>
-                <div class="card-actions">
-                  <img src="{% static 'core/asset/star2.png' %}" alt="decoration" class="style-img"/>
-                  <img src="{% static 'core/asset/flower2.png' %}" alt="decoration" class="comps-img"/>
-                  {% if not city.collab %}
-                  <a class="register-btn" href="{% url 'detailspage' city.name event.name %}">Details</a>
-                  {% endif %}
-                </div>
-              </div>
-            </article>
-          {% empty %}
-            <p>No competitions found for {{ city.name }}.</p>
-          {% endfor %}
-        </div>
-        <div class="load-more-container" style="text-align: center; margin: 2rem 0;">
-          <button id="loadMore-{{ city.name|slugify }}" class="load-more-btn" style="display: none;">Show More</button>
-        </div>
-      </section>
-    {% endfor %}
-  </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const ITEMS_PER_PAGE = 10;
-  
-  // Initialize load more functionality for each section
-  function initLoadMore(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-    
-    const cards = section.querySelectorAll('.comp-card');
-    const loadMoreBtn = section.querySelector('.load-more-btn');
-    
-    if (cards.length <= ITEMS_PER_PAGE) {
-      // Don't show button if items are less than or equal to page size
-      return;
-    }
-    
-    let currentlyVisible = ITEMS_PER_PAGE;
-    
-    // Hide all cards beyond the first page
-    cards.forEach((card, index) => {
-      if (index >= ITEMS_PER_PAGE) {
-        card.style.display = 'none';
-      }
-    });
-    
-    // Show the load more button
-    loadMoreBtn.style.display = 'inline-block';
-    
-    // Handle load more click
-    loadMoreBtn.addEventListener('click', function() {
-      const nextVisible = currentlyVisible + ITEMS_PER_PAGE;
-      
-      // Show next batch of cards
-      for (let i = currentlyVisible; i < nextVisible && i < cards.length; i++) {
-        cards[i].style.display = 'block';
-      }
-      
-      currentlyVisible = nextVisible;
-      
-      // Hide button if all cards are visible
-      if (currentlyVisible >= cards.length) {
-        loadMoreBtn.style.display = 'none';
-      }
-    });
-  }
-  
-  // Initialize for the "All" section
-  initLoadMore('city-all');
-  
-  // Initialize for each city section
-  {% for city in cities %}
-  initLoadMore('city-{{ city.name|slugify }}');
-  {% endfor %}
-  
-  // Handle city filter changes - reinitialize visibility when switching cities
-  const cityButton = document.getElementById('competitionsCityButton');
-  const cityList = document.getElementById('competitionsCityList');
-  
-  if (cityList) {
-    cityList.addEventListener('click', function(e) {
-      if (e.target.tagName === 'LI') {
-        const selectedCity = e.target.getAttribute('data-value');
-        
-        // Hide all sections
-        document.querySelectorAll('.city-competitions').forEach(section => {
-          section.classList.add('is-hidden');
-        });
-        
-        // Show selected section
-        const targetSection = document.getElementById(selectedCity);
-        if (targetSection) {
-          targetSection.classList.remove('is-hidden');
-        }
-      }
-    });
-  }
-});
-</script>
-
-<style>
-.load-more-btn {
-  padding: 12px 32px;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.load-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-.load-more-btn:active {
-  transform: translateY(0);
-}
-
-.is-hidden {
-  display: none !important;
-}
-</style>
-  
-  <script src="{% static 'core/script.js' %}"></script>
-
-  <!-- raunak end -->
-
-  <!-- ashish start -->
-   <div class="cfa-container">
-    <!-- Shapes -->
-     <div class="shapes-wrapper layout-a">
-    <img src="{% static 'core/landing/shape1.svg' %}" class="shape shape1" />
-    <img src="{% static 'core/landing/shape2.svg' %}" class="shape shape2" />
-    <img src="{% static 'core/landing/shape3.svg' %}" class="shape shape3" />
-    <img src="{% static 'core/landing/shape4.svg' %}" class="shape shape4" />
-    <img src="{% static 'core/landing/shape5.svg' %}" class="shape shape5" />
-    <img src="{% static 'core/landing/shape6.svg' %}" class="shape shape6" />
-    <img src="{% static 'core/landing/shape7.svg' %}" class="shape shape7" />
-    <img src="{% static 'core/landing/shape8.svg' %}" class="shape shape8" />
-    </div>
-    <!-- Main Content -->
-    <div class="cfa-content">
-      <h1>ALCHERINGA FEST CONNECT</h1>
-      <p>
-        
-Alcheringa proudly presents Fest Connect, an initiative to build a nationwide network of vibrant college festivals. Through this program, your fest gets the opportunity to collaborate with IIT Guwahati’s Alcheringa, by hosting our flagship competitions and signature events right on your campus.
-As an Auditions Partner, your college fest becomes more than just a host  you gain the exclusive chance to organize our city eliminations Highway to Alcher. You become part of a grand celebration of culture, creativity, and talent that unites campuses across India. Together, we create unforgettable experiences and bring the spirit of Alcheringa closer to students everywhere.
-
-Together, we create unforgettable experiences and bring the spirit of Alcheringa closer to students everywhere.
-      </p>
-      <button class="register-btn" onclick="location.href='{% url 'cfa_step1' %}'">Register</button>
-
-    </div>
-  </div>
-  <script>
-    const wrapper = document.querySelector('.shapes-wrapper');
-    let isLayoutA = true;
-  
-    setInterval(() => {
-      wrapper.classList.toggle('layout-a');
-      wrapper.classList.toggle('layout-b');
-      isLayoutA = !isLayoutA;
-    }, 2000); // 2 seconds
-  </script>
-  
-  <!-- ashish end -->
-  
-  <!--sanchit start-->
-  <div class="alcher-blocks">
-    <!-- Highway Block -->
-    <section class="highway-block">
-      <div class="container">
-        <h1 class="title">HIGHWAY TO ALCHER GLIMPSES</h1>
-        
-        <div class="slider-container">
-          <div class="slider-wrapper">
-            <div class="slide-track" id="slideTrack">
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider1.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider2.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider3.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider4.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider5.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider6.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider7.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider8.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider9.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider10.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Sponsors Block -->
-    <section id="sponsors-section" class="sponsors-block">
-      <div class="sponsors-container">
-        <h1 class="sponsors-title">SPONSORS</h1>
-        <h1 class="sponsors-title">Media Partners</h1>
-        
-        <div class="sponsors-grid">
-          <!-- First Row -->
-          <div class="sponsor-logo">
-            <img src="{% static 'core/asset/asian logo.svg' %}" alt="Asian" class="logo-image" style="scale:3;">
-          </div>
-          
-          <div class="sponsor-logo">
-            <img src="{% static 'core/asset/LucknowPulse.png' %}" alt="Lucknow-Pulse" class="logo-image">
-          </div>
-          
-          </div>
-
-          <h1 class="sponsors-title">Venue Partners</h1>
-          <div class="sponsors-grid">
-          <!-- First Row -->
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/BBD.svg' %}" alt="BBD" class="logo-image" style="filter: brightness(0) invert(1);">
-            </div>
-          </div>
-
-          <h1 class="sponsors-title">Audition Partners</h1>
-          <div class="sponsors-grid">
-          <!-- First Row -->
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/festember.png' %}" alt="Festember" class="logo-image">
-            </div>
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/pyrexia.jpg' %}" alt="Pyrexia" class="logo-image">
-            </div>
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/sab.jpg' %}" alt="sab" class="logo-image">
-            </div>
-          </div>
-
-          <h1 class="sponsors-title">Judging Partners</h1>
-          <div class="sponsors-grid">
-            
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/Mars.png' %}" alt="Mars" class="logo-image" style="filter: invert(1);">
-            </div>
-            
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/Morphodis.png' %}" alt="Morphodis" class="logo-image" style="filter: brightness(0) invert(1);scale:2;">
-            </div>
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/LucknowEvents.png' %}" alt="LucknowEvents" class="logo-image" style="scale:1.2;">
-            </div>
-            
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/ThePoetsHouse.png' %}" alt="The Poets House" class="logo-image" style="scale:1.2;">
-            </div>
-            
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/NrityaSkill.jpg' %}" alt="Nritya Skill" class="logo-image" style="scale:1.2;">
-            </div>
-            <div class="sponsor-logo">
-              <img src="{% static 'core/asset/Thinking.jpg' %}" alt="Nritya Skill" class="logo-image">
-            </div>
-          </div>
-      </div>
-    </section>
-  
-    <!-- Footer Block -->
-<section class="footer-block">
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Left Section - Main Message -->
-        <div class="main-message">
-          <h2 class="main-title">
-            THE JOURNEY<br>
-            CONTINUES,<br>
-            SEE YOU AT<br>
-            ALCHERINGA!
-          </h2>
-          <button class="register-btn" onclick="document.getElementById('competition-section').scrollIntoView({ behavior: 'smooth' });">
-            Register
+          <button id="competitionsCityButton" class="city-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <img src="{% static 'core/asset/icon.png' %}" alt="arrow" class="location-dropdown-icon" />
           </button>
         </div>
-
-        <!-- Middle Section - Useful Links -->
-        <div class="section-container">
-          <h3 class="section-title">Useful Links</h3>
-          <nav class="links-nav">
-            <ul class="nav-list">
-              <li><a href="#about" class="nav-link">
-                <span>About Us</span>
-                <img src="{% static 'core/asset/arrow-up-right.png' %}" alt="External link" class="external-icon">
-              </a></li>
-              <li><a href="#competition-section" class="nav-link">
-                <span>Schedule</span>
-                <img src="{% static 'core/asset/arrow-up-right.png' %}" alt="External link" class="external-icon">
-              </a></li>
-              <li><a href="#sponsors-section" class="nav-link">
-                <span>Sponsors</span>
-                <img src="{% static 'core/asset/arrow-up-right.png' %}" alt="External link" class="external-icon">
-              </a></li>
-            </ul>
-          </nav>
-        </div>
-
-        <!-- Right Section - Contact -->
-        <div class="section-container">
-          <h3 class="section-title">Contact Us</h3>
-          <div class="contacts">
-            <ul class="contact-list">
-              <li class="contact-item">
-                <div class="contact-name">Shashank Daga</div>
-                <div class="contact-detail">
-                  <img src="{% static 'core/asset/phone.png' %}" alt="Phone" class="contact-icon">
-                  <div class="contact-phone">+91 82409 50055</div>
-                </div>
-                <div class="contact-detail">
-                  <img src="{% static 'core/asset/mail.png' %}" alt="Email" class="contact-icon">
-                  <div class="contact-phone">shashank.d@alcheringa.co.in</div>
-                </div>
-              </li>
-              <li class="contact-item">
-                <div class="contact-name">Khushi Gupta</div>
-                <div class="contact-detail">
-                  <img src="{% static 'core/asset/phone.png' %}" alt="Phone" class="contact-icon">
-                  <div class="contact-phone">+91 98648 75424</div>
-                </div>
-                <div class="contact-detail">
-                  <img src="{% static 'core/asset/mail.png' %}" alt="Email" class="contact-icon">
-                  <div class="contact-phone">khushi.g@alcheringa.co.in</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
 
-      <!-- Bottom Section -->
-      <div class="footer-bottom">
-        <div class="bottom-content">
-          <!-- Copyright -->
-          <div class="copyright">
-            © 2025 Alcheringa, IIT Guwahati. All rights reserved.
-          </div>
+      <section class="main-part">
+        <div class="competitions-and-filters-bar">
+          <div class="names-of-competitions-and-filters">
 
-          <!-- Social Links -->
-          <div class="social-links">
-            <a href="https://www.instagram.com/alcheringaiitg/" class="social-link" aria-label="Instagram">
-              <img src="{% static 'core/asset/insta.svg' %}" alt="Instagram" class="social-icon">
-            </a>
-            <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" class="social-link" aria-label="YouTube">
-              <img src="{% static 'core/asset/youtube.svg' %}" alt="Youtube" class="social-icon">
-            </a>
-            <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" class="social-link" aria-label="LinkedIn">
-              <img src="{% static 'core/asset/linkedin.svg' %}" alt="LinkedIn" class="social-icon">
-            </a>
-            <a href="https://x.com/alcheringaiitg" class="social-link" aria-label="X">
-              <img src="{% static 'core/asset/x.svg' %}" alt="X" class="social-icon">
-            </a>
-            <a href="https://www.facebook.com/alcheringaiitg" class="social-link" aria-label="Facebook">
-              <img src="{% static 'core/asset/facebook.svg' %}" alt="Facebook" class="social-icon">
-            </a>
           </div>
+          <div class="filter-button">
 
-          <!-- Credits -->
-          <div class="credits">
-            Developed by Team Web Operations
           </div>
         </div>
-      </div>
+        <div class="cards-grid">
+          {% for city in cities %}
+            {% for event in city.events.all %}
+              <article class="comp-card" data-index="{{ forloop.counter }}">
+                <div class="card-media">
+            
+                  {% if event.image %}
+                    <img
+                      src="{{ event.image.url }}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% elif city.image %}
+                    <img
+                      src="{{ city.image.url }}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% else %}
+                    <img
+                      src="{% static 'core/asset/CompetitionPhoto.png' %}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% endif %}
+                  <span class="badge">{{ event.get_event_type_display }}</span>
+                </div>
+                <div class="card-separator"></div>
+                <div class="card-body">
+                  <div class="card-body-matter">
+                    <h3 class="card-title">{{ event.name }}</h3>
+                    <p class="card-event-type">{{event.event_type}}</p>
+                    <ul class="card-details">
+                      <li>
+                        <span class="detail-label">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar4" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                          </svg>
+                        </span> 
+                        <span class="detail-value">{{ city.time|date:'D, d M, Y' }}</span>
+                      </li>
+                      {% if city.venue %}
+                      <li>
+                        <span class="detail-label">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg>
+                        </span> 
+                        <span class="detail-value">{{ city.venue }}, {{city.name}}</span>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                  <div class="card-actions">
+                    {% if not city.collab %}
+                    <a class="register-btn" href="{% url 'detailspage' city.name event.name %}">Details</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
     </div>
-  </footer>
-</section>
-  
 
-<!-- Alcher Blocks JS -->
-<script src="{% static 'core/combined.js' %}"></script>
-  <!--sanchit end-->
+  </section>
 </body>
-</html>
-
-
-
+  <!-- santosh end -->

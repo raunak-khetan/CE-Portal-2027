@@ -122,7 +122,8 @@ body {
     margin-top: 20px; 
     padding-top: 10px; 
     border-top: 1px solid #222; 
-  
+  }
+
   .register-button {
     background: transparent;
     border: 1px solid #D4FF00;
@@ -243,4 +244,3 @@ body {
       width: 16px;
     }
   }
-  
