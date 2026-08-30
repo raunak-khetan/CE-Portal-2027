@@ -6,54 +6,54 @@
 }
 
 .all-matter-part{
-  margin: 120px 119px 120px 119px;
-  gap: 100px;
+  margin: 7.5rem 7.5rem 7.5rem 7.5rem;
+  gap: 6rem;
 }
 
 .competition-header{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 51px;
+  height: 3.2rem;
 }
 
 .competitions-heading {
-    background: linear-gradient(261.52deg, #F27949 7.08%, #A33A11 86.79%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: Poltawski Nowy;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 105%;
-    letter-spacing: 0%;
+  background: linear-gradient(261.52deg, #F27949 7.08%, #A33A11 86.79%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Poltawski Nowy;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 105%;
+  letter-spacing: 0%;
 }
 
 .city-select{
   display: flex;
   align-items: center;
-  gap: 12px;
-  height: 24px;
+  gap: 0.75rem;
+  height: 1.5rem;
 }
 
 .heading-location{
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 21px;
+  gap: 0.5rem;
+  height: 1.25rem;
 }
 
 .select-location-text{
   font-family: Hepta Slab;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 105%;
   letter-spacing: 0%;
 }
 
 .city-button{
-  height: 24px;
-  width: 24px;
+  height: 1.5rem;
+  width: 1.5rem;
   background: transparent;
   border: none;
   display: flex;
@@ -61,21 +61,76 @@
   align-items: center;
 }
 
-/* Competition Cards */
-.comp-card{
-  width: 280.1051940917969px;
-  height: 463px;
+/* Filters Tab */
+.competitions-and-filters-bar{
+  width: 100%;
+  height: 3.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   opacity: 1;
-  border-top-left-radius: 10.48px;
-  border-top-right-radius: 10.48px;
-  border-bottom-right-radius: 10.48px;
-  border-bottom-left-radius: 10.48px;
+  border-radius: 0.75rem;
+  padding: 0.65rem;
+  background-color: #000000;
+  gap: 0.65rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.filter-button{
+  height: 3.6rem;
+  opacity: 1;
+  border-radius: 0.4rem;
+  padding: 0.65rem;
+  border-width: 1px;
+  background: transparent;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.filter-button:active{
+  background-color: #2A2A2A;
+  border: 1px solid #7F7F7F;
+}
+
+.names-of-competitions-and-filters{
+  display: flex;
+  align-items: center;
+}
+
+.filter-divider{
+  margin: 0px 5px 0px 5px;
+}
+
+.clear-filter-button{
+  display: flex;
+  align-items: center;
+  color: #DA4C4C;
+}
+
+.wrong-symbol{
+  margin-bottom: 1px;
+}
+
+/* Competition Cards */
+.cards-grid{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.comp-card{
+  width: 23%;
+  height: 29rem;
+  opacity: 1;
+  border-radius: 0.65rem;
   background: linear-gradient(163.35deg, #B9B9B9 4.31%, #5D5956 96.32%);
   border: 1.75px solid;
   border-image-source: linear-gradient(343.08deg, #1E1E1E 0%, #E1E1E1 98.84%);
-  padding-left: 15.72px;
-  padding-top: 13.98px;
-  padding-right: 15.72px;
+  padding-left: 1rem;
+  padding-top: 0.7rem;
+  padding-right: 1rem;
+  padding-bottom: 0.9rem;
 }
 
 .card-media{
@@ -90,37 +145,37 @@
 }
 
 .comp-img{
-  width: 248.97169494628906px;
-  height: 239.3622589111328px;
+  width: 100%;
+  height: 15.5rem;
   opacity: 1;
-  border-radius: 5.24px;
+  border-radius: 0.35rem;
   border: 1.75px solid;
   border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
 }
 
 .badge{
   position: absolute;
-  width: 44.218868255615234px;
-  height: 30.218868255615234px;
+  width: 2.75rem;
+  height: 2rem;
   opacity: 1;
-  border-width: 0.87px;
-  top: 9.61px;
-  left: 191.32px;
-  border-radius: 5.24px;
-  padding: 3.74px;
+  border-width: 1px;
+  top: 0.65rem;
+  right: 0.5rem;
+  border-radius: 5px;
+  padding: 0.2rempx;
   font-family: Hepta Slab;
   font-weight: 600;
   font-style: SemiBold;
-  font-size: 13.48px;
+  font-size: 0.8rem;
   line-height: 105%;
   letter-spacing: -1%;
   text-align: center;
   vertical-align: middle;
-  width: 44.218868255615234px;
-  height: 30.218868255615234px;
+  width: 2.75rem;
+  height: 2rem;
   opacity: 1;
   background-color: #2A2A2A;
-  border: 0.87px solid #FFFFFF;
+  border: 1px solid #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,38 +185,38 @@
 .card-separator{
   height: 1px;
   background: #000;
-  margin-top: 14.86px;
-  width: 285.66px;
-  margin-left: -19.5px;
+  margin-top: 0.8rem;
+  width: 118%;
+  margin-left: -1.2rem;
 }
 
 .card-body{
-  margin-top: 16.6px;
+  margin-top: 0.8rem;
   
 }
 
-.card-body-matter {
+.card-body-matter{
   position: relative;
-  width: 248.97px;
-  height: 103.76px;
+  width: 100%;
+  height: 6.5rem;
   opacity: 1;
-  border-radius: 5.24px;
-  padding-top: 5.24px;
-  padding-right: 8.74px;
-  padding-bottom: 5.24px;
-  padding-left: 8.74px;
+  border-radius: 5px;
+  padding-top: 0.35rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.35rem;
+  padding-left: 0.5rem;
   border: 1.75px solid transparent;
   background: linear-gradient(#161616, #161616) padding-box, linear-gradient(145deg, #000000 1.56%, #A7A7A7 99.21%) border-box;
 }
 
 .card-title{
-  height: 22px;
-  margin-top: 5.24px;
-  margin-bottom: 5.24px;
+  height: 1.3rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
   font-family: Poltawski Nowy;
   font-weight: 500;
   font-style: Italic;
-  font-size: 20.97px;
+  font-size: 1.3rem;
   line-height: 105%;
   letter-spacing: -1%;
   vertical-align: middle;
@@ -171,11 +226,11 @@
 .card-event-type{
   margin-top: 0;
   margin-bottom: 0;
-  height: 11px;
+  height: 0.75rem;
   font-family: Hepta Slab;
   font-weight: 500;
   font-style: Medium;
-  font-size: 10.48px;
+  font-size: 0.7rem;
   line-height: 105%;
   letter-spacing: -1%;
   vertical-align: middle;
@@ -183,12 +238,12 @@
 }
 
 .date-and-place{
-  margin-top: 16.6px;
+  margin-top: 1rem;
 }
 
 .date{
-  margin-bottom: 5.24px;
-  height: 11.356603622436523px;
+  margin-bottom: 0.35rem;
+  height: 0.75rem;
   opacity: 1;
 }
 
@@ -196,7 +251,7 @@
   font-family: Hepta Slab;
   font-weight: 500;
   font-style: Medium;
-  font-size: 10.48px;
+  font-size: 0.65rem;
   letter-spacing: -1%;
   vertical-align: middle;
 }
@@ -208,19 +263,20 @@
 }
 
 .register-btn{
-  width: 128px;
-  height: 48px;
-  margin-top: 10px;
+  width: 100%;
+  height: 3rem;
+  margin-top: 0.65rem;
   border-width: 1px;
   opacity: 1;
-  border-radius: 23px;
+  border-radius: 1.5rem;
   background-color: #161616;
   border: 1px solid;
   border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 0.8rem;
   color: white;
+  position: relative;
 }
 
 .register-btn:hover{
@@ -232,7 +288,7 @@
 }
 
 .register-btn.clicked .reg-circle {
-  transform: translateX(80px);
+  transform: translateX(190%);
 }
 
 .register-btn.clicked .reg-square {
@@ -247,7 +303,7 @@
   font-family: Hepta Slab;
   font-weight: 600;
   font-style: SemiBold;
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 105%;
   letter-spacing: -1%;
   vertical-align: middle;
@@ -256,10 +312,10 @@
 }
 
 .reg-circle{
-  width: 36px;
-  height: 36px;
-  top: 6px;
-  left: 6px;
+  width: 2.25rem;
+  height: 2.25rem;
+  top: 0.4rem;
+  left: 0.4rem;
   opacity: 1;
   border-width: 1px;
   border-radius: 50%;
@@ -272,10 +328,10 @@
 }
 
 .reg-square{
-  width: 16px;
-  height: 16px;
-  top: 16px;
-  left: 16px;
+  width: 1rem;
+  height: 1rem;
+  top: 1rem;
+  left: 1rem;
   opacity: 1;
   border-radius: 3px;
   border-width: 1px;
