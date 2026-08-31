@@ -54,22 +54,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.register-btn {
-  background-color: #c4f800;
-  color: black;
-  font-weight: bold;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.register-btn:hover {
-  background-color: #aee600;
-}
-
 .shape {
   position: absolute;
   z-index: 1;

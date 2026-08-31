@@ -1,0 +1,156 @@
+﻿/* Santosh start */
+
+/* Competition page */
+.competition-page{
+  background-color: #0F0F0F;
+}
+
+.all-matter-part{
+  margin: 120px 119px 120px 119px;
+  gap: 100px;
+}
+
+.competition-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 51px;
+}
+
+.competitions-heading {
+    background: linear-gradient(261.52deg, #F27949 7.08%, #A33A11 86.79%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Poltawski Nowy;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 105%;
+    letter-spacing: 0%;
+}
+
+.city-select{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 24px;
+}
+
+.heading-location{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 21px;
+}
+
+.select-location-text{
+  font-family: Hepta Slab;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 105%;
+  letter-spacing: 0%;
+}
+
+.city-button{
+  height: 24px;
+  width: 24px;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Competition Cards */
+.comp-card{
+  width: 280.1051940917969px;
+  height: 463px;
+  opacity: 1;
+  border-top-left-radius: 10.48px;
+  border-top-right-radius: 10.48px;
+  border-bottom-right-radius: 10.48px;
+  border-bottom-left-radius: 10.48px;
+  background: linear-gradient(163.35deg, #B9B9B9 4.31%, #5D5956 96.32%);
+  border: 1.75px solid;
+  border-image-source: linear-gradient(343.08deg, #1E1E1E 0%, #E1E1E1 98.84%);
+  padding-left: 15.72px;
+  padding-top: 13.98px;
+  padding-right: 15.72px;
+}
+
+.card-media{
+  position: relative;
+}
+
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145.5deg,rgba(0, 0, 0, 0.25),rgba(167, 167, 167, 0.25));
+}
+
+.comp-img{
+  width: 248.97169494628906px;
+  height: 239.3622589111328px;
+  opacity: 1;
+  border-radius: 5.24px;
+  border: 1.75px solid;
+  border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
+}
+
+.badge{
+  position: absolute;
+  width: 44.218868255615234px;
+  height: 30.218868255615234px;
+  opacity: 1;
+  border-width: 0.87px;
+  top: 9.61px;
+  left: 191.32px;
+  border-radius: 5.24px;
+  padding: 3.74px;
+  font-family: Hepta Slab;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 13.48px;
+  line-height: 105%;
+  letter-spacing: -1%;
+  text-align: center;
+  vertical-align: middle;
+  width: 44.218868255615234px;
+  height: 30.218868255615234px;
+  opacity: 1;
+  background-color: #2A2A2A;
+  border: 0.87px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.card-separator{
+  height: 1px;
+  background: #000;
+  margin-top: 14.86px;
+  width: 285.66px;
+  margin-left: -19.5px;
+}
+
+.card-body{
+  margin-top: 16.6px;
+  width: 248.97169494628906px;
+  height: 103.7603759765625px;
+  opacity: 1;
+  left: 15.72px;
+  border-radius: 5.24px;
+  padding-right: 8.74px;
+  padding-bottom: 8.74px;
+  padding-left: 8.74px;
+  gap: 8.74px;
+  background: #161616;
+  border: 1.75px solid;
+  border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
+}
+
+.card-title{
+  margin-top: 0;
+}
