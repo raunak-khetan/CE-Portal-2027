@@ -4,9 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="stylesheet" href="{% static 'core/fonts/poltawski-nowy-webfont/style.css' %}">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
   <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}" />
 
@@ -41,7 +39,27 @@
   </script>
   <link rel="stylesheet" href="{% static 'core/home.css' %}" />
 
-  <title>Alcheringa City Eliminations Portal | Alcheringa IIT Guwahati</title>
+   <link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+		/>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="{% static 'core/favicon.ico' %}"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Alcheringa City Eliminations Portal | Alcheringa IIT Guwahati</title>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QX9VT4R4Z7');
+    </script>
 </head>
 
 <body class="bg-dark text-white font-serif overflow-x-hidden m-0 p-0">
@@ -333,7 +351,128 @@
     </div>
   </section>
   <!-- Gowtham code end -->
-  
+
+   <!-- santosh start -->
+  <section id="competition-section" class="competition page">
+    <div class="all-matter-part">
+      <div class="competition-header">
+        <h1 class="competitions-heading">Find Competitions in Your City</h1>
+        <div class="city-select">
+          <div class="heading-location">
+            <span class="location-icon" aria-hidden="true">
+              <img src="{% static 'core/asset/location.png' %}" alt="location" class="location-icon-image" />
+            </span>
+            <span class="select-location-text">Select a location</span>
+          </div>
+          <button id="competitionsCityButton" class="city-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <img src="{% static 'core/asset/icon.png' %}" alt="arrow" class="location-dropdown-icon" />
+          </button>
+        </div>
+      </div>
+
+      <section class="main-part">
+        <div class="competitions-and-filters-bar">
+          <div class="names-of-competitions-and-filters">
+            <button class="filter-button">All</button>
+            <button class="filter-button">Performing Arts</button>
+            <button class="filter-button">Literary Arts</button>
+            <button class="filter-button">Film Art & Design</button>
+            <button class="filter-button">Workshops & Exhibitions</button>
+
+            <span class="filter-divider">
+              <img src="/static/core/asset/Line-Divider.png" alt="|">
+            </span>
+
+            <button class="filter-button">Upcoming</button>
+            <button class="filter-button">Next Month</button>
+          </div>
+          <div class="clear-filter">
+            <button class="clear-filter-button filter-button">
+              <img src="/static/core/asset/close-line.png" alt="X" class="wrong-symbol">
+              <p>Delete Filter</p>
+            </button>
+          </div>
+        </div>
+        <div class="cards-grid">
+          {% for city in cities %}
+            {% for event in city.events.all %}
+              <article class="comp-card" data-index="{{ forloop.counter }}">
+                <div class="card-media">
+            
+                  {% if event.image %}
+                    <img
+                      src="{{ event.image.url }}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% elif city.image %}
+                    <img
+                      src="{{ city.image.url }}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% else %}
+                    <img
+                      src="{% static 'core/asset/CompetitionPhoto.png' %}"
+                      alt="{{ event.name }}"
+                      class="comp-img"
+                    />
+                  {% endif %}
+                  <span class="badge">{{ event.get_event_type_display }}</span>
+                </div>
+                <div class="card-separator"></div>
+                <div class="card-body">
+                  <div class="card-body-matter">
+                    <div class="card-heading-and-type">
+                      <h3 class="card-title">{{ event.name }}</h3>
+                      <p class="card-event-type">{{event.event_type}}</p>
+                    </div>
+                    <div class="date-and-place">
+                      <div class="date">
+                        <span class="detail-label">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12.230189323425293" height="11.356603622436523" fill="white" class="bi bi-calendar4 event-icons" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                          </svg>
+                        </span> 
+                        <span class="detail-value">{{ city.time|date:'D, d M, Y' }}</span>
+                      </div>
+                      <div class="time">
+                        {% if city.venue %}
+                          <span class="detail-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12.230189323425293" height="11.356603622436523" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                          </span> 
+                          <span class="detail-value">{{ city.venue }}, {{city.name}}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-actions">
+                    {% if not city.collab %}
+                    <a class="register-link" href="#">
+                      <button class="register-btn">
+                        <div class="reg-circle">
+                          <div class="reg-square"></div>
+                        </div>
+                        <div class="reg-text">
+                          <p class="button-text">Register</p>
+                        </div>
+                      </button>
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+  </section>
+  <!-- santosh end -->
 
   <!-- Raunak  -->
   <!-- FAQ Section -->
@@ -343,7 +482,7 @@
         <div class="flex flex-col gap-4">
           <!-- Item 1 -->
           <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
               Aamir Khan ko bula lenge ni maam un leti aana h?
               <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180">
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -592,7 +731,8 @@
 
     statsObserver.observe(document.querySelector(".stats-section"));
   </script>
-
+  <script src="{% static 'core/home_register.js' %}"></script>
   
 </body>
 </html>
+  
