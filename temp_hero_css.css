@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@400;500;600&display=swap');
-
-/* All previous CSS rules have been migrated to Tailwind utility classes in home.html */
-:root {
+﻿:root {
   --stats-h: clamp(74px, calc(13.74vw + 18.75px), 217px);
   --cd-size: min(29vw, 420px, calc(var(--stats-h) * 2.2));
   --hero-h: clamp(420px, 50vw, 721px);
-  --kb-w: clamp(320px, 45vw, 650px);
 }
 
 html,
