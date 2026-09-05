@@ -29,6 +29,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background: #111;
+}
+
+.cfa-container::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('/static/core/landing/glitter.png') center / cover no-repeat;
+  content: '';
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.cfa-tv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(92vw, 1180px);
+  height: auto;
+  max-height: 92vh;
+  object-fit: contain;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  pointer-events: none;
 }
 
 .cfa-content {
@@ -161,6 +186,12 @@ body {
 
 /* Tablets */
 @media (max-width: 768px) {
+  .cfa-tv {
+    width: 145vw;
+    max-width: none;
+    max-height: none;
+  }
+
   .shape {
     width: 60px !important;
     height: 60px !important;
@@ -195,6 +226,10 @@ body {
 
 /* Phones */
 @media (max-width: 480px) {
+  .cfa-tv {
+    width: 180vw;
+  }
+
   .cfa-content h1 {
     font-size: 1.5rem;
   }
