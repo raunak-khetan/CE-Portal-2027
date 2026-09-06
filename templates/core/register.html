@@ -23,10 +23,37 @@
       src="https://kit.fontawesome.com/2cdfdf2a91.js"
       crossorigin="anonymous"
     ></script>
+<!-- santosh start -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poltawski+Nowy:ital,wght@0,500;1,500&display=swap"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              dark: '#0f0f0f',
+              brand: '#A33A11',
+            },
+            fontFamily: {
+              body: ['Hepta Slab', 'serif'],
+              heading: ['Poltawski Nowy Bold', 'serif'],
+              hepta: ['Hepta Slab', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'core/styles.css' %}"
+      href="{% static 'core/home.css' %}"
     />
     <link
 			rel="icon"
@@ -58,193 +85,45 @@
       href="{% static 'core/register.css' %}"
     />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet" />
-    <style>
-      @font-face {
-        font-family: "Saotorpes";
-        src: url("{% static 'core/fonts/SaoTorpes.otf' %}") format("opentype");
-      }
-      * , body{
-        padding:0;
-        margin:0;
-        box-sizing:border-box;
-      }
-      /* Carousel Styles for Competitions */
-      .carousel-container {
-        position: relative;
-        width: 100%;
-        margin-top: 24px;
-      }
-
-      .section-title {
-        font-family: 'Saotorpes', sans-serif;
-        font-size: 2.5rem;
-        color: #D4FF00;
-        text-align: center;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .carousel {
-        display: flex;
-        overflow-x: auto;
-        gap: 20px;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 20px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scroll-padding: 0 20px;
-      }
-
-      .carousel::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Override the grid layout for carousel */
-      .carousel .comp-card {
-        min-width: 280px;
-        max-width: 280px;
-        flex: 0 0 auto;
-        scroll-snap-align: start;
-        margin: 0; /* Remove any default margins */
-      }
-
-      /* Ensure badges are positioned correctly */
-      .carousel .badge-type {
-        top: 40px;
-      }
-
-      .pagination-arrows {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 20px;
-        padding: 0 20px;
-        width: 100%;
-      }
-
-      .pagination {
-        display: flex;
-        gap: 8px;
-        justify-content: flex-start;
-      }
-
-      .dot {
-        width: 12px;
-        height: 12px;
-        background-color: #444;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.3s;
-        cursor: pointer;
-      }
-
-      .dot.active {
-        background-color: #bdf522;
-      }
-
-      .nav-arrows {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-      }
-
-      .nav-btn {
-        background: #222;
-        color: #fff;
-        border: none;
-        padding: 12px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: background 0.3s;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-btn.right {
-        background: #bdf522;
-        color: #000;
-      }
-
-      .nav-btn:hover {
-        background: #bdf522;
-        color: #000;
-      }
-
-      .nav-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .carousel {
-          gap: 16px;
-          scroll-padding: 0 16px;
-        }
-
-        .carousel .comp-card {
-          min-width: 240px;
-          max-width: 240px;
-        }
-
-        .section-title {
-          font-size: 2rem;
-          margin-bottom: 30px;
-        }
-
-        .pagination-arrows {
-          padding: 0 16px;
-        }
-
-        .nav-btn {
-          width: 40px;
-          height: 40px;
-          font-size: 1rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .carousel {
-          gap: 12px;
-          scroll-padding: 0 12px;
-        }
-
-        .carousel .comp-card {
-          min-width: 200px;
-          max-width: 200px;
-        }
-
-        .section-title {
-          font-size: 1.8rem;
-          margin-bottom: 24px;
-        }
-      }
-    </style>
   </head>
 
   <!-- Competition landing starts-->
   <body>
-    <header class="navbar">
-      <div class="navbar-header">
-        <div class="navbar-left">
-          <img
-            src="{% static 'core/landing/logo.png' %}"
-            class="logo"
-            alt="Logo"
-          />
-          <span>ALCHERINGA</span>
-        </div>
+    <header class="home-navbar">
+      <div class="home-navbar-brand">
+        <img
+          src="{% static 'core/asset/alcher-logo.svg' %}"
+          class="home-navbar-logo"
+          alt="Alcheringa"
+        />
 
+        <div class="home-navbar-brand-text">
+          <span class="home-navbar-title">ALCHERINGA</span>
+          <span class="home-navbar-year">2027</span>
+        </div>
+      </div>
+
+      <nav class="home-navbar-links" id="home-navbar-links">
+        <a href="#competitions">Competitions</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#register" class="home-navbar-register">Register</a>
+
+      <div
+        class="home-navbar-hamburger"
+        onclick="
+          document
+            .getElementById('home-navbar-links')
+            .classList.toggle('is-open')
+        "
+      >
+        &#9776;
+      </div>
     </header>
 
-    <div class="top-section" id="top-section">
+    <main class="hero-section">
       <div class="event-banner">
         {% if event.image %}
           <!-- Use the event's specific image if available -->
@@ -266,242 +145,288 @@
           />
         {% endif %}
       </div>
-    </div>
-    <div class="event-container">
-      <h1 class="event-title">{{ event.name }}</h1>
-      <p class="event-subtitle">{{ event.event_type }}</p>
-      <div class="event-details">
-        <div class="left-info">
-          <p class="event-date">
-            <img src="{%static 'core/asset/calendar.png' %}" alt="calendar" />{{ city.time|date:'D, d M Y' }}
-          </p>
-          <p class="event-location">
-            <img src="{%static 'core/asset/marker-pin-01.png' %}" alt="pin" />
-            {{ city.venue }}
-          </p>
 
-          <h3 class="about-the-event" id="about-the-event">About the Event</h3>
-          <p class="event-description">{{ event.description|linebreaksbr }}</p>
-        </div>
-        <div class="right-info">
-          <h3 class="event-state">{{ city.name }}</h3>
-          <div class="info-box">
-            <div class="info-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="#BDF522"
-                class="bi bi-people"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"
-                />
-              </svg>
-            </div>
-            <div class="info-text">
-              <span class="info-label">Team Size</span>
-            
-              {% if event.event_type == 'solo' %}
-                <span class="info-value">1 member</span>
-              {% else %}
-                {% if event.min_participants and event.max_participants %}
-                  <span class="info-value">{{ event.min_participants }}-{{ event.max_participants }} members</span>
-                {% elif event.min_participants and not event.max_participants %}
-                  <span class="info-value">Minimum :{{ event.min_participants }}</span>
-                {% elif event.max_participants and not event.min_participants %}
-                  <span class="info-value">Maximum {{ event.max_participants }} members</span>
-                {% else %}
-                  <span class="info-value">Any</span>
-                {% endif %}
-              {% endif %}
-            </div>
+      <div class="events-section">
+        <div class="event-details">
+          <div class="event-details-heading-section">
+            <div class="event-details-heading">{{event.name}}</div>
+            <div class="event-details-caption">Temp</div>
           </div>
-
-          <a
-            href="{% url 'registrationpage' city.name event.name %}"
-            class="register-btn"
-            >Register</a
-          >
-          <button class="copy-btn">
-            <img src="link-broken-01.png" alt="" />
-            <span class="copy-link">Copy link</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!--upcoming events ashish ends-->
-
-      <section class="city-competitions" id="city-all">
-        <h2 class="section-title">Upcoming Competitions</h2>
-        <div class="carousel-container">
-          <div class="carousel" id="competitions-carousel">
-            
-           
-            
-            {% for competition in competitions %}
-              <article class="comp-card">
-                <div class="card-media">
-                  <img src="{{ competition.image }}" alt="{{ competition.title }}" class="comp-img">
-                  <span class="badge">{{ competition.type|upper }}</span>
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">{{ competition.title }}</h3>
-                  <p class="event-subtitle">{{ competition.type }}</p>
-                  <ul class="card-details">
-                    <li><span class="detail-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar4" viewBox="0 0 16 16">
+          <div class="event-details-main-and-register-part">
+            <div class="event-details-about-part">
+              <div class="date-and-venue-section">
+                <div class="event-date">
+                  <span class="event-detail-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0.9rem" height="0.9rem" fill="#FD8F28" class="bi bi-calendar4 event-icons" viewBox="0 0 16 16">
                       <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-                    </svg></span> <span class="detail-value">{{ competition.date }}</span></li>
-                    {% if competition.venue %}
-                    <li><span class="detail-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                    </svg></span> <span class="detail-value">{{ competition.venue }}, {{competition.city}}</span></li>
-                    {% endif %}
-                  </ul>
-                  <div class="card-actions">
-                    <img src="{% static 'core/asset/star2.png' %}" alt="{{ competition.title }}" class="style-img"/>
-                    <img src="{% static 'core/asset/flower2.png' %}" alt="{{ competition.title }}" class="comp-img"/>
-                    {% if not competition.city.collab %}
-                    <a class="register-btn" href="{% url 'detailspage' competition.city competition.title %}">Details</a>
+                    </svg>
+                  </span> 
+                  <span class="event-detail-value">{{ city.time|date:'D, d M, Y' }}</span>
+                </div>
+                <div class="event-venue">
+                  {% if city.venue %}
+                    <span class="event-detail-label">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9rem" height="0.9rem" fill="#FD8F28" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                      </svg>
+                    </span> 
+                    <span class="event-detail-value">{{ city.venue }}, {{city.name}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="event-about-section">
+                <h3 class="about-heading">About the Event</h3>
+                <p class="about-matter">{{event.description}}</p>
+              </div>
+            </div>
+            <div class="event-details-register-part">
+              <div class="event-state">Test</div>
+              <div class="div-separator"></div>
+              <div class="registration-deadline-and-team-size">
+                <div class="registration-deadline">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#FD8F28" class="bi bi-clock" viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                  </svg>
+                  <div class="deadline-div">
+                    <p class="deadline-heading">Registration Deadline</p>
+                    <p class="deadline-date">{{event.deadline|date:'D, d M'}}</p>
+                  </div>
+                </div>
+                <div class="no-of-members">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#FD8F28" class="bi bi-people" viewBox="0 0 16 16">
+                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                  </svg>
+                  <div class="members-div">
+                    <p class="size-heading">team size</p>
+                    {% if event.event_type  == "solo" %}
+                      <p class="members-min-and-max">solo</p>
+                    {% else %}
+                      <p class="members-min-and-max">{{event.min_participants}}-{{event.max_participants}} members</p>                    
                     {% endif %}
                   </div>
                 </div>
-              </article>
-            {% endfor %}
+              </div>
+              <div class="register-and-copy-link-buttons">
+                <button class="register-button">Register</button>
+                <button class="copy-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#FD8F28" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                  </svg>
+                  <p class="copy-link-text">Copy Link</p>
+                </button>
+              </div>
+            </div>
           </div>
-          
-          <div class="pagination-arrows">
-            <div class="nav-arrows" style="margin-left:auto;">
+          <div class="upcoming-events-part">
+            <div class="heading-and-arrows-part">
+              <div class="upcoming-competitions-heading">Upcoming Competitions</div>
+              <div class="arrows-div">
+                <button class="arrow left-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" fill="#FD8F28" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                  </svg>
+                </button>
+                <button class="arrow right-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" fill="#FD8F28" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="events-grid">
+              {% for city in cities %}
+                {% for event in city.events.all %}
+                  <article class="comp-card reg-comp-card" data-index="{{ forloop.counter }}">
+                    <div class="card-media">
+            
+                      {% if event.image %}
+                        <img
+                          src="{{ event.image.url }}"
+                          alt="{{ event.name }}"
+                          class="comp-img"
+                        />
+                      {% elif city.image %}
+                        <img
+                          src="{{ city.image.url }}"
+                          alt="{{ event.name }}"
+                          class="comp-img"
+                        />
+                      {% else %}
+                        <img
+                          src="{% static 'core/asset/CompetitionPhoto.png' %}"
+                          alt="{{ event.name }}"
+                          class="comp-img"
+                        />
+                      {% endif %}
+                      <span class="badge">{{ event.get_event_type_display }}</span>
+                    </div>
+                    <div class="card-separator"></div>
+                    <div class="card-body">
+                      <div class="card-body-matter">
+                        <div class="card-heading-and-type">
+                          <h3 class="card-title">{{ event.name }}</h3>
+                          <p class="card-event-type">{{event.event_type}}</p>
+                        </div>
+                        <div class="date-and-place">
+                          <div class="date">
+                            <span class="detail-label">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12.230189323425293" height="11.356603622436523" fill="white" class="bi bi-calendar4 event-icons" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                              </svg>
+                            </span> 
+                            <span class="detail-value">{{ city.time|date:'D, d M, Y' }}</span>
+                          </div>
+                          <div class="place">
+                            {% if city.venue %}
+                              <span class="detail-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12.230189323425293" height="11.356603622436523" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
+                              </span> 
+                              <span class="detail-value">{{ city.venue }}, {{city.name}}</span>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-actions">
+                        {% if not city.collab %}
+                        <a class="register-link" href="{% url 'detailspage' city.name event.name %}">
+                          <button class="register-btn">
+                            <div class="reg-circle">
+                              <div class="reg-square"></div>
+                            </div>
+                            <div class="reg-text">
+                              <p class="button-text">Register</p>
+                            </div>
+                          </button>
+                        </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </article>
+                {% endfor %}
+              {% endfor %}
             </div>
           </div>
         </div>
-      </section>
-    <!--upcoming events ashish ends-->
+      </div>
+    </main>
 
-    <div class="alcher-blocks">
-      <section class="footer-block">
-        <footer class="footer">
-          <div class="container">
-            <div class="footer-grid">
-              <!-- Left Section - Main Message -->
-              <div class="main-message">
-                <h2 class="main-title">
-                  THE JOURNEY<br />
-                  CONTINUES,<br />
-                  SEE YOU AT<br />
-                  ALCHERINGA!
-                </h2>
-                <button class="register-btn" onclick="document.getElementById('top-section').scrollIntoView({ behavior: 'smooth' });">
-                  Register
-                </button>
-              </div>
+    <footer class="bg-[#1E1E1E] text-white pb-[30px]">
+      <div class="max-w-[1240px] mx-auto">
+        <!-- Main Content Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.4fr] gap-10 lg:gap-12 items-center mb-14 md:mb-16">
+          
+          <!-- Left Section - Main Message & Register -->
+          <div class="flex flex-col items-start justify-center space-y-6">
+            <h2 class="font-heading italic text-3xl sm:text-4xl lg:text-[36px] font-bold leading-[1.25] text-white mb-[60px]">
+              The Journey Continues,<br>See You at Alcheringa!
+            </h2>
+            <button 
+              type="button"
+              class=" border-none p-0 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none" 
+              onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });">
+              <img src="{% static 'core/landing/register-button.png' %}" alt="Register" class="w-[145px] sm:w-[166px] h-auto drop-shadow-[0_8px_20px_rgba(208,77,40,0.35)]">
+            </button>
+          </div>
 
-              <!-- Middle Section - Useful Links -->
-              <div class="section-container">
-                <h3 class="section-title">Useful Links</h3>
-                <nav class="links-nav">
-                  <ul class="nav-list">
-                    <li>
-                      <a href="#top-section" class="nav-link">
-                        <span>About the event</span>
-                        <img
-                          src="{% static 'core/asset/arrow-up-right.svg' %}"
-                          alt="External link"
-                          class="external-icon"
-                        />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#city-all" class="nav-link">
-                        <span>Upcoming Events</span>
-                        <img
-                          src="{% static 'core/asset/arrow-up-right.svg' %}"
-                          alt="External link"
-                          class="external-icon"
-                        />
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-
-              <!-- Right Section - Contact -->
-              <div class="section-container">
-                <h3 class="section-title">Contact Us</h3>
-                <div class="contacts">
-                  <ul class="contact-list">
-                    <li class="contact-item">
-                      <div class="contact-name">Shashank Daga</div>
-                      <div class="contact-phone">+91 82409 50055</div>
-                    </li>
-                    <li class="contact-item">
-                      <div class="contact-name">Khushi Gupta</div>
-                      <div class="contact-phone">+91 98648 75424</div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom Section -->
-            <div class="footer-bottom">
-              <div class="bottom-content">
-                <!-- Copyright -->
-                <div class="copyright">
-                  © 2025 Alcheringa, IIT Guwahati. All rights reserved.
-                </div>
-
-                <!-- Social Links -->
-                <div class="social-links">
-                  <a href="https://www.instagram.com/alcheringaiitg/" class="social-link" aria-label="Instagram">
-                    <img
-                      src="{% static 'core/asset/insta.svg' %}"
-                      alt="Instagram"
-                      class="social-icon"
-                    />
+          <!-- Middle Section - Useful Links -->
+          <div class="flex flex-col lg:pl-16 mb-[80px]">
+            <h3 class="text-brand font-hepta text-base sm:text-lg font-semibold tracking-wide mb-5">
+              Useful Links
+            </h3>
+            <nav>
+              <ul class="list-none p-0 m-0 space-y-3.5 font-hepta text-[15px]">
+                <li>
+                  <a href="#about" class="text-[#a3a3a3] no-underline inline-flex items-center gap-2.5 transition-all duration-200 hover:text-white group">
+                    <span>About Us</span>
+                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
                   </a>
-                  <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" class="social-link" aria-label="YouTube">
-                    <img
-                      src="{% static 'core/asset/youtube.svg' %}"
-                      alt="Youtube"
-                      class="social-icon"
-                    />
+                </li>
+                <li>
+                  <a href="#competition-section" class="text-[#a3a3a3] no-underline inline-flex items-center gap-2.5 transition-all duration-200 hover:text-white group">
+                    <span>Schedule</span>
+                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
                   </a>
-                  <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" class="social-link" aria-label="LinkedIn">
-                    <img
-                      src="{% static 'core/asset/linkedin.svg' %}"
-                      alt="LinkedIn"
-                      class="social-icon"
-                    />
+                </li>
+                <li>
+                  <a href="#sponsors-section" class="text-[#a3a3a3] no-underline inline-flex items-center gap-2.5 transition-all duration-200 hover:text-white group">
+                    <span>Sponsors</span>
+                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
                   </a>
-                  <a href="https://x.com/alcheringaiitg" class="social-link" aria-label="X">
-                    <img
-                      src="{% static 'core/asset/x.svg' %}"
-                      alt="X"
-                      class="social-icon"
-                    />
-                  </a>
-                  <a href="https://www.facebook.com/alcheringaiitg" class="social-link" aria-label="Facebook">
-                    <img
-                      src="{% static 'core/asset/facebook.svg' %}"
-                      alt="Facebook"
-                      class="social-icon"
-                    />
-                  </a>
-                </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
-                <!-- Credits -->
-                <div class="credits">Developed by Team Web Operations</div>
-              </div>
+          <!-- Right Section - Cassette Contact Card -->
+          <div class="flex justify-end items-center mb-[30px]">
+            <div class=" transition-transform duration-300 hover:scale-[1.02]">
+              <img src="{% static 'core/landing/Casset.png' %}" alt="Contact Us"  class="block w-[500px] max-w-none h-auto ">
             </div>
           </div>
-        </footer>
-      </section>
-    </div>
 
+        </div>
+
+        <!-- Bottom Section Bar -->
+        <div class=" px-4 mt-[-40px]">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-[#737373] text-xs sm:text-sm font-hepta">
+            <!-- Copyright -->
+            <div class="text-center md:text-left order-2 md:order-1">
+              © 2025 Alcheringa, IIT Guwahati. All rights reserved.
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-6 text-[#9e9e9e] order-1 md:order-2">
+              <a href="https://www.instagram.com/alcheringaiitg/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1" aria-label="Instagram">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1" aria-label="YouTube">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1" aria-label="LinkedIn">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/alcheringaiitg" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1" aria-label="X">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/alcheringaiitg" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1" aria-label="Facebook">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.667 5H18V0h-3.889C10.5 0 9 1.556 9 4.667V8z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Credits -->
+            <div class="text-center md:text-right order-3">
+              Website by Team Alcher
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="{%static 'core/register_scroll.js' %}"></script>
     <script src="{%static 'core/register.js' %}"></script>
     <script src="{% static 'core/combined.js' %}"></script>
     <script src="{% static 'core/script.js' %}"></script>

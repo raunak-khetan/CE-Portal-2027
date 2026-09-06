@@ -123,18 +123,6 @@ body {
     padding-top: 10px; 
     border-top: 1px solid #222; 
   }
-
-  .register-button {
-    background: transparent;
-    border: 1px solid #D4FF00;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-    margin-left: 20px; 
-  }
   
   .shapes {
     display: flex;
@@ -144,12 +132,6 @@ body {
   .shapes img {
     width: 25px;
     margin-right: 0; /* remove old margin to use flex gap */
-  }
-  
-  
-  .register-button:hover {
-    background-color: #D4FF00;
-    color: #000;
   }
   
   .pagination-arrows {

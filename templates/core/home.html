@@ -436,7 +436,7 @@
                         </span> 
                         <span class="detail-value">{{ city.time|date:'D, d M, Y' }}</span>
                       </div>
-                      <div class="time">
+                      <div class="place">
                         {% if city.venue %}
                           <span class="detail-label">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12.230189323425293" height="11.356603622436523" fill="white" class="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -451,7 +451,7 @@
                   </div>
                   <div class="card-actions">
                     {% if not city.collab %}
-                    <a class="register-link" href="#">
+                    <a class="register-link" href="{% url 'detailspage' city.name event.name %}">
                       <button class="register-btn">
                         <div class="reg-circle">
                           <div class="reg-square"></div>
