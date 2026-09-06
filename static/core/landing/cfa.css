@@ -43,26 +43,75 @@ body {
   pointer-events: none;
 }
 
-.cfa-tv {
+.cfa-tv-stage {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 1;
-  width: min(92vw, 1180px);
-  height: auto;
-  max-height: 92vh;
-  object-fit: contain;
+  width: min(92vw, calc(92vh * 1.339));
+  aspect-ratio: 4380 / 3271;
   transform: translate(-50%, -50%) rotate(-6deg);
+}
+
+.cfa-tv-screen {
+  position: absolute;
+  top: 13%;
+  left: 16%;
+  z-index: 0;
+  width: 56%;
+  height: 66%;
+  overflow: hidden;
+  border-radius: 12% 12% 14% 14% / 14% 14% 14% 14%;
+  background: #002400 url('/static/core/landing/tv_bg.png') center / cover;
+  box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.55);
+  filter: none;
+  animation: tv-screen-scan 4s linear infinite;
   pointer-events: none;
 }
 
+.cfa-tv-screen::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at center, #07A905 0%, #002400 100%);
+  content: '';
+  mix-blend-mode: color;
+  opacity: 1;
+}
+
+.cfa-tv-screen::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.42) 100%);
+  content: '';
+}
+
+.cfa-tv {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@keyframes tv-screen-scan {
+  from { background-position: center 0; }
+  to { background-position: center 180px; }
+}
+
 .cfa-content {
-  max-width: 650px;
+  position: absolute;
+  top: 20%;
+  left: 16%;
+  z-index: 2;
+  width: 56%;
+  max-width: none;
   text-align: center;
   color: white;
-  z-index: 2;
-  position: relative;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .cfa-content h1 {
@@ -74,9 +123,35 @@ body {
 
 .cfa-content p {
   font-family: 'Lexend', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  font-size: clamp(0.55rem, 1.35vw, 1.1rem);
+  line-height: 1.25;
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid #00a900;
+  border-radius: 0.75rem;
+  background: rgba(0, 45, 0, 0.82);
+}
+
+.cfa-register-key {
+  position: absolute;
+  top: 38%;
+  left: 74%;
+  z-index: 2;
+  display: block;
+  width: 22%;
+  line-height: 0;
+  transition: transform 0.2s ease;
+}
+
+.cfa-register-key:hover,
+.cfa-register-key:focus-visible {
+  transform: scale(1.03);
+}
+
+.cfa-register-key img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .register-btn {
@@ -186,10 +261,9 @@ body {
 
 /* Tablets */
 @media (max-width: 768px) {
-  .cfa-tv {
-    width: 145vw;
+  .cfa-tv-stage {
+    width: min(145vw, calc(92vh * 1.339));
     max-width: none;
-    max-height: none;
   }
 
   .shape {
@@ -226,8 +300,8 @@ body {
 
 /* Phones */
 @media (max-width: 480px) {
-  .cfa-tv {
-    width: 180vw;
+  .cfa-tv-stage {
+    width: min(180vw, calc(92vh * 1.339));
   }
 
   .cfa-content h1 {

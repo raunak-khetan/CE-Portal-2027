@@ -188,7 +188,6 @@
     <h1 class="heading">Highway To Alcher</h1>
     <p  class="para">Highway to Alcher is your direct route to the spotlight at Alcheringa, IIT Guwahati's annual cultural fest! This pan-India competition series unearths the nation's brightest talents, giving them a chance to perform on the grand stage. Get ready to showcase your skills and kickstart your journey to stardom!</p>
   </div>
-    <a class="register-btn" href="#competition-section">Register</a>
 </div>
 
 <div class="image-container">
@@ -491,11 +490,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- ashish start -->
    <div class="cfa-container">
-    <!-- TV-->
-     <img src="{% static 'core/landing/Tv_frame.png' %}" class="cfa-tv" alt="TV">
-    <!-- Main Content -->
-    <div class="cfa-content">
-
+    <div class="cfa-tv-stage">
+      <div class="cfa-tv-screen" aria-hidden="true"></div>
+      <img src="{% static 'core/landing/Tv_frame.png' %}" class="cfa-tv" alt="TV">
+      <div class="cfa-content">
+        <h1>Participate in CFA</h1>
+        <p>IIT Guwahati is partnering with <strong>Mood Indigo's</strong> College Fest Association (CFA) &mdash; a platform that connects vibrant college fests across India. Through this collaboration, our campus will host Mood Indigo&rsquo;s regional competitions, and pre-fest events, bringing India&rsquo;s largest cultural festival closer to you.</p>
+      </div>
+      <a class="cfa-register-key" href="{% url 'cfa_step1' %}">
+        <img src="{% static 'core/landing/Register Key.png' %}" alt="Register for CFA">
+      </a>
     </div>
   </div>
   <script>
