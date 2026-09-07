@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@500&family=Poltawski+Nowy:ital,wght@1,700&display=swap');
+
 @font-face {
   font-family: 'Sao Torpes';
   src: url('/static/core/fonts/SaoTorpes.otf') format('opentype');
@@ -48,18 +50,18 @@ body {
   top: 50%;
   left: 50%;
   z-index: 1;
-  width: min(92vw, calc(92vh * 1.339));
+  width: min(1094.92px, 96vw, calc(92vh * 1.339));
   aspect-ratio: 4380 / 3271;
-  transform: translate(-50%, -50%) rotate(-6deg);
+  transform: translate(-50%, -50%);
 }
 
 .cfa-tv-screen {
   position: absolute;
-  top: 13%;
-  left: 16%;
+  top: 12.8%;
+  left: 16.3%;
   z-index: 0;
-  width: 56%;
-  height: 66%;
+  width: 51.6%;
+  height: 55.5%;
   overflow: hidden;
   border-radius: 12% 12% 14% 14% / 14% 14% 14% 14%;
   background: #002400 url('/static/core/landing/tv_bg.png') center / cover;
@@ -104,41 +106,67 @@ body {
 
 .cfa-content {
   position: absolute;
-  top: 20%;
-  left: 16%;
+  top: 12.8%;
+  left: 16.3%;
   z-index: 2;
-  width: 56%;
-  max-width: none;
+  display: flex;
+  width: 51.6%;
+  height: 55.5%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
   text-align: center;
   color: white;
-  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .cfa-content h1 {
-  font-family: 'Sao Torpes', sans-serif;
-  font-size: 3rem;
-  font-weight: normal;
-  margin-bottom: 1.5rem;
-}
-
-.cfa-content p {
-  font-family: 'Lexend', sans-serif;
-  font-size: clamp(0.55rem, 1.35vw, 1.1rem);
-  line-height: 1.25;
+  font-family: 'Poltawski Nowy', sans-serif;
+  font-size: clamp(1.1rem, 3.85vw, 42.16px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.95;
+  width: 75%;
   margin: 0;
-  padding: 1.25rem 1.5rem;
-  border: 2px solid #00a900;
-  border-radius: 0.75rem;
-  background: rgba(0, 45, 0, 0.82);
+  text-align: center;
+  letter-spacing: -0.04em;
 }
 
+.cfa-copy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  padding: 18px 24px;
+  border: 1.32px solid #07A905;
+  border-radius: 7.91px;
+  background: rgba(0, 45, 0, 0.82);
+  box-sizing: border-box;
+}
+
+.cfa-copy-text {
+  font-family: 'Hepta Slab', sans-serif;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.45rem, 1.1vw, 13px);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cfa-copy-text strong {
+  font-weight: 700;
+  color: #ffffff;
+}
 .cfa-register-key {
   position: absolute;
-  top: 38%;
-  left: 74%;
+  top: 33.5%;
+  left: 70.5%;
   z-index: 2;
   display: block;
-  width: 22%;
+  width: 15.2%;
   line-height: 0;
   transition: transform 0.2s ease;
 }
@@ -261,11 +289,6 @@ body {
 
 /* Tablets */
 @media (max-width: 768px) {
-  .cfa-tv-stage {
-    width: min(145vw, calc(92vh * 1.339));
-    max-width: none;
-  }
-
   .shape {
     width: 60px !important;
     height: 60px !important;
@@ -290,26 +313,24 @@ body {
   .shape8 { left: 0; bottom: 40%; top: auto; }
 
   .cfa-content h1 {
-    font-size: 2rem;
+    font-size: clamp(1rem, 3.85vw, 42.16px);
   }
 
   .cfa-content p {
-    font-size: 1rem;
+    font-size: clamp(0.42rem, 1.28vw, 14px);
+    padding: 12px 10px;
   }
 }
 
 /* Phones */
 @media (max-width: 480px) {
-  .cfa-tv-stage {
-    width: min(180vw, calc(92vh * 1.339));
-  }
-
   .cfa-content h1 {
-    font-size: 1.5rem;
+    font-size: clamp(0.9rem, 3.85vw, 42.16px);
   }
 
   .cfa-content p {
-    font-size: 0.9rem;
+    font-size: clamp(0.38rem, 1.28vw, 14px);
+    padding: 8px 7px;
   }
 
   .register-btn {

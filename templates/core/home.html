@@ -495,7 +495,14 @@ document.addEventListener('DOMContentLoaded', function() {
       <img src="{% static 'core/landing/Tv_frame.png' %}" class="cfa-tv" alt="TV">
       <div class="cfa-content">
         <h1>Participate in CFA</h1>
-        <p>IIT Guwahati is partnering with <strong>Mood Indigo's</strong> College Fest Association (CFA) &mdash; a platform that connects vibrant college fests across India. Through this collaboration, our campus will host Mood Indigo&rsquo;s regional competitions, and pre-fest events, bringing India&rsquo;s largest cultural festival closer to you.</p>
+        <div class="cfa-copy">
+          <p class="cfa-copy-text">
+            IIT Guwahati is partnering with <strong>Mood Indigo's</strong>
+            College Fest Association (CFA) — a platform that connects vibrant college fests across India.
+            Through this collaboration, our campus will host Mood Indigo's signature competitions, preliminary
+            (Multicities) rounds, and pre-fest events, bringing India's largest cultural festival closer to you.
+          </p>
+        </div>
       </div>
       <a class="cfa-register-key" href="{% url 'cfa_step1' %}">
         <img src="{% static 'core/landing/Register Key.png' %}" alt="Register for CFA">
