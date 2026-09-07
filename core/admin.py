@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ExportActionMixin
-from .models import City, Event, Head, Team, TeamMember
+from .models import City, Event, Head, Team, TeamMember, Category
 from .models import CFARegistration
 from .models import AboutImage
 
@@ -83,7 +83,7 @@ class EventAdmin(ImportExportModelAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('name', 'event_type', 'description')
+            'fields': ('name', 'category', 'event_type', 'description')
         }),
         ('Visual Content', {
             'fields': ('image',),
@@ -181,3 +181,5 @@ class CFARegistrationAdmin(ImportExportModelAdmin):
 class AboutImageAdmin(admin.ModelAdmin):
     list_display = ['id', 'order', 'image']
     ordering = ['order']
+
+admin.site.register(Category)

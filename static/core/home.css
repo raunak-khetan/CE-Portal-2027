@@ -922,7 +922,7 @@ footer a,
 }
 
 .filter-button{
-  height: 3.6rem;
+  height: 60%;
   opacity: 1;
   border-radius: 0.4rem;
   padding: 0.65rem;
@@ -930,9 +930,10 @@ footer a,
   background: transparent;
   color: white;
   border: 1px solid transparent;
+  margin-right: 0.5rem;
 }
 
-.filter-button:active{
+.filter-button.active-filter {
   background-color: #2A2A2A;
   border: 1px solid #7F7F7F;
 }
@@ -946,10 +947,24 @@ footer a,
   margin: 0px 5px 0px 5px;
 }
 
+.clear-filter{
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
 .clear-filter-button{
   display: flex;
   align-items: center;
   color: #DA4C4C;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.clear-filter-button:active {
+  background-color: #2A2A2A;
+  border: 1px solid #7F7F7F;
+  border-radius: 5px;
 }
 
 .wrong-symbol{
@@ -969,36 +984,56 @@ footer a,
   opacity: 1;
   border-radius: 0.65rem;
   background: linear-gradient(163.35deg, #B9B9B9 4.31%, #5D5956 96.32%);
-  border: 1.75px solid transparent;
+  background-clip: padding-box;
+  border: 2px solid transparent;
   padding-left: 1rem;
   padding-top: 0.7rem;
   padding-right: 1rem;
   padding-bottom: 0.9rem;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .comp-card:hover{
-  border: 1.75px solid white;
+  border: 2px solid white;
 }
 
-.card-media{
+.card-media {
   position: relative;
+  overflow: hidden;
+  border-radius: 0.35rem;
 }
 
 .card-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(145.5deg,rgba(0, 0, 0, 0.25),rgba(167, 167, 167, 0.25));
+  border-radius: 0.35rem;
+  background: linear-gradient(
+    145.5deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(167, 167, 167, 0.25)
+  );
+  pointer-events: none;
 }
 
-.comp-img{
+.comp-img {
+  display: block;
+  box-sizing: border-box;
   width: 100%;
   height: 15.5rem;
   opacity: 1;
+
+  border: 1.75px solid transparent;
   border-radius: 0.35rem;
-  border: 1.75px solid;
-  border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      145.5deg,
+      #000000 1.56%,
+      #A7A7A7 99.21%
+    ) border-box;
 }
 
 .badge{

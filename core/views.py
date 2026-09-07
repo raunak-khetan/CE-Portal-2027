@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import City, Event, Head, TeamMember, Team
+from .models import City, Event, Head, TeamMember, Team, Category
 from .forms import RegistrationForm, TeamName, MemberForm
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
@@ -46,6 +46,7 @@ def get_city_events(request, city_name):
 def prelimspage(request):
     cities = City.objects.all().prefetch_related('events')
     about_images = AboutImage.objects.all().order_by('order')
+    categories = Category.objects.all()
 
     first_reg_url = None
     for c in cities:
@@ -60,7 +61,8 @@ def prelimspage(request):
     return render(request, 'core/home.html', {
         'cities': cities,
         'first_reg_url': first_reg_url,
-        'about_images': about_images,  # ✅ Add this line
+        'about_images': about_images,
+        'categories': categories,  # ✅ Add this line
     })
 
 

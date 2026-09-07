@@ -373,22 +373,25 @@
       <section class="main-part">
         <div class="competitions-and-filters-bar">
           <div class="names-of-competitions-and-filters">
-            <button class="filter-button">All</button>
-            <button class="filter-button">Performing Arts</button>
-            <button class="filter-button">Literary Arts</button>
-            <button class="filter-button">Film Art & Design</button>
-            <button class="filter-button">Workshops & Exhibitions</button>
+            <button class="filter-button active-filter" data-filter="all">All</button>
+            {% for category in categories %}
+              <button class="filter-button" data-filter="{{ category.id }}">
+                {{ category.name }}
+              </button>
+            {% endfor %}
 
             <span class="filter-divider">
               <img src="/static/core/asset/Line-Divider.png" alt="|">
             </span>
 
-            <button class="filter-button">Upcoming</button>
-            <button class="filter-button">Next Month</button>
+            <button type="button" class="filter-button" data-filter="upcoming">Upcoming</button>
+            <button type="button" class="filter-button" data-filter="next-month">Next Month</button>
           </div>
           <div class="clear-filter">
-            <button class="clear-filter-button filter-button">
-              <img src="/static/core/asset/close-line.png" alt="X" class="wrong-symbol">
+            <button type="button" class="clear-filter-button" id="clear-filter">
+              <img src="/static/core/asset/close-line.png"
+                alt="X"
+                class="wrong-symbol">
               <p>Delete Filter</p>
             </button>
           </div>
@@ -396,7 +399,12 @@
         <div class="cards-grid">
           {% for city in cities %}
             {% for event in city.events.all %}
-              <article class="comp-card" data-index="{{ forloop.counter }}">
+              <article
+                class="comp-card"
+                data-index="{{ forloop.counter }}"
+                data-category-id="{{ event.category_id }}"
+                data-event-date="{{ city.time|date:'c' }}"
+              >
                 <div class="card-media">
             
                   {% if event.image %}
@@ -732,6 +740,7 @@
     statsObserver.observe(document.querySelector(".stats-section"));
   </script>
   <script src="{% static 'core/home_register.js' %}"></script>
+  <script src="{% static 'core/filter.js' %}"></script>
   
 </body>
 </html>

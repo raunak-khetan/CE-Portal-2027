@@ -19,6 +19,11 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
 class Event(models.Model):
     EVENT_TYPE_CHOICES = [
         ('solo', 'Solo'),
@@ -26,6 +31,13 @@ class Event(models.Model):
     ]
 
     name = models.CharField(max_length=200)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='events'
+    )
     event_type = models.CharField(max_length=10, choices=EVENT_TYPE_CHOICES, default='solo')
     min_participants = models.PositiveIntegerField(null=True, blank=True)
     max_participants = models.PositiveIntegerField(null=True, blank=True)
