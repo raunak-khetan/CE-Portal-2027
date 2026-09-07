@@ -933,6 +933,10 @@ footer a,
   margin-right: 0.5rem;
 }
 
+.filter-button:hover{
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .filter-button.active-filter {
   background-color: #2A2A2A;
   border: 1px solid #7F7F7F;

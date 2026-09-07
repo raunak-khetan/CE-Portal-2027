@@ -87,7 +87,7 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <a href="#register" class="home-navbar-register">Register</a>
+    <a onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });" class="home-navbar-register">Register</a>
 
     <div
       class="home-navbar-hamburger"
@@ -129,7 +129,7 @@
           alt=""
         />
 
-        <a href="#register" class="register-btn" aria-label="Register">
+        <a onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });" class="register-btn" aria-label="Register">
           <img
             src="{% static 'core/asset/register-idle.svg' %}"
             class="register-btn-state register-btn-state--idle"
@@ -265,7 +265,7 @@
         alt=""
       />
 
-      <a href="#register" class="register-btn-2" aria-label="Register">
+      <a onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });" class="register-btn-2" aria-label="Register">
         <img
           src="{% static 'core/asset/register-idle.svg' %}"
           class="register-btn-state register-btn-state--idle"
