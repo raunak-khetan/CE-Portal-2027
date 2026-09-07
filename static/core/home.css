@@ -970,11 +970,15 @@ footer a,
   border-radius: 0.65rem;
   background: linear-gradient(163.35deg, #B9B9B9 4.31%, #5D5956 96.32%);
   border: 1.75px solid transparent;
-  background: linear-gradient(163.35deg,#B9B9B9 4.31%,#5D5956 96.32%) padding-box, linear-gradient(343.08deg,#1E1E1E 0%,#E1E1E1 98.84%) border-box;
   padding-left: 1rem;
   padding-top: 0.7rem;
   padding-right: 1rem;
   padding-bottom: 0.9rem;
+  overflow: hidden;
+}
+
+.comp-card:hover{
+  border: 1.75px solid white;
 }
 
 .card-media{
@@ -1006,16 +1010,16 @@ footer a,
   top: 0.65rem;
   right: 0.5rem;
   border-radius: 5px;
-  padding: 0.2rem;
-  font-family: Hepta Slab;
+  padding: 0.5rem;
+  font-family: "Hepta Slab";
   font-weight: 600;
-  font-style: SemiBold;
+  font-style: "SemiBold";
   font-size: 0.8rem;
   line-height: 105%;
   letter-spacing: -1%;
   text-align: center;
   vertical-align: middle;
-  width: 2.75rem;
+  width: 3rem;
   height: 2rem;
   opacity: 1;
   background-color: #2A2A2A;
@@ -1030,8 +1034,8 @@ footer a,
   height: 1px;
   background: #000;
   margin-top: 0.8rem;
-  width: 118%;
-  margin-left: -1.2rem;
+  width: 300%;
+  margin-left: -100%;
 }
 
 .card-body{
@@ -1057,7 +1061,7 @@ footer a,
   height: 1.3rem;
   margin-top: 0rem;
   margin-bottom: 0.35rem;
-  font-family: Poltawski Nowy;
+  font-family: "Poltawski Nowy";
   font-weight: 500;
   font-style: Italic;
   font-size: 1.2rem;

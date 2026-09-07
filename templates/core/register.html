@@ -235,10 +235,20 @@
                 </button>
               </div>
             </div>
-            <div class="events-grid">
+            <div
+              class="events-grid"
+              data-current-event-id="{{ event.id }}"
+              data-current-city-id="{{ city.id }}"
+            >
               {% for city in cities %}
                 {% for event in city.events.all %}
-                  <article class="comp-card reg-comp-card" data-index="{{ forloop.counter }}">
+                  <article
+                    class="comp-card reg-comp-card"
+                    data-index="{{ forloop.counter }}"
+                    data-event-id="{{ event.id }}"
+                    data-city-id="{{ city.id }}"
+                    data-event-date="{{ city.time|date:'c' }}"
+                  >
                     <div class="card-media">
             
                       {% if event.image %}
@@ -426,7 +436,7 @@
       </div>
     </footer>
     
-    <script src="{%static 'core/register_scroll.js' %}"></script>
+    <script src="{%static 'core/register_scroll_and_upcoming_logic.js' %}"></script>
     <script src="{%static 'core/register.js' %}"></script>
     <script src="{% static 'core/combined.js' %}"></script>
     <script src="{% static 'core/script.js' %}"></script>

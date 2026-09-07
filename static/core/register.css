@@ -36,6 +36,11 @@ body{
 .event-banner img{
   margin-top: 8rem;
   margin-bottom: 5rem;
+  transition: transform 0.3s ease;
+}
+
+.event-banner img:hover{
+  transform: scale(1.1);
 }
 
 .event-details{
@@ -77,6 +82,8 @@ body{
 .event-details-main-and-register-part{
   display: flex;
   gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .event-details-about-part{
@@ -87,6 +94,7 @@ body{
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 60%;
 }
 
 .date-and-venue-section{
@@ -140,6 +148,8 @@ body{
   padding: 2rem;
   border-radius: 0.75rem;
   gap: 1rem;
+  width: 40%;
+  overflow: hidden;
 }
 
 .event-state{
@@ -154,7 +164,7 @@ body{
 .div-separator{
   background-color: #A0A0A0;
   height: 1px;
-  width: 124%;
+  width: 200%;
 }
 
 .registration-deadline-and-team-size{
@@ -254,7 +264,9 @@ body{
   border-radius: 0.4rem;
 }
 
-
+.register-button:hover{
+  background-color: #DC7C21;
+}
 
 .copy-link{
   display: flex;
@@ -267,6 +279,10 @@ body{
   padding: 0.7rem;
   border: none;
   border-radius: 0.4rem;
+}
+
+.copy-link:hover{
+  background-color: #3c3c3c;
 }
 
 .copy-link-text{
@@ -314,6 +330,10 @@ body{
 .arrow{
   background-color: transparent;
   border: none;
+}
+
+.arrow:hover{
+  transform: scale(1.3);
 }
 
 .events-grid{
