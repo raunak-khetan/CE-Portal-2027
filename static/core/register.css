@@ -250,8 +250,11 @@ body{
 
 .register-button{
   width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
   box-sizing: border-box;
-  font-size: 1.5rem;
   font-family: "Hepta Slab";
   font-weight: 500;
   font-style: Medium;
