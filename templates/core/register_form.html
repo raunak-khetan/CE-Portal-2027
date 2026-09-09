@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>Register - {{ event.name }}</title>
 
@@ -17,17 +18,14 @@
 </head>
 
 <body>
-
 <header class="registration-navbar">
   <div class="registration-navbar-content">
-
     <div class="brand">
       <img
         src="{% static 'core/asset/alcher-logo.svg' %}"
         class="brand-logo"
         alt="Alcheringa"
       >
-
       <div class="brand-name">
         <span>ALCHERINGA</span>
         <small>2027</small>
@@ -35,23 +33,19 @@
     </div>
 
     <nav class="navigation-links">
-      <a href="#">Competitions</a>
-      <a href="#">FAQs</a>
-      <a href="#">Contact</a>
+      <a href="{% url 'prelimspage' %}#competition-section">Competitions</a>
+      <a href="{% url 'prelimspage' %}#faq-section">FAQs</a>
+      <a href="{% url 'prelimspage' %}#contact-section">Contact</a>
     </nav>
 
-    <button type="button" class="navigation-register">
+    <button type="button" class="navigation-register" onclick="window.location.href='{% url 'prelimspage' %}#competition-section'">
       Register
     </button>
-
   </div>
 </header>
 
-
 <div class="registration-page">
-
   <main class="registration-main">
-
     <form
       class="registration-form"
       method="post"
@@ -60,26 +54,52 @@
     >
 
       {% csrf_token %}
+      {% if event.event_type == 'team' %}
+        {% if team_name_form.non_field_errors %}
+          <div class="form-errors">
+            {% for error in team_name_form.non_field_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
 
-      {% if form.non_field_errors %}
-        <div class="form-errors">
-          {% for error in form.non_field_errors %}
-            <p>{{ error }}</p>
-          {% endfor %}
-        </div>
+        {% if team_form.non_field_errors %}
+          <div class="form-errors">
+            {% for error in team_form.non_field_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if member_formset.non_form_errors %}
+          <div class="form-errors">
+            {% for error in member_formset.non_form_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      {% else %}
+        {% if form.non_field_errors %}
+          <div class="form-errors">
+            {% for error in form.non_field_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
       {% endif %}
 
-
       <div class="registration-card">
-
         <button type="button" class="back-button">
+
           <img
             src="{% static 'core/asset/arrow-left.svg' %}"
             alt=""
           >
-          <span>Back</span>
-        </button>
 
+          <span>Back</span>
+
+        </button>
 
         {% if event.event_type == 'team' %}
 
@@ -90,23 +110,23 @@
             </h2>
 
             <div class="team-details-fields">
-
-              <div class="form-field team-name-field">
-
-                <label for="{{ team_name_form.team_name.id_for_label }}">
-                  Team Name
-                </label>
-
+              <div class="team-field team-name-field">
+                <label for="{{ team_name_form.team_name.id_for_label }}">Team Name</label>
                 {{ team_name_form.team_name }}
-
+                {% if team_name_form.team_name.errors %}
+                  <div class="field-error">{{ team_name_form.team_name.errors.0 }}</div>
+                {% endif %}
               </div>
 
+              <div class="team-field team-size-field">
+                <label for="team-size">Team Size</label>
+                <input id="team-size" type="number" value="1" min="1" max="{{ max_participants }}" readonly>
+              </div>
             </div>
 
           </section>
 
         {% endif %}
-
 
         <section class="member-details-section">
 
@@ -114,173 +134,277 @@
             Member Details
           </h2>
 
-
           <div class="member-card leader-card">
 
             <h3 class="member-title">
               Member 1
             </h3>
 
+            {% if event.event_type == 'team' %}
 
-            <div class="form-field">
+              <div class="form-field">
 
-              <label>Name</label>
+                <label>Name</label>
 
-              {% if event.event_type == 'team' %}
                 {{ team_form.name }}
-              {% else %}
-                {{ form.name }}
-              {% endif %}
 
-            </div>
+                {% for error in team_form.name.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
+              </div>
 
-            <div class="form-field">
+              <div class="form-field">
 
-              <label>Email</label>
+                <label>Email</label>
 
-              {% if event.event_type == 'team' %}
                 {{ team_form.email }}
-              {% else %}
-                {{ form.email }}
-              {% endif %}
 
-            </div>
+                {% for error in team_form.email.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
+              </div>
 
-            <div class="form-field">
+              <div class="form-field">
 
-              <label>Phone</label>
+                <label>Phone</label>
 
-              {% if event.event_type == 'team' %}
                 {{ team_form.phone_no }}
-              {% else %}
-                {{ form.phone_no }}
-              {% endif %}
 
-            </div>
+                {% for error in team_form.phone_no.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
+              </div>
 
-            <div class="form-field option-field">
+              <div class="form-field option-field">
 
-              <label>Gender</label>
+                <label>Gender</label>
 
-              <div class="gender-options">
-
-                {% if event.event_type == 'team' %}
+                <div class="gender-options">
 
                   {% for radio in team_form.gender %}
+
                     <label class="option-button">
                       {{ radio.tag }}
                       <span>{{ radio.choice_label }}</span>
                     </label>
+
                   {% endfor %}
 
-                {% else %}
+                </div>
 
-                  {% for radio in form.gender %}
-                    <label class="option-button">
-                      {{ radio.tag }}
-                      <span>{{ radio.choice_label }}</span>
-                    </label>
-                  {% endfor %}
-
-                {% endif %}
+                {% for error in team_form.gender.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
               </div>
 
-            </div>
+              <div class="form-field">
 
+                <label>College/ Institute Name</label>
 
-            <div class="form-field">
-
-              <label>College/ Institute Name</label>
-
-              {% if event.event_type == 'team' %}
                 {{ team_form.institute_name }}
-              {% else %}
-                {{ form.institute_name }}
-              {% endif %}
 
-            </div>
+                {% for error in team_form.institute_name.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
+              </div>
 
-            <div class="form-field">
+              <div class="form-field">
 
-              <label>Course Enrolled</label>
+                <label>Course Enrolled</label>
 
-              {% if event.event_type == 'team' %}
                 {{ team_form.program_enrolled }}
-              {% else %}
-                {{ form.program_enrolled }}
-              {% endif %}
 
-            </div>
+                {% for error in team_form.program_enrolled.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
+              </div>
 
-            <div class="form-field option-field">
+              <div class="form-field option-field">
 
-              <label>People with special needs</label>
+                <label>People with special needs</label>
 
-              <div class="disability-options">
-
-                {% if event.event_type == 'team' %}
+                <div class="disability-options">
 
                   {% for radio in team_form.is_disabled %}
+
                     <label class="option-button">
                       {{ radio.tag }}
                       <span>{{ radio.choice_label }}</span>
                     </label>
+
                   {% endfor %}
 
-                {% else %}
+                </div>
 
-                  {% for radio in form.is_disabled %}
-                    <label class="option-button">
-                      {{ radio.tag }}
-                      <span>{{ radio.choice_label }}</span>
-                    </label>
-                  {% endfor %}
-
-                {% endif %}
+                {% for error in team_form.is_disabled.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
               </div>
 
-            </div>
+              <div class="form-field option-field">
 
+                <label>Graduating Year</label>
 
-            <div class="form-field option-field">
-
-              <label>Graduating Year</label>
-
-              <div class="year-options">
-
-                {% if event.event_type == 'team' %}
+                <div class="year-options">
 
                   {% for radio in team_form.year_of_passing %}
+
                     <label class="option-button">
                       {{ radio.tag }}
                       <span>{{ radio.choice_label }}</span>
                     </label>
+
                   {% endfor %}
 
-                {% else %}
+                </div>
 
-                  {% for radio in form.year_of_passing %}
-                    <label class="option-button">
-                      {{ radio.tag }}
-                      <span>{{ radio.choice_label }}</span>
-                    </label>
-                  {% endfor %}
-
-                {% endif %}
+                {% for error in team_form.year_of_passing.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
 
               </div>
 
-            </div>
+            {% else %}
+
+              <div class="form-field">
+
+                <label>Name</label>
+
+                {{ form.name }}
+
+                {% for error in form.name.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field">
+
+                <label>Email</label>
+
+                {{ form.email }}
+
+                {% for error in form.email.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field">
+
+                <label>Phone</label>
+
+                {{ form.phone_no }}
+
+                {% for error in form.phone_no.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field option-field">
+
+                <label>Gender</label>
+
+                <div class="gender-options">
+
+                  {% for radio in form.gender %}
+
+                    <label class="option-button">
+                      {{ radio.tag }}
+                      <span>{{ radio.choice_label }}</span>
+                    </label>
+
+                  {% endfor %}
+
+                </div>
+
+                {% for error in form.gender.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field">
+
+                <label>College/ Institute Name</label>
+
+                {{ form.institute_name }}
+
+                {% for error in form.institute_name.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field">
+
+                <label>Course Enrolled</label>
+
+                {{ form.program_enrolled }}
+
+                {% for error in form.program_enrolled.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field option-field">
+
+                <label>People with special needs</label>
+
+                <div class="disability-options">
+
+                  {% for radio in form.is_disabled %}
+
+                    <label class="option-button">
+                      {{ radio.tag }}
+                      <span>{{ radio.choice_label }}</span>
+                    </label>
+
+                  {% endfor %}
+
+                </div>
+
+                {% for error in form.is_disabled.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+              <div class="form-field option-field">
+
+                <label>Graduating Year</label>
+
+                <div class="year-options">
+
+                  {% for radio in form.year_of_passing %}
+
+                    <label class="option-button">
+                      {{ radio.tag }}
+                      <span>{{ radio.choice_label }}</span>
+                    </label>
+
+                  {% endfor %}
+
+                </div>
+
+                {% for error in form.year_of_passing.errors %}
+                  <p class="field-error">{{ error }}</p>
+                {% endfor %}
+
+              </div>
+
+            {% endif %}
 
           </div>
-
 
           {% if event.event_type == 'team' %}
 
@@ -292,7 +416,7 @@
 
                 <div
                   class="member-card additional-member-card"
-                  data-member-index="{{ forloop.counter }}"
+                  data-member-index="{{ forloop.counter0 }}"
                 >
 
                   <div class="member-header">
@@ -303,33 +427,51 @@
 
                     <button
                       type="button"
-                      class="remove-member-btn"
+                      class="delete-member-btn"
                       data-remove
+                      aria-label="Delete member"
                     >
-                      <i class="fas fa-trash"></i>
-                      Remove
+                      <span aria-hidden="true">×</span>
+                      Delete
                     </button>
 
                   </div>
 
-
                   <div class="form-field">
+
                     <label>Name</label>
+
                     {{ member_form.name }}
+
+                    {% for error in member_form.name.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
                   </div>
 
-
                   <div class="form-field">
+
                     <label>Email</label>
-                    {{ member_form.email }}
-                  </div>
 
+                    {{ member_form.email }}
+
+                    {% for error in member_form.email.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
+                  </div>
 
                   <div class="form-field">
-                    <label>Phone</label>
-                    {{ member_form.phone_no }}
-                  </div>
 
+                    <label>Phone</label>
+
+                    {{ member_form.phone_no }}
+
+                    {% for error in member_form.phone_no.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
+                  </div>
 
                   <div class="form-field option-field">
 
@@ -338,28 +480,45 @@
                     <div class="gender-options">
 
                       {% for radio in member_form.gender %}
+
                         <label class="option-button">
                           {{ radio.tag }}
                           <span>{{ radio.choice_label }}</span>
                         </label>
+
                       {% endfor %}
 
                     </div>
 
+                    {% for error in member_form.gender.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
                   </div>
 
-
                   <div class="form-field">
+
                     <label>College/ Institute Name</label>
-                    {{ member_form.institute_name }}
-                  </div>
 
+                    {{ member_form.institute_name }}
+
+                    {% for error in member_form.institute_name.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
+                  </div>
 
                   <div class="form-field">
-                    <label>Course Enrolled</label>
-                    {{ member_form.program_enrolled }}
-                  </div>
 
+                    <label>Course Enrolled</label>
+
+                    {{ member_form.program_enrolled }}
+
+                    {% for error in member_form.program_enrolled.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
+                  </div>
 
                   <div class="form-field option-field">
 
@@ -368,16 +527,21 @@
                     <div class="disability-options">
 
                       {% for radio in member_form.is_disabled %}
+
                         <label class="option-button">
                           {{ radio.tag }}
                           <span>{{ radio.choice_label }}</span>
                         </label>
+
                       {% endfor %}
 
                     </div>
 
-                  </div>
+                    {% for error in member_form.is_disabled.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
 
+                  </div>
 
                   <div class="form-field option-field">
 
@@ -386,13 +550,19 @@
                     <div class="year-options">
 
                       {% for radio in member_form.year_of_passing %}
+
                         <label class="option-button">
                           {{ radio.tag }}
                           <span>{{ radio.choice_label }}</span>
                         </label>
+
                       {% endfor %}
 
                     </div>
+
+                    {% for error in member_form.year_of_passing.errors %}
+                      <p class="field-error">{{ error }}</p>
+                    {% endfor %}
 
                   </div>
 
@@ -401,7 +571,6 @@
               {% endfor %}
 
             </div>
-
 
             <template id="empty-member-template">
 
@@ -413,38 +582,44 @@
                 <div class="member-header">
 
                   <h3 class="member-title">
-                    Member __NUM__
+                    Member __NUM_DISPLAY__
                   </h3>
 
                   <button
                     type="button"
-                    class="remove-member-btn"
+                    class="delete-member-btn"
                     data-remove
+                    aria-label="Delete member"
                   >
-                    <i class="fas fa-trash"></i>
-                    Remove
+                    <span aria-hidden="true">×</span>
+                    Delete
                   </button>
 
                 </div>
 
-
                 <div class="form-field">
+
                   <label>Name</label>
+
                   {{ member_formset.empty_form.name }}
+
                 </div>
 
-
                 <div class="form-field">
+
                   <label>Email</label>
-                  {{ member_formset.empty_form.email }}
-                </div>
 
+                  {{ member_formset.empty_form.email }}
+
+                </div>
 
                 <div class="form-field">
-                  <label>Phone</label>
-                  {{ member_formset.empty_form.phone_no }}
-                </div>
 
+                  <label>Phone</label>
+
+                  {{ member_formset.empty_form.phone_no }}
+
+                </div>
 
                 <div class="form-field option-field">
 
@@ -453,28 +628,33 @@
                   <div class="gender-options">
 
                     {% for radio in member_formset.empty_form.gender %}
+
                       <label class="option-button">
                         {{ radio.tag }}
                         <span>{{ radio.choice_label }}</span>
                       </label>
+
                     {% endfor %}
 
                   </div>
 
                 </div>
 
-
                 <div class="form-field">
+
                   <label>College/ Institute Name</label>
-                  {{ member_formset.empty_form.institute_name }}
-                </div>
 
+                  {{ member_formset.empty_form.institute_name }}
+
+                </div>
 
                 <div class="form-field">
-                  <label>Course Enrolled</label>
-                  {{ member_formset.empty_form.program_enrolled }}
-                </div>
 
+                  <label>Course Enrolled</label>
+
+                  {{ member_formset.empty_form.program_enrolled }}
+
+                </div>
 
                 <div class="form-field option-field">
 
@@ -483,16 +663,17 @@
                   <div class="disability-options">
 
                     {% for radio in member_formset.empty_form.is_disabled %}
+
                       <label class="option-button">
                         {{ radio.tag }}
                         <span>{{ radio.choice_label }}</span>
                       </label>
+
                     {% endfor %}
 
                   </div>
 
                 </div>
-
 
                 <div class="form-field option-field">
 
@@ -501,10 +682,12 @@
                   <div class="year-options">
 
                     {% for radio in member_formset.empty_form.year_of_passing %}
+
                       <label class="option-button">
                         {{ radio.tag }}
                         <span>{{ radio.choice_label }}</span>
                       </label>
+
                     {% endfor %}
 
                   </div>
@@ -515,13 +698,13 @@
 
             </template>
 
-
             <div class="registration-actions">
 
               <button
                 type="button"
                 id="add-member"
                 class="add-member-button"
+                data-max-participants="{{ max_participants|default:'' }}"
               >
                 + Add member
               </button>
@@ -564,7 +747,6 @@
 
     </form>
 
-
     <aside class="event-sidebar">
 
       <div class="event-card event-card-loading">
@@ -603,6 +785,7 @@
 
         </div>
 
+        <div class="event-divider"></div>
 
         <div class="event-details">
 
@@ -614,44 +797,15 @@
             {{ event.description }}
           </p>
 
-
           <div class="event-meta">
-
             <div class="event-meta-item">
-
-              <img
-                src="{% static 'core/asset/calendar.svg' %}"
-                class="event-meta-icon"
-                alt=""
-              >
-
-              <div>
-                <span class="event-meta-label">Date</span>
-                <span>
-                  {{ city.time|date:"l, d F Y" }}
-                </span>
-              </div>
-
+              <img src="{% static 'core/asset/calendar.svg' %}" class="event-meta-icon" alt="">
+              <span>{{ city.time|date:"D, d M Y" }}</span>
             </div>
-
-
             <div class="event-meta-item">
-
-              <img
-                src="{% static 'core/asset/location-reg.svg' %}"
-                class="event-meta-icon"
-                alt=""
-              >
-
-              <div>
-                <span class="event-meta-label">Venue</span>
-                <span>
-                  {{ city.venue }}
-                </span>
-              </div>
-
+              <img src="{% static 'core/asset/location-reg.svg' %}" class="event-meta-icon" alt="">
+              <span>{{ city.venue }}</span>
             </div>
-
           </div>
 
         </div>
@@ -663,7 +817,6 @@
   </main>
 
 </div>
-
 
 <script>
   document.querySelectorAll(".event-image").forEach((image) => {
@@ -683,7 +836,146 @@
   });
 </script>
 
-<script src="{% static 'core/script.js' %}"></script>
+{% if event.event_type == 'team' %}
+
+<script>
+  const registerButton = document.querySelector(".register-button");
+
+  registerButton.closest("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    registerButton.classList.add("clicked");
+
+    setTimeout(() => {
+      this.submit();
+    }, 500);
+  });
+
+  const membersContainer = document.getElementById("members-container");
+  const addMemberButton = document.getElementById("add-member");
+  const emptyMemberTemplate = document.getElementById("empty-member-template");
+  const totalForms = document.getElementById("id_members-TOTAL_FORMS");
+  const teamSizeInput = document.getElementById("team-size");
+
+  const maxParticipants = addMemberButton.dataset.maxParticipants
+    ? Number(addMemberButton.dataset.maxParticipants)
+    : null;
+
+  function getMemberCards() {
+    return Array.from(
+      membersContainer.querySelectorAll(".additional-member-card")
+    );
+  }
+
+  function updateTeamSize() {
+    const teamSize = 1 + getMemberCards().length;
+    teamSizeInput.value = teamSize;
+
+    if (maxParticipants !== null && teamSize >= maxParticipants) {
+      addMemberButton.remove();
+    }
+  }
+
+  function addMember() {
+
+    const currentCards = getMemberCards();
+    const teamSize = 1 + currentCards.length;
+
+    if (maxParticipants !== null && teamSize >= maxParticipants) {
+      return;
+    }
+
+    const index = currentCards.length;
+
+    const html = emptyMemberTemplate.innerHTML
+      .replaceAll("__NUM_DISPLAY__", index + 2)
+      .replaceAll("__NUM__", index);
+
+    membersContainer.insertAdjacentHTML("beforeend", html);
+
+    totalForms.value = index + 1;
+
+    updateTeamSize();
+  }
+
+  function reindexMembers() {
+
+    const cards = getMemberCards();
+
+    cards.forEach((card, index) => {
+
+      const oldIndex = Number(card.dataset.memberIndex);
+      const newIndex = index;
+
+      card.dataset.memberIndex = newIndex;
+
+      const title = card.querySelector(".member-title");
+
+      if (title) {
+        title.textContent = `Member ${newIndex + 2}`;
+      }
+
+      card.querySelectorAll("[name]").forEach((field) => {
+        field.name = field.name.replace(
+          `members-${oldIndex}-`,
+          `members-${newIndex}-`
+        );
+      });
+
+      card.querySelectorAll("[id]").forEach((field) => {
+        field.id = field.id.replace(
+          `members-${oldIndex}-`,
+          `members-${newIndex}-`
+        );
+      });
+
+      card.querySelectorAll("label[for]").forEach((label) => {
+        label.htmlFor = label.htmlFor.replace(
+          `members-${oldIndex}-`,
+          `members-${newIndex}-`
+        );
+      });
+
+    });
+
+    totalForms.value = cards.length;
+
+    updateTeamSize();
+  }
+
+  membersContainer.addEventListener("click", (event) => {
+
+    const deleteButton = event.target.closest("[data-remove]");
+
+    if (!deleteButton) {
+      return;
+    }
+
+    const card = deleteButton.closest(".additional-member-card");
+
+    if (!card) {
+      return;
+    }
+
+    card.remove();
+
+    reindexMembers();
+
+  });
+
+  addMemberButton.addEventListener("click", addMember);
+
+  document.querySelector(".registration-form").addEventListener("submit", () => {
+  console.log("TOTAL_FORMS:", totalForms.value);
+
+  membersContainer.querySelectorAll("[name]").forEach((field) => {
+    console.log(field.name, "=", field.value);
+  });
+});
+
+  reindexMembers();
+</script>
+
+{% endif %}
 
 </body>
 </html>
