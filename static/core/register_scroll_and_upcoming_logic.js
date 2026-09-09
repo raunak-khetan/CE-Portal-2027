@@ -2,16 +2,23 @@ const eventsGrid = document.querySelector(".events-grid");
 const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
 
+const card = eventsGrid.querySelector(".reg-comp-card");
+
+const cardWidth = card.offsetWidth;
+const gap = parseFloat(getComputedStyle(eventsGrid).gap);
+
+const scrollAmount = (cardWidth + gap) * 3;
+
 rightArrow.addEventListener("click", () => {
     eventsGrid.scrollBy({
-        left: eventsGrid.clientWidth,
+        left: scrollAmount,
         behavior: "smooth"
     });
 });
 
 leftArrow.addEventListener("click", () => {
     eventsGrid.scrollBy({
-        left: -eventsGrid.clientWidth,
+        left: -scrollAmount,
         behavior: "smooth"
     });
 });

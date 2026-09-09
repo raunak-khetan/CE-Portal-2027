@@ -33,14 +33,20 @@ body{
   align-items: center;
 }
 
-.event-banner img{
+.event-banner img {
   margin-top: 8rem;
   margin-bottom: 5rem;
-  transition: transform 0.3s ease;
-}
+  border-radius: 8px;
 
-.event-banner img:hover{
-  transform: scale(1.1);
+  border: 0.82px solid transparent;
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      145.5deg,
+      #A7A7A7 1.56%,
+      #000000 99.21%
+    ) border-box;
 }
 
 .event-details{
@@ -87,7 +93,6 @@ body{
 }
 
 .event-details-about-part{
-  border: 1px solid transparent;
   background: #202020;
   padding: 2rem;
   border-radius: 0.75rem;
@@ -95,6 +100,15 @@ body{
   flex-direction: column;
   gap: 2rem;
   width: 60%;
+  border: 0.82px solid transparent;
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      145.5deg,
+      #A7A7A7 1.56%,
+      #000000 99.21%
+    ) border-box;
 }
 
 .date-and-venue-section{
@@ -140,16 +154,28 @@ body{
   color: rgba(255, 255, 255, 0.6);
 }
 
-.event-details-register-part{
+.event-details-register-part {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #202020;
-  padding: 2rem;
+
+  padding: 1rem 2rem 1rem 2rem;
   border-radius: 0.75rem;
   gap: 1rem;
   width: 40%;
+
+  border: 1.75px solid transparent;
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      145.5deg,
+      #A7A7A7 1.56%,
+      #000000 99.21%
+    ) border-box;
+
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .event-state{
@@ -263,12 +289,13 @@ body{
   letter-spacing: -1%;
   padding: 0.7rem;
   background-color: #FD8F28;
-  border: none;
+  border: 2px solid #FD8F28;
   border-radius: 0.4rem;
 }
 
 .register-button:hover{
-  background-color: #DC7C21;
+  background-color: transparent;
+  color: #FD8F28;
 }
 
 .copy-link{
@@ -280,12 +307,12 @@ body{
   justify-content: center;
   background-color: #2A2A2A;
   padding: 0.7rem;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 0.4rem;
 }
 
 .copy-link:hover{
-  background-color: #3c3c3c;
+  border: 2px solid #FD8F28;
 }
 
 .copy-link-text{
@@ -306,6 +333,15 @@ body{
   background-color: #202020;
   border-radius: 0.75rem;
   margin-bottom: 10rem;
+  border: 0.82px solid transparent;
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      145.5deg,
+      #A7A7A7 1.56%,
+      #000000 99.21%
+    ) border-box;
 }
 
 .heading-and-arrows-part{
@@ -354,4 +390,5 @@ body{
 
 .reg-comp-card{
   flex-shrink: 0;
+  width: 25%;
 }

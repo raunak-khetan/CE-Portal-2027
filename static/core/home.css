@@ -842,15 +842,21 @@ footer a,
   .register-btn {
     display: none;
   }
-}/* Santosh start */
+}
+
+/* Santosh start */
 
 /* Competition page */
 .competition-page{
   background-color: #0F0F0F;
+  margin: 3rem 3rem;
 }
 
 .all-matter-part{
-  margin: 7.5rem 7.5rem 7.5rem 7.5rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
   gap: 6rem;
 }
 
@@ -862,50 +868,226 @@ footer a,
 }
 
 .competitions-heading {
-  background: linear-gradient(261.52deg, #F27949 7.08%, #A33A11 86.79%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: Poltawski Nowy;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 105%;
-  letter-spacing: 0%;
+    margin: 0;
+
+    font-family: "Poltawski Nowy";
+    font-style: italic;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 105%;
+    letter-spacing: 0%;
+
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
 }
 
-.city-select{
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  height: 1.5rem;
+.heading-main-text{
+  flex: 1;
 }
 
-.heading-location{
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: 1.25rem;
+.heading-main-text,
+.heading-city {
+    background: linear-gradient(120deg, #F27949 0%, #A33A11 100%);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.city-select {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.heading-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: max-content;
+    color: white;
+    -webkit-text-fill-color: white;
 }
 
 .select-location-text{
-  font-family: Hepta Slab;
+  font-family: "Hepta Slab";
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 105%;
   letter-spacing: 0%;
+  white-space: nowrap;
+  color: white;
+  -webkit-text-fill-color: white;
 }
 
-.city-button{
-  height: 1.5rem;
-  width: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.city-button {
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.city-dropdown {
+    position: relative;
+    z-index: 101;
+}
+
+.city-dropdown-menu {
+    position: absolute;
+    top: 2.2rem;
+    right: 0;
+
+    width: 15rem;
+    height: auto;
+    min-height: 3.5rem;
+
+    display: none;
+    flex-direction: column;
+
+    background: #161616;
+
+    border: 1px solid #7F7F7F;
+    border-radius: .75rem;
+
+    padding: .5rem;
+
+    box-sizing: border-box;
+
+    z-index: 100;
+}
+
+.city-dropdown-menu.show {
+    display: flex;
+}
+
+.city-dropdown-menu.show {
+    display: flex;
+}
+
+
+/* SEARCH */
+
+.city-search {
+    width: 100%;
+    height: 2.5rem;
+    min-height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+
+    padding: 0 .75rem;
+
+    box-sizing: border-box;
+
+    background: #000000;
+
+    border-radius: .5rem;
+
+    margin-bottom: .5rem;
+
+    color: #FFFFFF;
+
+    flex-shrink: 0;
+}
+
+.city-search svg {
+    width: 1rem;
+    height: 1rem;
+
+    flex-shrink: 0;
+
+    color: #FFFFFF;
+}
+
+.city-search input {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #FFFFFF;
+
+    font-family: "Hepta Slab";
+    font-size: .75rem;
+
+    display: block;
+}
+
+.city-search input::placeholder {
+    color: #7F7F7F;
+}
+
+/* CITY LIST */
+
+.city-options-list {
+    width: 100%;
+    max-height: 14rem;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: .15rem;
+
+    flex-shrink: 0;
+}
+
+
+/* CITY */
+
+.city-option {
+    width: 100%;
+
+    padding: .65rem .75rem;
+
+    background: transparent;
+
+    border: none;
+    border-radius: .4rem;
+
+    color: white;
+
+    text-align: left;
+
+    font-family: "Hepta Slab";
+    font-size: .75rem;
+
+    cursor: pointer;
+}
+
+.city-option:hover {
+    background: #2A2A2A;
 }
 
 /* Filters Tab */
+.mobile-filter-bar{
+  display: none;
+}
+
+.mobile-filter-panel {
+    display: none;
+}
+
 .competitions-and-filters-bar{
   width: 100%;
   height: 3.8rem;
@@ -922,6 +1104,7 @@ footer a,
 }
 
 .filter-button{
+  font-family: "Hepta Slab";
   height: 60%;
   opacity: 1;
   border-radius: 0.4rem;
@@ -942,13 +1125,56 @@ footer a,
   border: 1px solid #7F7F7F;
 }
 
+.filter-button.active-filter:hover {
+    background-color: transparent;
+    color: white;
+}
+
 .names-of-competitions-and-filters{
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.names-of-competitions-and-filters
+.category-filter:nth-of-type(n+6) {
+    display: none;
+}
+
+.names-of-competitions-and-filters
+.category-filter.selected-visible-filter {
+    display: block !important;
 }
 
 .filter-divider{
   margin: 0px 5px 0px 5px;
+}
+
+.all-filter-button {
+    font-family: "Hepta Slab";
+    height: 60%;
+    padding: 0.65rem;
+    border-radius: 0.4rem;
+    background: transparent;
+    color: white;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.all-filter-button:hover {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .clear-filter{
@@ -975,6 +1201,231 @@ footer a,
   margin-bottom: 1px;
 }
 
+.mobile-search-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.mobile-search-wrapper .mobile-search {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-recommendations {
+    position: absolute;
+
+    top: calc(100% + 0.4rem);
+    left: 0;
+    width: 100%;
+
+    background: #161616;
+    border: 1px solid #7F7F7F;
+    border-radius: 0.75rem;
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 100;
+}
+
+.search-recommendations.show {
+    display: block;
+}
+
+.search-recommendation {
+    width: 100%;
+
+    padding: 0.7rem 1rem;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+
+    text-align: left;
+
+    font-family: "Hepta Slab";
+    font-size: 0.8rem;
+
+    cursor: pointer;
+}
+
+.search-recommendation span {
+    display: block;
+}
+
+.search-recommendation small {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.65rem;
+    color: #A7A7A7;
+}
+
+.search-recommendation:hover {
+    background: #2A2A2A;
+}
+
+/* =========================
+   FILTER PANEL
+   ========================= */
+
+.mobile-filter-panel {
+    display: none;
+
+    position: absolute;
+
+    width: 22rem;
+    max-height: 70vh;
+
+    overflow-y: auto;
+
+    padding: 1.5rem;
+
+    box-sizing: border-box;
+
+    background: #161616;
+
+    border: 1px solid #7F7F7F;
+    border-radius: 0.75rem;
+
+    z-index: 1000;
+}
+
+.mobile-filter-panel.show {
+    display: block;
+}
+
+
+/* =========================
+   FILTER PANEL HEADER
+   ========================= */
+
+.mobile-filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.5rem;
+
+    color: white;
+
+    font-family: "Hepta Slab";
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.mobile-filter-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.75rem;
+    height: 1.75rem;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   FILTER SECTIONS
+   ========================= */
+
+.mobile-filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.mobile-filter-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.mobile-filter-section-title {
+    margin: 0 0 0.7rem;
+
+    color: white;
+
+    font-family: "Hepta Slab";
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FILTER OPTIONS
+   ========================= */
+
+.mobile-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+}
+
+.mobile-filter-option {
+    padding: 0.5rem 0.75rem;
+
+    background: transparent;
+
+    border: 1px solid #7F7F7F;
+    border-radius: 0.4rem;
+
+    color: white;
+
+    font-family: "Hepta Slab";
+    font-size: 0.75rem;
+
+    cursor: pointer;
+}
+
+.mobile-filter-option:hover {
+    background: #2A2A2A;
+}
+
+.mobile-filter-option.active-filter {
+    background: #2A2A2A;
+    border-color: #FFFFFF;
+}
+
+
+/* =========================
+   CLEAR FILTER
+   ========================= */
+
+.mobile-filter-clear {
+    width: 100%;
+
+    margin-top: 0.5rem;
+
+    padding: 0.6rem 0.75rem;
+
+    background: transparent;
+
+    border: 1px solid #7F7F7F;
+    border-radius: 0.4rem;
+
+    color: #DA4C4C;
+
+    font-family: "Hepta Slab";
+    font-size: 0.8rem;
+
+    cursor: pointer;
+}
+
+.mobile-filter-clear:hover {
+    background: #2A2A2A;
+}
+
 /* Competition Cards */
 .cards-grid{
   display: flex;
@@ -996,10 +1447,6 @@ footer a,
   padding-bottom: 0.9rem;
   overflow: hidden;
   box-sizing: border-box;
-}
-
-.comp-card:hover{
-  border: 2px solid white;
 }
 
 .card-media {
@@ -1114,7 +1561,7 @@ footer a,
   margin-top: 0;
   margin-bottom: 0;
   height: 0.75rem;
-  font-family: Hepta Slab;
+  font-family: "Hepta Slab";
   font-weight: 500;
   font-style: Medium;
   font-size: 0.6rem;
@@ -1141,7 +1588,7 @@ footer a,
 }
 
 .detail-value{
-  font-family: Hepta Slab;
+  font-family: "Hepta Slab";
   font-weight: 500;
   font-style: Medium;
   font-size: 0.6rem;
@@ -1166,8 +1613,14 @@ footer a,
   opacity: 1;
   border-radius: 1.5rem;
   background-color: #161616;
-  border: 1px solid;
-  border-image-source: linear-gradient(145.5deg, #000000 1.56%, #A7A7A7 99.21%);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+        145.5deg,
+        #000000 1.56%,
+        #A7A7A7 99.21%
+    ) border-box;
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -1201,7 +1654,7 @@ footer a,
 }
 
 .button-text{
-  font-family: Hepta Slab;
+  font-family: "Hepta Slab";
   font-weight: 600;
   font-style: SemiBold;
   font-size: 1rem;
@@ -1212,31 +1665,733 @@ footer a,
   transition: opacity 0.3s ease;
 }
 
-.reg-circle{
+.reg-circle {
   width: 2.25rem;
   height: 2.25rem;
   top: 0.4rem;
   left: 0.4rem;
   opacity: 1;
-  border-width: 1px;
+
+  border: 1px solid transparent;
   border-radius: 50%;
-  background: linear-gradient(261.52deg, #F27949 7.08%, #A33A11 86.79%);
-  border: 1px solid linear-gradient(261.52deg, #A33A11 7.08%, #F27949 86.79%);
+
+  background:
+    linear-gradient(
+      261.52deg,
+      #F27949 7.08%,
+      #A33A11 86.79%
+    ) padding-box,
+    linear-gradient(
+      261.52deg,
+      #A33A11 7.08%,
+      #F27949 86.79%
+    ) border-box;
+
   display: flex;
   justify-content: center;
   align-items: center;
   transition: transform 0.4s ease;
 }
 
-.reg-square{
+.reg-square {
   width: 1rem;
   height: 1rem;
   top: 1rem;
   left: 1rem;
   opacity: 1;
+
+  border: 1px solid transparent;
   border-radius: 3px;
-  border-width: 1px;
-  background: #161616;
-  border: 1px solid, linear-gradient(261.52deg, #A33A11 7.08%, #F27949 86.79%);
+
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    linear-gradient(
+      261.52deg,
+        #A33A11 7.08%,
+        #F27949 86.79%
+      ) border-box;
+
   transition: transform 0.4s ease;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .all-matter-part {
+      margin: 3rem 0rem;
+    }
+
+    #competition-section {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      box-sizing: border-box;
+    }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .competition-header {
+        display: block;
+
+        width: 100%;
+        height: auto;
+    }
+
+    .competitions-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        margin: 0;
+
+        gap: 2rem;
+
+        font-size: 2.5rem;
+        line-height: 105%;
+    }
+
+    .heading-main-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .city-select {
+        display: flex;
+        align-items: center;
+
+        width: max-content;
+        flex-shrink: 0;
+
+        white-space: nowrap;
+    }
+
+    .heading-location {
+        display: flex;
+        align-items: center;
+
+        gap: 0.5rem;
+
+        white-space: nowrap;
+    }
+
+    .select-location-text {
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+
+
+     /* =========================
+       FILTER BAR
+       ========================= */
+
+    .competitions-and-filters-bar {
+        width: 100%;
+        height: 3.8rem;
+
+        display: flex;
+        align-items: center;
+
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+
+        padding: 0.65rem;
+
+        box-sizing: border-box;
+
+        background-color: #000000;
+
+        border-radius: 0.75rem;
+
+        overflow: hidden;
+        position: relative;
+    }
+
+
+    /* =========================
+       FILTER CONTENT
+       ========================= */
+
+    .names-of-competitions-and-filters {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        min-width: 0;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       CATEGORIES
+       ========================= */
+
+    .names-of-competitions-and-filters
+    .category-filter:nth-of-type(n+4) {
+        display: none;
+    }
+
+
+    /* =========================
+       DIVIDER
+       ========================= */
+
+    .filter-divider {
+        display: flex !important;
+        align-items: center;
+
+        flex-shrink: 0;
+
+        margin: 0 0.5rem;
+    }
+
+
+    /* =========================
+       UPCOMING
+       ========================= */
+
+    .names-of-competitions-and-filters
+    .filter-button[data-filter="upcoming"] {
+        display: block !important;
+
+        flex-shrink: 0;
+
+        white-space: nowrap;
+    }
+
+
+    /* =========================
+       NEXT MONTH
+       ========================= */
+
+    .names-of-competitions-and-filters
+    .filter-button[data-filter="next-month"] {
+      display: block !important;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+
+    /* =========================
+       ALL FILTERS
+       ========================= */
+
+    .names-of-competitions-and-filters
+    .all-filter-button {
+        display: flex !important;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 0.35rem;
+
+        margin-left: auto;
+
+        flex-shrink: 0;
+
+        white-space: nowrap;
+
+        color: white;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       HIDE DELETE FILTER
+       ========================= */
+
+    .clear-filter {
+        display: none !important;
+    }
+
+    /* =========================
+       CARDS
+       ========================= */
+
+    .cards-grid {
+        gap: 1rem;
+    }
+
+    .comp-card {
+        width: calc(33.333% - 0.67rem);
+    }
+
+
+      .mobile-filter-panel {
+        display: none;
+
+        position: fixed;
+
+        width: 18rem;
+        max-height: 70vh;
+
+        overflow-y: auto;
+
+        background: #161616;
+
+        border: 1px solid #7F7F7F;
+        border-radius: 0.75rem;
+
+        padding: 1.25rem;
+
+        box-sizing: border-box;
+
+        z-index: 9999;
+      }
+
+    .mobile-filter-panel.show {
+        display: block !important;
+    }
+
+    .mobile-filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 1rem;
+
+        font-size: 1rem;
+        color: white;
+    }
+
+    .mobile-filter-close {
+        background: transparent;
+        border: none;
+
+        color: white;
+        font-size: 1rem;
+
+        cursor: pointer;
+    }
+
+    .mobile-filter-section {
+        margin-bottom: 1rem;
+    }
+
+    .mobile-filter-section-title {
+        margin: 0 0 0.6rem;
+
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .mobile-filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .mobile-filter-option {
+        padding: 0.45rem 0.75rem;
+
+        background: #252525;
+        border: 1px solid #555;
+        border-radius: 0.35rem;
+
+        color: white;
+        font-size: 0.75rem;
+
+        cursor: pointer;
+    }
+
+    .mobile-filter-option:hover {
+        border-color: white;
+    }
+
+    .mobile-filter-clear {
+        width: 100%;
+
+        padding: 0.6rem;
+
+        background: transparent;
+        border: 1px solid #777;
+        border-radius: 0.4rem;
+
+        color: white;
+        font-size: 0.8rem;
+
+        cursor: pointer;
+    }
+
+    .category-filter.selected-visible-filter {
+      display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .all-matter-part {
+      margin: 3rem 0rem;
+    }
+
+    #competition-section {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    /* ================= MOBILE HEADER ================= */
+
+    .competition-header {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .competitions-heading {
+        width: 100%;
+        margin: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        font-size: 1.6rem;
+        line-height: 105%;
+    }
+
+
+    /* ================= HEADING ================= */
+
+    .heading-main-text {
+        display: block;
+        width: 100%;
+    }
+
+
+    /* ================= LOCATION ================= */
+
+    .city-select {
+        display: flex;
+        align-items: center;
+        align-self: flex-end;
+
+        width: max-content;
+
+        margin-top: 0.35rem;
+
+        white-space: nowrap;
+    }
+
+    .heading-location {
+        display: flex;
+        align-items: center;
+
+        gap: 0.3rem;
+
+        white-space: nowrap;
+    }
+
+    .select-location-text {
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .city-button {
+        padding: 0;
+        margin: 0;
+    }
+
+
+    /* ================= OLD FILTER BAR ================= */
+
+    .competitions-and-filters-bar {
+        display: none;
+    }
+
+
+    /* ================= MOBILE SEARCH + FILTER ================= */
+
+    .mobile-filter-bar {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+
+        gap: 0.6rem;
+
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        position: relative;
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    .mobile-search {
+        height: 3.5rem;
+
+        flex: 1;
+        min-width: 0;
+
+        display: flex;
+        align-items: center;
+
+        background: #000000;
+
+        border-radius: 2rem;
+
+        padding: 0 1rem;
+
+        gap: 0.75rem;
+    }
+
+    .mobile-search svg {
+        width: 1.25rem;
+        height: 1.25rem;
+
+        color: white;
+
+        flex-shrink: 0;
+    }
+
+    .mobile-search input {
+        width: 100%;
+        min-width: 0;
+
+        border: none;
+        outline: none;
+
+        background: transparent;
+
+        color: white;
+
+        font-family: "Hepta Slab";
+        font-size: 1rem;
+    }
+
+    .mobile-search input::placeholder {
+        color: #7F7F7F;
+    }
+
+
+    /* ================= FILTER BUTTON ================= */
+
+    .mobile-filter-button {
+        height: 3.5rem;
+
+        padding: 0 1.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 0.75rem;
+
+        background: #000000;
+
+        border: none;
+
+        border-radius: 2rem;
+
+        color: white;
+
+        font-family: "Hepta Slab";
+        font-size: 1rem;
+
+        cursor: pointer;
+
+        flex-shrink: 0;
+    }
+
+    .mobile-filter-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+
+    /* ================= CARDS ================= */
+
+    .cards-grid {
+        display: flex;
+
+        flex-direction: row;
+
+        flex-wrap: nowrap;
+
+        gap: 1rem;
+
+        overflow-x: auto;
+    }
+
+    .comp-card {
+        flex: 0 0 60%;
+
+        width: 60%;
+
+        height: auto;
+
+        min-height: 29rem;
+    }
+
+    .comp-img {
+        height: 15rem;
+    }
+
+
+    /* ================= MOBILE FILTER PANEL ================= */
+
+    .mobile-filter-panel {
+        display: none;
+
+        position: fixed;
+
+        top: 0;
+        right: 0;
+
+        width: min(20rem, 90vw);
+        max-height: 70vh;
+
+        overflow-y: auto;
+
+        background: #161616;
+
+        border: 1px solid #7F7F7F;
+
+        border-radius: 0.75rem;
+
+        padding: 1.25rem;
+
+        box-sizing: border-box;
+
+        z-index: 9999;
+    }
+
+    .mobile-filter-panel.show {
+        display: block !important;
+    }
+
+    /* ================= FILTER HEADER ================= */
+
+    .mobile-filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 1.5rem;
+
+        color: white;
+
+        font-family: "Hepta Slab";
+
+        font-size: 1.1rem;
+
+        font-weight: 600;
+    }
+
+    .mobile-filter-close {
+        border: none;
+
+        background: transparent;
+
+        color: white;
+
+        font-size: 1.2rem;
+
+        cursor: pointer;
+    }
+
+
+    /* ================= FILTER SECTIONS ================= */
+
+    .mobile-filter-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .mobile-filter-section-title {
+        margin: 0 0 0.75rem;
+
+        color: #A7A7A7;
+
+        font-family: "Hepta Slab";
+
+        font-size: 0.8rem;
+    }
+
+
+    /* ================= FILTER OPTIONS ================= */
+
+    .mobile-filter-options {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 0.5rem;
+    }
+
+    .mobile-filter-option {
+        padding: 0.6rem 0.9rem;
+
+        border: 1px solid #7F7F7F;
+
+        border-radius: 0.5rem;
+
+        background: transparent;
+
+        color: white;
+
+        font-family: "Hepta Slab";
+
+        font-size: 0.75rem;
+
+        cursor: pointer;
+    }
+
+    .mobile-filter-option.active-filter {
+        background: #2A2A2A;
+
+        border-color: #FFFFFF;
+    }
+
+
+    /* ================= CLEAR FILTER ================= */
+
+    .mobile-filter-clear {
+        width: 100%;
+
+        padding: 0.75rem;
+
+        border: 1px solid #7F7F7F;
+
+        border-radius: 0.5rem;
+
+        background: transparent;
+
+        color: #DA4C4C;
+
+        font-family: "Hepta Slab";
+
+        font-size: 0.8rem;
+
+        cursor: pointer;
+    }
+
+}
+
+@media (max-width: 480px){
+  .comp-card{
+    flex: 0 0 75%;
+    width: 75%;
+    height: auto;
+    min-height: 29rem;
+  }
+}
+
+@media (min-width: 1025px) {
+
+    .mobile-filter-panel {
+        position: fixed;
+
+        width: 20rem;
+        max-height: 70vh;
+
+        z-index: 9999;
+    }
+
 }
