@@ -68,7 +68,6 @@
     />
     <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}" />
     <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}" />
-    <link rel="stylesheet" href="{% static 'core/landing/comp.css' %}" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -217,6 +216,10 @@
                   <p class="copy-link-text">Copy Link</p>
                 </button>
               </div>
+            </div>
+            <div class="mobile-about-section">
+                <h3 class="about-heading">About the Event</h3>
+                <p class="about-matter">{{ event.description }}</p>
             </div>
           </div>
           <div class="upcoming-events-part">
@@ -436,6 +439,7 @@
       </div>
     </footer>
     
+    <script src="{%static 'core/home_register.js' %}"></script>
     <script src="{%static 'core/register_scroll_and_upcoming_logic.js' %}"></script>
     <script src="{%static 'core/register.js' %}"></script>
     <script src="{% static 'core/combined.js' %}"></script>

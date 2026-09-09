@@ -14,6 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 body{
   background-image: url("/static/core/asset/register-background.svg");
@@ -92,6 +93,10 @@ body{
   justify-content: space-between;
 }
 
+.event-detail-value{
+  color: #FD8F28;
+}
+
 .event-details-about-part{
   background: #202020;
   padding: 2rem;
@@ -124,7 +129,7 @@ body{
   font-size: 1rem;
   line-height: 105%;
   letter-spacing: -1%;
-  color: var(--Brand-Orange, #FD8F28);
+  color: #FD8F28;
 }
 
 .event-venue{
@@ -134,7 +139,7 @@ body{
   font-size: 1rem;
   line-height: 105%;
   letter-spacing: -1%;
-  color: var(--Brand-Orange, #FD8F28);
+  color: #FD8F28;
 }
 
 .about-heading{
@@ -325,6 +330,10 @@ body{
   color: #FD8F28;
 }
 
+.mobile-about-section {
+    display: none;
+}
+
 .upcoming-events-part{
   display: flex;
   flex-direction: column;
@@ -391,4 +400,130 @@ body{
 .reg-comp-card{
   flex-shrink: 0;
   width: 25%;
+}
+
+@media (max-width: 768px) {
+
+  /* Main container */
+  .hero-section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+
+  /* Event banner */
+  .event-banner img {
+    width: 75%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+
+  /* Event heading */
+  .event-details-heading-section {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .event-details-heading {
+    font-size: 1.7rem;
+  }
+
+  .event-details-caption {
+    font-size: 0.7rem;
+  }
+
+
+  /* About + Register */
+  .event-details-main-and-register-part {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-details-about-part {
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .event-details-register-part {
+    width: 100%;
+    padding: 1rem;
+  }
+
+
+  /* Assam heading */
+  .event-state {
+    font-size: 1.7rem;
+  }
+
+
+  /* Deadline + team size */
+  .registration-deadline-and-team-size {
+    width: 100%;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+
+
+  /* About text */
+  .about-matter {
+    font-size: 0.65rem;
+  }
+
+
+  /* Upcoming competitions */
+  .upcoming-events-part {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    gap: 0.75rem;
+  }
+
+  .heading-and-arrows-part {
+    padding: 0.25rem;
+  }
+
+  .upcoming-competitions-heading {
+    font-size: 1.2rem;
+  }
+
+  .arrows-div {
+    gap: 0.5rem;
+  }
+
+
+  /* Competition cards */
+  .events-grid {
+    gap: 0.75rem;
+  }
+
+  .reg-comp-card {
+    width: 70%;
+  }
+
+  .mobile-about-section {
+        display: block;
+        width: 100%;
+        background: #161616;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        box-sizing: border-box;
+
+        border: 0.82px solid transparent;
+
+        background:
+            linear-gradient(#161616, #161616) padding-box,
+            linear-gradient(
+                145.5deg,
+                #A7A7A7 1.56%,
+                #000000 99.21%
+            ) border-box;
+    }
+
+    .event-about-section{
+      display: none;
+    }
 }

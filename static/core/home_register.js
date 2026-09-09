@@ -12,4 +12,20 @@ document.querySelectorAll(".card-actions .register-btn").forEach(button => {
     });
 });
 
-console.log("HOME REGISTER JS LOADED");
+document.querySelectorAll(".comp-card").forEach(card => {
+    card.addEventListener("click", function(event) {
+
+        // If the user clicked the Register button/link,
+        // let its normal behavior happen.
+        if (event.target.closest("a, button")) {
+            return;
+        }
+
+        // Find the existing registration link inside the card
+        const registerLink = card.querySelector("a");
+
+        if (registerLink && registerLink.href) {
+            window.location.href = registerLink.href;
+        }
+    });
+});
