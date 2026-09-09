@@ -13,10 +13,10 @@
 			name="description"
 			content="Do you think you are the best in your city and want to compete with the best of the rest of the cities in the country? With the vision of giving everyone a platform to compete at a national level by bringing in only the best talent from all over India to Alcheringa IIT Guwahati, we present to you the City Auditions known as 'Highway to Alcher'. Join India’s biggest college cultural festival today!"
 		/>
-  <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  <link rel="stylesheet" href="{% static 'core/style.css' %}?v=1.2">
   <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
   <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}" />
-  <link rel="stylesheet" href="{% static 'core/combined.css' %}" />
+  <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=1.2" />
   <link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
@@ -29,6 +29,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
         @font-face {
@@ -188,6 +189,7 @@
     <h1 class="heading">Highway To Alcher</h1>
     <p  class="para">Highway to Alcher is your direct route to the spotlight at Alcheringa, IIT Guwahati's annual cultural fest! This pan-India competition series unearths the nation's brightest talents, giving them a chance to perform on the grand stage. Get ready to showcase your skills and kickstart your journey to stardom!</p>
   </div>
+    <a class="register-btn" href="#competition-section">Register</a>
 </div>
 
 <div class="image-container">
@@ -494,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="cfa-tv-screen" aria-hidden="true"></div>
       <img src="{% static 'core/landing/Tv_frame.png' %}" class="cfa-tv" alt="TV">
       <div class="cfa-content">
-        <h1>Participate in CFA</h1>
+<h1>Participate in CFA</h1>
         <div class="cfa-copy">
           <p class="cfa-copy-text">
             IIT Guwahati is partnering with <strong>Mood Indigo's</strong>
@@ -504,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </p>
         </div>
       </div>
-      <a class="cfa-register-key" href="{% url 'cfa_step1' %}">
+       <a class="cfa-register-key" href="{% url 'cfa_step1' %}">
         <img src="{% static 'core/landing/Register Key.png' %}" alt="Register for CFA">
       </a>
     </div>
@@ -524,44 +526,52 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <!--sanchit start-->
   <div class="alcher-blocks">
-    <!-- Highway Block -->
     <section class="highway-block">
-      <div class="container">
-        <h1 class="title">HIGHWAY TO ALCHER GLIMPSES</h1>
-        
-        <div class="slider-container">
-          <div class="slider-wrapper">
-            <div class="slide-track" id="slideTrack">
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider1.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider2.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider3.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider4.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider5.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider6.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider7.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider8.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider9.png' %}" alt="Music Studio" loading="lazy">
-              </div>
-              <div class="slide yellow-border">
-                <img src="{% static 'core/asset/slider10.png' %}" alt="Music Studio" loading="lazy">
-              </div>
+      <div class="film-reel-section">
+        <!-- Film Canister (left side) with text overlay -->
+        <div class="film-canister">
+          <div class="film-canister-inner">
+            <img src="{% static 'core/asset/roller.png' %}" alt="Film Roller">
+            <div class="canister-text">
+              <span class="canister-stat canister-stat--cities">21 cities</span>
+              <span class="canister-stat canister-stat--colleges">36 colleges</span>
+              <span class="canister-stat canister-stat--competitions">50 Competitions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highway to Alcher Card (behind roller) -->
+        <div class="newspaper-card">
+          <div class="newspaper-card-inner">
+            <img src="{% static 'core/asset/image 261 [Vectorized].svg' %}" alt="Card frame" class="newspaper-card-bg">
+            <img src="{% static 'core/asset/Frame 6356940.svg' %}" alt="Highway to Alcher Photo" class="newspaper-card-photo">
+            <div class="newspaper-card-title">Highway to Alcher</div>
+            <div class="newspaper-card-sub">
+              <span class="newspaper-card-glimpses">Glimpses</span>
+              <span class="newspaper-card-year">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film Strip -->
+        <div class="film-strip-container">
+          <div class="film-sprocket-track film-sprocket-track--top">
+            <div class="film-sprocket-inner">
+              <img src="{% static 'core/asset/Frame 6356925.svg' %}" alt="film sprocket line" class="film-sprocket-img">
+              <img src="{% static 'core/asset/Frame 6356925.svg' %}" alt="" class="film-sprocket-img">
+              <img src="{% static 'core/asset/Frame 6356925.svg' %}" alt="" class="film-sprocket-img">
+            </div>
+          </div>
+          <div class="film-strip" id="slideTrack">
+            <img src="{% static 'core/asset/Frame 6356930.svg' %}" alt="Event glimpses" class="film-strip-svg">
+            <img src="{% static 'core/asset/Frame 6356930.svg' %}" alt="Event glimpses" class="film-strip-svg">
+            <img src="{% static 'core/asset/Frame 6356930.svg' %}" alt="Event glimpses" class="film-strip-svg">
+          </div>
+          <div class="film-sprocket-track film-sprocket-track--bottom">
+            <div class="film-sprocket-inner">
+              <img src="{% static 'core/asset/Frame 6356926.svg' %}" alt="film sprocket line" class="film-sprocket-img">
+              <img src="{% static 'core/asset/Frame 6356926.svg' %}" alt="" class="film-sprocket-img">
+              <img src="{% static 'core/asset/Frame 6356926.svg' %}" alt="" class="film-sprocket-img">
             </div>
           </div>
         </div>

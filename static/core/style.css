@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&display=swap');
+
 /* raunak start */
 /* Base theme */
 @font-face {
@@ -1411,6 +1413,7 @@ label {
 @font-face {
 	font-family: 'Carltinelight';
 	src: url('/static/core/fonts/CarltineLight-rgjVL.ttf');
+}
 
 
 
@@ -1447,17 +1450,16 @@ label {
 
 /* ===== BLOCK STRUCTURE ===== */
 .alcher-blocks .highway-block {
-    background-color: #000000;
-    border-bottom: 2px solid #333333;
+    background-color: #0F0F0F;
+    min-height: 969px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    gap: 80px;
-
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
 }
 
 .alcher-blocks .sponsors-block {
@@ -1471,127 +1473,266 @@ label {
     padding: 120px 0 60px 0;
 }
 
-/* ===== HIGHWAY SECTION ===== */
-.alcher-blocks .container {
-    padding: 0;
-    max-width: 1392px;
+/* ===== HIGHWAY SECTION — FILM REEL DESIGN (Figma Desktop - 2 / Component 37) ===== */
+.alcher-blocks .film-reel-section {
+    position: relative;
+    width: 1443px;
+    max-width: 100%;
+    height: 969px;
     margin: 0 auto;
-    width: 100%;
+    overflow: visible;
 }
 
-.alcher-blocks .title {
-    color: #FFF;
-    font-family: "Sao Torpes", serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    text-align: center;
-}
-
-.alcher-blocks .slider-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding: 20px 0;
-}
-
-.alcher-blocks .slider-wrapper {
-    width: 100%;
-    overflow: hidden;
-}
-
-.alcher-blocks .slide-track {
-    display: flex;
-    gap: 0px;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    width: fit-content;
-    align-items: center;
-}
-
-.alcher-blocks .slide {
+/* Film Canister (image 262 in Component 37) */
+.alcher-blocks .film-canister {
+    position: absolute;
+    left: 46px;
+    top: calc(50% - 457px / 2 + 1px);
+    z-index: 10;
+    width: 234px;
+    height: 457px;
     flex-shrink: 0;
-    width: 258px;
-    height: 387px;
-    border-radius: 14px;
-    padding: 8px;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-canister-inner {
     position: relative;
-    transform: perspective(1000px) rotateY(0deg);
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 234px;
+    height: 457px;
 }
 
-.alcher-blocks .slide:hover {
-    transform: perspective(1000px) rotateY(-5deg) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+.alcher-blocks .film-canister img {
+    width: 234px;
+    height: 457px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.6));
 }
 
-.alcher-blocks .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 14px;
-    transition: transform 0.4s ease;
+/* Text overlay on yellow label */
+.alcher-blocks .canister-text {
+    position: absolute;
+    left: 23px;
+    top: 105px;
+    width: 118px;
+    height: 315px;
+    pointer-events: none;
 }
 
-.alcher-blocks .slide:hover img {
-    transform: scale(1.05);
+.alcher-blocks .canister-stat {
+    position: absolute;
+    color: #111111;
+    font-family: 'Hepta Slab', serif;
+    line-height: 1;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
-/* SVG borders */
-.alcher-blocks .yellow-border {
-    background-image: url('/static/core/asset/y1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* 21 cities: in left column at bottom */
+.alcher-blocks .canister-stat--cities {
+    left: 29px;
+    bottom: 12px;
+    width: 20px;
+    height: 73px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.alcher-blocks .purple-border {
-    background-image: url('/static/core/asset/p1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* 36 colleges: in left column at top */
+.alcher-blocks .canister-stat--colleges {
+    left: 29px;
+    top: 10px;
+    width: 20px;
+    height: 99px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.alcher-blocks .pink-border {
-    background-image: url('/static/core/asset/p1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* 50 Competitions: in right column centered */
+.alcher-blocks .canister-stat--competitions {
+    right: 8px;
+    top: 56px;
+    width: 27px;
+    height: 203px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.alcher-blocks .green-border {
-    background-image: url('/static/core/asset/g1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Highway to Alcher Card (Frame 6356941) */
+.alcher-blocks .newspaper-card {
+    position: absolute;
+    left: 117px;
+    top: 152px;
+    z-index: 4;
+    width: 407px;
+    height: 468px;
+    pointer-events: none;
+    user-select: none;
 }
 
-.alcher-blocks .orange-border {
-    background-image: url('/static/core/asset/o1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.alcher-blocks .newspaper-card-inner {
+    position: relative;
+    width: 407px;
+    height: 468px;
 }
 
-.alcher-blocks .violet-border {
-    background-image: url('/static/core/asset/v1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.alcher-blocks .newspaper-card-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 407px;
+    height: 468px;
+    display: block;
+    filter: drop-shadow(4px 4px 14px rgba(0, 0, 0, 0.5));
 }
 
-/* Pure CSS auto-slide animation */
-@keyframes infiniteSlide {
+.alcher-blocks .newspaper-card-photo {
+    position: absolute;
+    left: 23px;
+    top: 84px;
+    width: 352px;
+    height: 360px;
+    display: block;
+}
+
+.alcher-blocks .newspaper-card-title {
+    position: absolute;
+    width: 312.97px;
+    height: 21px;
+    left: 70.51px;
+    top: 15.4px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    color: #000000;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-sub {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 69px;
+    width: 312px;
+    height: 17px;
+    left: 65.36px;
+    top: 57.99px;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-glimpses {
+    width: 200px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+.alcher-blocks .newspaper-card-year {
+    width: 43px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: center;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+/* Film Strip Assembly (Frame 6356928 inside Component 37) */
+.alcher-blocks .film-strip-container {
+    position: absolute;
+    left: 134.38px;
+    top: 347.95px;
+    width: calc(100% - 134.38px);
+    height: 303px;
+    overflow: hidden;
+    z-index: 6;
+}
+
+/* Film strip sprocket tracks (SVG assets Frame 6356925 & Frame 6356926) */
+.alcher-blocks .film-sprocket-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 28px;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-sprocket-track--top {
+    top: 0;
+}
+
+.alcher-blocks .film-sprocket-track--bottom {
+    bottom: 0;
+}
+
+.alcher-blocks .film-sprocket-inner {
+    display: flex;
+    width: max-content;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-sprocket-img {
+    height: 28px;
+    width: 2414px;
+    flex-shrink: 0;
+    display: block;
+    pointer-events: none;
+}
+
+/* The film strip itself (Frame 6356930) */
+.alcher-blocks .film-strip {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    align-items: stretch;
+    padding: 28px 0;
+    background-color: transparent;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-strip-svg {
+    width: 2414px;
+    height: 247px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Film strip slide animation — 3 copies of 2414px, sliding exactly 1 copy (-33.333333%) */
+@keyframes filmSlide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-2800px); }
+    100% { transform: translateX(-33.333333%); }
 }
 
-.alcher-blocks .slide-track {
-    animation: infiniteSlide 60s linear infinite;
-}
-
-.alcher-blocks .slide-track:hover {
+.alcher-blocks .film-strip:hover,
+.alcher-blocks .film-reel-section:hover .film-strip,
+.alcher-blocks .film-reel-section:hover .film-sprocket-inner {
     animation-play-state: paused;
 }
 
@@ -1902,9 +2043,70 @@ label {
 
 @media (max-width: 768px) {
     .alcher-blocks .highway-block {
-        padding: 80px 0;
+        padding: 40px 0;
         width: 100%;
-        gap: 60px;
+        gap: 30px;
+    }
+
+    .alcher-blocks .film-canister,
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 150px;
+        height: 293px;
+    }
+
+    .alcher-blocks .canister-text {
+        left: 15px;
+        top: 67px;
+        width: 76px;
+        height: 202px;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 19px;
+        bottom: 8px;
+        width: 13px;
+        height: 47px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 19px;
+        top: 6px;
+        width: 13px;
+        height: 63px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 5px;
+        top: 36px;
+        width: 17px;
+        height: 130px;
+        font-size: 13px;
+    }
+
+    .alcher-blocks .film-strip-container {
+        padding-left: 140px;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 140px;
+        height: 22px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 22px;
+        width: 1931px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 22px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 198px;
+        width: 1931px;
     }
     
     .alcher-blocks .sponsors-block {
@@ -1913,29 +2115,6 @@ label {
     
     .alcher-blocks .footer-block {
         padding: 40px 0;
-    }
-    
-    .alcher-blocks .container {
-        padding: 20px 10px;
-    }
-    
-    .alcher-blocks .title {
-        margin-bottom: 40px;
-        margin-top: -15px;
-        font-size: 28px;
-    }
-    
-    .alcher-blocks .slide {
-        width: 200px;
-        height: 300px;
-    }
-    
-    .alcher-blocks .slide-track {
-        gap: 15px;
-    }
-    
-    .alcher-blocks .slide-track {
-        animation: infiniteSlide 50s linear infinite;
     }
     
     .alcher-blocks .sponsors-title {
@@ -1957,9 +2136,74 @@ label {
 
 @media (max-width: 480px) {
     .alcher-blocks .highway-block {
-        padding: 60px 0;
+        padding: 20px 0;
         width: 100%;
-        gap: 40px;
+        gap: 20px;
+    }
+
+    .alcher-blocks .film-reel-section {
+        min-height: 280px;
+    }
+
+    .alcher-blocks .film-canister,
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 110px;
+        height: 215px;
+    }
+
+    .alcher-blocks .canister-text {
+        left: 11px;
+        top: 49px;
+        width: 55px;
+        height: 148px;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 14px;
+        bottom: 6px;
+        width: 9px;
+        height: 34px;
+        font-size: 7px;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 14px;
+        top: 5px;
+        width: 9px;
+        height: 46px;
+        font-size: 7px;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 4px;
+        top: 26px;
+        width: 13px;
+        height: 95px;
+        font-size: 9.5px;
+    }
+
+    .alcher-blocks .film-strip-container {
+        padding-left: 90px;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 90px;
+        height: 17px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 17px;
+        width: 1448px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 17px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 148px;
+        width: 1448px;
     }
     
     .alcher-blocks .sponsors-block {
@@ -1968,21 +2212,6 @@ label {
     
     .alcher-blocks .footer-block {
         padding: 30px 0;
-    }
-    
-    .alcher-blocks .slide {
-        width: 160px;
-        height: 240px;
-    }
-
-    .alcher-blocks .title {
-        font-size: 28px;
-        margin-bottom: 30px;
-        margin-top: -10px;
-    }
-
-    .alcher-blocks .slide-track {
-        animation: infiniteSlide 45s linear infinite;
     }
     
     .alcher-blocks .sponsors-title {
@@ -2007,7 +2236,7 @@ html {
 }
 
 /* Loading animation */
-.alcher-blocks .slide img {
+.alcher-blocks .film-frame img {
     opacity: 0;
     animation: fadeIn 0.6s ease forwards;
 }
@@ -2018,26 +2247,17 @@ html {
     }
 }
 
-/* Enhanced visual effects */
-.alcher-blocks .slider-container::before,
-.alcher-blocks .slider-container::after {
+/* Right edge fade for film strip */
+.alcher-blocks .film-strip-container .film-strip-fade {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50px;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.alcher-blocks .slider-container::before {
-    left: 0;
-    background: linear-gradient(90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
-}
-
-.alcher-blocks .slider-container::after {
     right: 0;
-    background: linear-gradient(-90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+    width: 60px;
+    z-index: 6;
+    pointer-events: none;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
 }
 
 .carousel-container {

@@ -1,8 +1,9 @@
 class PureAutoSlider {
     constructor() {
         this.slideTrack = document.getElementById('slideTrack');
-        this.slides = document.querySelectorAll('.slide');
+        this.slides = document.querySelectorAll('.film-frame');
         
+        if (!this.slideTrack) return;
         this.init();
     }
     
@@ -18,7 +19,8 @@ class PureAutoSlider {
     }
     
     createInfiniteLoop() {
-        // Clone all slides twice for seamless infinite scrolling
+        // If film frames exist (e.g. legacy), clone them; SVG strip is already repeated in HTML
+        if (!this.slides || this.slides.length === 0) return;
         const originalSlides = Array.from(this.slides);
         
         // First set of clones
@@ -36,38 +38,30 @@ class PureAutoSlider {
     
     handleVisibilityChange() {
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                this.slideTrack.style.animationPlayState = 'paused';
-            } else {
-                this.slideTrack.style.animationPlayState = 'running';
-            }
+            const sprockets = document.querySelectorAll('.film-sprocket-inner');
+            const state = document.hidden ? 'paused' : 'running';
+            this.slideTrack.style.animationPlayState = state;
+            sprockets.forEach(s => s.style.animationPlayState = state);
         });
     }
     
     optimizePerformance() {
         // Add will-change property for better performance
         this.slideTrack.style.willChange = 'transform';
-        
-        // Optimize images loading
-        const images = document.querySelectorAll('.slide img');
-        images.forEach((img, index) => {
-            img.style.animationDelay = `${index * 0.1}s`;
-            
-            // Add loading optimization
-            img.addEventListener('load', () => {
-                img.style.opacity = '1';
-            });
-        });
+        const sprockets = document.querySelectorAll('.film-sprocket-inner');
+        sprockets.forEach(s => s.style.willChange = 'transform');
     }
     
     // Method to pause animation (can be called externally)
     pause() {
         this.slideTrack.style.animationPlayState = 'paused';
+        document.querySelectorAll('.film-sprocket-inner').forEach(s => s.style.animationPlayState = 'paused');
     }
     
     // Method to resume animation (can be called externally)
     resume() {
         this.slideTrack.style.animationPlayState = 'running';
+        document.querySelectorAll('.film-sprocket-inner').forEach(s => s.style.animationPlayState = 'running');
     }
 }
 
@@ -79,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.autoSlider = slider;
     
     // Add smooth fade-in effect for images
-    const images = document.querySelectorAll('.slide img');
+    const images = document.querySelectorAll('.film-frame img');
     images.forEach((img, index) => {
         img.style.opacity = '0';
         img.style.transition = 'opacity 0.6s ease';
@@ -104,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Observe all images
-        const images = document.querySelectorAll('.slide img');
+        const images = document.querySelectorAll('.film-frame img');
         images.forEach(img => imageObserver.observe(img));
     }
     
