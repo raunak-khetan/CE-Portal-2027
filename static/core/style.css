@@ -2134,76 +2134,191 @@ label {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .alcher-blocks .highway-block {
-        padding: 20px 0;
+        padding: 0;
+        margin: 0;
         width: 100%;
-        gap: 20px;
+        background: #0F0F0F;
+        overflow: hidden;
     }
 
     .alcher-blocks .film-reel-section {
-        min-height: 280px;
+        position: relative;
+        width: 100%;
+        max-width: 402px;
+        height: 484px;
+        min-height: 484px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #0F0F0F;
     }
 
-    .alcher-blocks .film-canister,
+    /* Film Canister */
+    .alcher-blocks .film-canister {
+        position: absolute;
+        left: 23px;
+        top: 169.5px;
+        z-index: 10;
+        width: 117px;
+        height: 228.5px;
+    }
+
     .alcher-blocks .film-canister-inner,
     .alcher-blocks .film-canister img {
-        width: 110px;
-        height: 215px;
+        width: 117px;
+        height: 228.5px;
     }
 
+    .alcher-blocks .film-canister img {
+        filter: drop-shadow(4px 2px 4.35px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Canister Text Overlay */
     .alcher-blocks .canister-text {
-        left: 11px;
-        top: 49px;
-        width: 55px;
-        height: 148px;
+        left: 11.5px;
+        top: 52px;
+        width: 59px;
+        height: 157px;
+    }
+
+    .alcher-blocks .canister-stat {
+        color: #523C00;
     }
 
     .alcher-blocks .canister-stat--cities {
         left: 14px;
         bottom: 6px;
-        width: 9px;
-        height: 34px;
-        font-size: 7px;
+        width: 10px;
+        height: 37px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
     }
 
     .alcher-blocks .canister-stat--colleges {
         left: 14px;
         top: 5px;
-        width: 9px;
-        height: 46px;
-        font-size: 7px;
+        width: 10px;
+        height: 50px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
     }
 
     .alcher-blocks .canister-stat--competitions {
         right: 4px;
-        top: 26px;
+        top: 28px;
         width: 13px;
-        height: 95px;
-        font-size: 9.5px;
+        height: 102px;
+        font-size: 11px;
+        font-weight: 600;
     }
 
+    /* Newspaper Card (Frame 6356941) */
+    .alcher-blocks .newspaper-card {
+        position: absolute;
+        left: 58.5px;
+        top: 117px;
+        width: 176.5px;
+        height: 212.5px;
+        z-index: 4;
+    }
+
+    .alcher-blocks .newspaper-card-inner {
+        position: relative;
+        width: 176.5px;
+        height: 212.5px;
+    }
+
+    .alcher-blocks .newspaper-card-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 176.5px;
+        height: 212.5px;
+        filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .alcher-blocks .newspaper-card-photo {
+        position: absolute;
+        left: 11px;
+        top: 41.5px;
+        width: 153px;
+        height: 160px;
+    }
+
+    .alcher-blocks .newspaper-card-title {
+        position: absolute;
+        width: 156.5px;
+        height: 11px;
+        left: 35.19px;
+        top: 7.7px;
+        font-size: 10px;
+        line-height: 11px;
+        color: #000000;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-sub {
+        position: absolute;
+        width: 156.5px;
+        height: 8px;
+        left: 32.75px;
+        top: 29px;
+        gap: 34.5px;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-glimpses {
+        width: 100px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    .alcher-blocks .newspaper-card-year {
+        width: 22px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        text-align: center;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    /* Film Strip Assembly (Frame 6356928) */
     .alcher-blocks .film-strip-container {
-        padding-left: 90px;
+        position: absolute;
+        left: 67px;
+        top: 215px;
+        width: calc(100% - 67px);
+        height: 151.5px;
+        overflow: hidden;
+        z-index: 6;
+        padding-left: 0;
     }
 
     .alcher-blocks .film-sprocket-track {
-        left: 90px;
-        height: 17px;
+        left: 0;
+        right: 0;
+        height: 14px;
     }
 
     .alcher-blocks .film-sprocket-img {
-        height: 17px;
-        width: 1448px;
+        height: 14px;
+        width: 1207px;
     }
 
     .alcher-blocks .film-strip {
-        padding: 17px 0;
+        padding: 14px 0;
     }
 
     .alcher-blocks .film-strip-svg {
-        height: 148px;
-        width: 1448px;
+        height: 123.5px;
+        width: 1207px;
     }
     
     .alcher-blocks .sponsors-block {

@@ -13,10 +13,10 @@
 			name="description"
 			content="Do you think you are the best in your city and want to compete with the best of the rest of the cities in the country? With the vision of giving everyone a platform to compete at a national level by bringing in only the best talent from all over India to Alcheringa IIT Guwahati, we present to you the City Auditions known as 'Highway to Alcher'. Join India’s biggest college cultural festival today!"
 		/>
-  <link rel="stylesheet" href="{% static 'core/style.css' %}?v=1.2">
+  <link rel="stylesheet" href="{% static 'core/style.css' %}?v=roller_figma_v1">
   <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
-  <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}?v=rotate6" />
-  <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=1.2" />
+  <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}?v=cfa_figma_exact_v2" />
+  <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=roller_figma_v1" />
   <link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <!-- raunak end -->
 
   <!-- ashish start -->
-   <div class="cfa-container">
+   <div class="cfa-container" id="cfa-section">
     <div class="cfa-tv-stage">
       <div class="cfa-tv-screen" aria-hidden="true"></div>
       <img src="{% static 'core/landing/Tv_frame.png' %}" class="cfa-tv" alt="TV">
@@ -515,11 +515,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.querySelector('.shapes-wrapper');
     let isLayoutA = true;
   
-    setInterval(() => {
-      wrapper.classList.toggle('layout-a');
-      wrapper.classList.toggle('layout-b');
-      isLayoutA = !isLayoutA;
-    }, 2000); // 2 seconds
+    if (wrapper) {
+      setInterval(() => {
+        wrapper.classList.toggle('layout-a');
+        wrapper.classList.toggle('layout-b');
+        isLayoutA = !isLayoutA;
+      }, 2000); // 2 seconds
+    }
   </script>
   
   <!-- ashish end -->

@@ -290,7 +290,7 @@ body {
 }
 
 /* Tablets */
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 601px) {
   .shape {
     width: 60px !important;
     height: 60px !important;
@@ -314,25 +314,147 @@ body {
   .shape4 { right: 0; top: 40%; }
   .shape8 { left: 0; bottom: 40%; top: auto; }
 
-  .cfa-content h1 {
-    font-size: clamp(1rem, 3.85vw, 42.16px);
+  .cfa-container {
+    min-height: 750px;
+    padding: 20px 0;
   }
 
-  .cfa-content p {
-    font-size: clamp(0.42rem, 1.28vw, 14px);
-    padding: 12px 10px;
+  .cfa-tv-stage {
+    width: min(820px, 94vw);
+    top: calc(50% + 5px);
+    left: calc(50% + 8px);
+    transform: translate(-50%, -50%) rotate(-6deg);
+  }
+
+  .cfa-content {
+    gap: clamp(16px, 2.5vw, 24px);
+  }
+
+  .cfa-content h1 {
+    font-size: clamp(22px, 3.5vw, 36px);
+    line-height: 1.05;
+    width: 78%;
+  }
+
+  .cfa-copy {
+    width: 78%;
+    padding: clamp(10px, 1.6vw, 16px) clamp(10px, 2vw, 20px);
+    border-radius: 6px;
+  }
+
+  .cfa-copy-text {
+    font-size: clamp(8px, 1.15vw, 11.5px);
+    line-height: 1.45;
   }
 }
 
-/* Phones */
-@media (max-width: 480px) {
-  .cfa-content h1 {
-    font-size: clamp(0.9rem, 3.85vw, 42.16px);
+/* Mobile: Participate in CFA final (402px x 601px spec) */
+@media (max-width: 600px) {
+  .cfa-container {
+    width: 100%;
+    height: 601px;
+    min-height: 601px;
+    padding: 0;
+    background: #000000;
+    overflow: hidden;
   }
 
-  .cfa-content p {
-    font-size: clamp(0.38rem, 1.28vw, 14px);
-    padding: 8px 7px;
+  .cfa-tv-stage {
+    position: absolute;
+    width: 532.59px;
+    height: 345.93px;
+    left: calc(50% - 532.59px / 2 - 12.91px);
+    top: calc(50% - 345.93px / 2 - 23.16px);
+    transform: rotate(-6deg);
+    transform-origin: center center;
+  }
+
+  .cfa-tv {
+    position: absolute !important;
+    width: 569.44px !important;
+    height: 425.18px !important;
+    left: calc(50% - 569.44px / 2 - 7.66px) !important;
+    top: -20.6px !important;
+    max-width: none !important;
+    object-fit: fill !important;
+  }
+
+  .cfa-tv-screen {
+    position: absolute !important;
+    width: 293.7px !important;
+    height: 236.22px !important;
+    left: 71.92px !important;
+    top: 52.74px !important;
+    border-radius: 9.94px !important;
+  }
+
+  .cfa-content {
+    position: absolute !important;
+    width: 293.7px !important;
+    height: 236.22px !important;
+    left: 71.92px !important;
+    top: 52.74px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    gap: 14.56px !important;
+  }
+
+  .cfa-content h1 {
+    font-family: 'Poltawski Nowy', sans-serif !important;
+    font-style: italic !important;
+    font-weight: 700 !important;
+    font-size: 21.843px !important;
+    line-height: 23px !important;
+    width: 220.2px !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+    color: #FFFFFF !important;
+    text-align: center !important;
+  }
+
+  .cfa-copy {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10.4014px 8.32113px !important;
+    gap: 5.2px !important;
+    width: 220.2px !important;
+    height: 85.17px !important;
+    background: #002600 !important;
+    border: 0.685267px solid #07A905 !important;
+    border-radius: 4.1116px !important;
+  }
+
+  .cfa-copy-text {
+    width: 202.18px !important;
+    height: 63px !important;
+    font-family: 'Hepta Slab', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 7.28099px !important;
+    line-height: 120% !important;
+    letter-spacing: -0.01em !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  .cfa-copy-text strong {
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .cfa-register-key {
+    position: absolute !important;
+    width: 86.67px !important;
+    height: 37.32px !important;
+    left: calc(50% - 86.67px / 2 + 165.12px) !important;
+    top: 129.48px !important;
   }
 
   .register-btn {
@@ -349,5 +471,12 @@ body {
   /* Special fix for layout-b on small screens */
   .shapes-wrapper.layout-b .shape1 {
     top: 60%;
+  }
+}
+
+/* Extra small screens (<360px) scaling */
+@media (max-width: 360px) {
+  .cfa-tv-stage {
+    transform: translate(-50%, -50%) rotate(-6deg) scale(0.88);
   }
 }
