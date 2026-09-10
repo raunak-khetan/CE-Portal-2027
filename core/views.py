@@ -228,7 +228,7 @@ def cfa_step2_view(request):
                 cfa = CFARegistration.objects.get(id=cfa_id)
                 
                 # Update Step 2 fields
-                cfa.college_name = request.POST.get('college_name', '')
+                cfa.college_name = request.POST.get('college_name') or request.POST.get('full_name', '')
                 cfa.college_designation = request.POST.get('college_designation', '')
                 cfa.fest_name = request.POST.get('fest_name', '')
                 cfa.fest_address = request.POST.get('fest_address', '')
