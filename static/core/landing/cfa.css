@@ -26,8 +26,8 @@ body {
 .cfa-container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  padding: 0;
+  min-height: max(932px, 100vh);
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,13 +47,15 @@ body {
 
 .cfa-tv-stage {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: calc(50% + 8.32px);
+  left: calc(50% + 11.48px);
   z-index: 1;
   width: min(1094.92px, 96vw, calc(92vh * 1.339));
   aspect-ratio: 4380 / 3271;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(-6deg);
+  transform-origin: center center;
 }
+
 
 .cfa-tv-screen {
   position: absolute;
