@@ -191,34 +191,20 @@ class MemberForm(forms.ModelForm):
 class CFARegistrationStep1Form(forms.ModelForm):
     class Meta:
         model = CFARegistration
-
-        fields = [
-            'full_name',
-            'age',
-            'email',
-            'phone_number',
-            'alternate_phone',
-            'college_id_card_link'
-        ]
-
+        fields = ['full_name', 'email', 'age', 'college_id_card_link', 'phone_number', 'alternate_phone']
         widgets = {
-            'full_name': forms.TextInput({
-                'placeholder': 'Enter full name'
-            }),
-            'age': forms.NumberInput({
-                'placeholder': 'Enter age'
-            }),
-            'email': forms.EmailInput({
-                'class': 'form-control',
-                'placeholder': 'Email address'
-            }),
-            'phone_number': forms.TextInput({
-                'placeholder': '+91 |'
-            }),
-            'alternate_phone': forms.TextInput({
-                'placeholder': '+91 |'
-            }),
-            'college_id_card_link': forms.URLInput({
-                'placeholder': 'Google Drive link'
-            }),
+            'full_name': forms.TextInput(attrs={'placeholder': 'Enter your full name'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Enter your email'}),
+            'age': forms.NumberInput(attrs={'placeholder': 'Enter your age'}),
+            'college_id_card_link': forms.URLInput(attrs={'placeholder': 'Enter your drive link'}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Enter your phone number'}),
+            'alternate_phone': forms.TextInput(attrs={'placeholder': 'Enter your alternate phone number'}),
+        }
+        labels = {
+            'full_name': 'Full Name',
+            'email': 'Email',
+            'age': 'Age',
+            'college_id_card_link': 'College ID(Google drive link)',
+            'phone_number': 'Phone number',
+            'alternate_phone': 'Alternate phone number(optional)',
         }

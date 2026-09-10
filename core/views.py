@@ -286,25 +286,30 @@ def cfa_register_step1(request):
 def cfa_step2_view(request):
     if request.method == 'POST':
         cfa_id = request.session.get('cfa_id')
-        if not cfa_id:
+        if cfa_id:
+            try:
+                cfa = CFARegistration.objects.get(id=cfa_id)
+                
+                # Update Step 2 fields
+                cfa.college_name = request.POST.get('college_name') or request.POST.get('full_name', '')
+                cfa.college_designation = request.POST.get('college_designation', '')
+                cfa.fest_name = request.POST.get('fest_name', '')
+                cfa.fest_address = request.POST.get('fest_address', '')
+                cfa.fest_dates = request.POST.get('fest_dates', '')
+                cfa.number_of_days = request.POST.get('number_of_days', '')
+                cfa.expected_footfall = request.POST.get('expected_footfall', '')
+                cfa.social_links = request.POST.get('social_links', '')
+                
+                cfa.save()
+                
+                # Redirect to step 3
+                return redirect('cfa_step3')
+            except CFARegistration.DoesNotExist:
+                # If CFA object doesn't exist, redirect back to step 1
+                return redirect('cfa_step1')
+        else:
+            # If no CFA ID in session, redirect back to step 1
             return redirect('cfa_step1')
-
-        try:
-            cfa = CFARegistration.objects.get(id=cfa_id)
-        except CFARegistration.DoesNotExist:
-            return redirect('cfa_step1')
-
-        cfa.college_name = request.POST.get('college_name', '')
-        cfa.college_designation = request.POST.get('college_designation', '')
-        cfa.fest_name = request.POST.get('fest_name', '')
-        cfa.fest_address = request.POST.get('fest_address', '')
-        cfa.fest_dates = request.POST.get('fest_dates', '')
-        cfa.number_of_days = request.POST.get('number_of_days', '')
-        cfa.expected_footfall = request.POST.get('expected_footfall', '')
-        cfa.social_links = request.POST.get('social_links', '')
-        cfa.save()
-
-        return redirect('cfa_step3')
 
     return render(request, 'core/cfa_step2.html')
 

@@ -1,0 +1,1121 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&display=swap');
+
+/* Font declarations */
+@font-face {
+    font-family: 'Sao Torpes';
+    src: url('fonts/saotorpes.otf') format('opentype'),
+         url('/static/core/fonts/SaoTorpes.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('fonts/Lexend[wght].ttf') format('truetype-variations'),
+         url('/static/core/fonts/Lexend[wght].ttf') format('truetype-variations');
+    font-weight: 400 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bosten';
+    src: url('fonts/bostenregular-l3ljd.otf') format('opentype'),
+         url('/static/core/fonts/bostenregular-l3ljd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Carltine';
+    src: url('fonts/CarltineRegular-K7z5l.ttf') format('truetype'),
+         url('/static/core/fonts/CarltineRegular-K7z5l.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CarltineBold';
+    src: url('fonts/CarltineBold-BWxy8.ttf') format('truetype'),
+         url('/static/core/fonts/CarltineBold-BWxy8.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Reset and base styles */
+.alcher-blocks * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alcher-blocks body {
+    background-color: #161616;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== BLOCK STRUCTURE ===== */
+.alcher-blocks {
+    background-color: #161616;
+}
+.alcher-blocks .highway-block {
+    background-color: #0F0F0F;
+    min-height: 969px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.alcher-blocks .sponsors-block {
+    background-color: #161616;
+    padding: 60px 0;
+}
+
+.alcher-blocks .footer-block {
+    background-color: #202020;
+    padding: 60px 0 60px 0;
+    margin-top: 0;
+}
+
+/* ===== HIGHWAY SECTION — FILM REEL DESIGN (Figma Desktop - 2 / Component 37) ===== */
+.alcher-blocks .film-reel-section {
+    position: relative;
+    width: 1443px;
+    max-width: 100%;
+    height: 969px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+/* Film Canister (image 262 in Component 37) */
+.alcher-blocks .film-canister {
+    position: absolute;
+    left: 46px;
+    top: calc(50% - 457px / 2 + 1px);
+    z-index: 10;
+    width: 234px;
+    height: 457px;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-canister-inner {
+    position: relative;
+    width: 234px;
+    height: 457px;
+}
+
+.alcher-blocks .film-canister img {
+    width: 234px;
+    height: 457px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* Text overlay on yellow label */
+.alcher-blocks .canister-text {
+    position: absolute;
+    left: 23px;
+    top: 105px;
+    width: 118px;
+    height: 315px;
+    pointer-events: none;
+}
+
+.alcher-blocks .canister-stat {
+    position: absolute;
+    color: #111111;
+    font-family: 'Hepta Slab', serif;
+    line-height: 1;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* 21 cities: in left column at bottom */
+.alcher-blocks .canister-stat--cities {
+    left: 29px;
+    bottom: 12px;
+    width: 20px;
+    height: 73px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 36 colleges: in left column at top */
+.alcher-blocks .canister-stat--colleges {
+    left: 29px;
+    top: 10px;
+    width: 20px;
+    height: 99px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 50 Competitions: in right column centered */
+.alcher-blocks .canister-stat--competitions {
+    right: 8px;
+    top: 56px;
+    width: 27px;
+    height: 203px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Highway to Alcher Card (Frame 6356941) */
+.alcher-blocks .newspaper-card {
+    position: absolute;
+    left: 117px;
+    top: 152px;
+    z-index: 4;
+    width: 407px;
+    height: 468px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.alcher-blocks .newspaper-card-inner {
+    position: relative;
+    width: 407px;
+    height: 468px;
+}
+
+.alcher-blocks .newspaper-card-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 407px;
+    height: 468px;
+    display: block;
+    filter: drop-shadow(4px 4px 14px rgba(0, 0, 0, 0.5));
+}
+
+.alcher-blocks .newspaper-card-photo {
+    position: absolute;
+    left: 23px;
+    top: 84px;
+    width: 352px;
+    height: 360px;
+    display: block;
+}
+
+.alcher-blocks .newspaper-card-title {
+    position: absolute;
+    width: 312.97px;
+    height: 21px;
+    left: 70.51px;
+    top: 15.4px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    color: #000000;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-sub {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 69px;
+    width: 312px;
+    height: 17px;
+    left: 65.36px;
+    top: 57.99px;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-glimpses {
+    width: 200px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+.alcher-blocks .newspaper-card-year {
+    width: 43px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: center;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+/* Film Strip Assembly (Frame 6356928 inside Component 37) */
+.alcher-blocks .film-strip-container {
+    position: absolute;
+    left: 134.38px;
+    top: 347.95px;
+    width: calc(100% - 134.38px);
+    height: 303px;
+    overflow: hidden;
+    z-index: 6;
+}
+
+/* Film strip sprocket tracks (SVG assets Frame 6356925 & Frame 6356926) */
+.alcher-blocks .film-sprocket-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 28px;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-sprocket-track--top {
+    top: 0;
+}
+
+.alcher-blocks .film-sprocket-track--bottom {
+    bottom: 0;
+}
+
+.alcher-blocks .film-sprocket-inner {
+    display: flex;
+    width: max-content;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-sprocket-img {
+    height: 28px;
+    width: 2414px;
+    flex-shrink: 0;
+    display: block;
+    pointer-events: none;
+}
+
+/* The film strip itself (Frame 6356930) */
+.alcher-blocks .film-strip {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    align-items: stretch;
+    padding: 28px 0;
+    background-color: transparent;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-strip-svg {
+    width: 2414px;
+    height: 247px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Film strip slide animation — 3 copies of 2414px, sliding exactly 1 copy (-33.333333%) */
+@keyframes filmSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333333%); }
+}
+
+.alcher-blocks .film-strip:hover,
+.alcher-blocks .film-reel-section:hover .film-strip,
+.alcher-blocks .film-reel-section:hover .film-sprocket-inner {
+    animation-play-state: paused;
+}
+
+/* ===== SPONSORS SECTION ===== */
+.alcher-blocks .sponsors-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .sponsors-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: normal;
+    color: #BDF522;
+    margin-bottom: 4rem;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    line-height: 120%;
+}
+
+.alcher-blocks .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.alcher-blocks .sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 120px;
+    padding: 0.5rem;
+}
+
+.alcher-blocks .logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ===== FOOTER SECTION ===== */
+.alcher-blocks .footer {
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.alcher-blocks .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.alcher-blocks .main-message {
+    text-align: left;
+}
+
+.alcher-blocks .main-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.alcher-blocks .register-btn {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 135%;
+    letter-spacing: -3%;
+    color: #161616;
+    background-color: #BDF522;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    height: fit-content;
+    min-height: 48px;
+    margin-left: 0;
+}
+
+.alcher-blocks .register-btn:hover {
+    background-color: #BDF522;
+}
+
+.alcher-blocks .section-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #BDF522;
+    margin-bottom: 1.2rem;
+    margin-left: 0;
+}
+
+.alcher-blocks .links-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.alcher-blocks .nav-link {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.alcher-blocks .nav-link:hover {
+    color: #BDF522;
+}
+
+.alcher-blocks .external-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.alcher-blocks .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .section-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.alcher-blocks .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alcher-blocks .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alcher-blocks .contact-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+
+.alcher-blocks .contact-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.alcher-blocks .contact-phone {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+    font-weight: 400;
+    color: #cccccc;
+}
+
+/* Footer Bottom */
+.alcher-blocks .bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.alcher-blocks .copyright {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+.alcher-blocks .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.alcher-blocks .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.alcher-blocks .social-link:hover {
+    background-color: rgba(189, 245, 34, 0.2);
+}
+
+.alcher-blocks .social-icon {
+    width: 2rem;
+    height: 2rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .credits {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Desktop - Side by side layout */
+@media (min-width: 1024px) {
+    .alcher-blocks .footer-grid {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .alcher-blocks .main-message {
+        flex: 2;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .alcher-blocks .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        flex-wrap: nowrap;
+    }
+    
+    .alcher-blocks .contact-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Mobile-specific layout changes */
+@media (max-width: 1023px) {
+    .alcher-blocks .footer-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .alcher-blocks .main-message {
+        width: 100%;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+    
+    /* Add line below main message */
+    .alcher-blocks .main-message::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2),
+    .alcher-blocks .footer-grid > div:nth-child(3) {
+        width: 100%;
+        padding-left: 0;
+        text-align: left;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+    
+    /* Add line below useful links section */
+    .alcher-blocks .footer-grid > div:nth-child(2)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Remove the before pseudo-elements */
+    .alcher-blocks .footer-grid > div:nth-child(2)::before,
+    .alcher-blocks .footer-grid > div:nth-child(3)::before {
+        display: none;
+    }
+    
+    /* Make useful links horizontal */
+    .alcher-blocks .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    /* Make contact items horizontal */
+    .alcher-blocks .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 150px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .alcher-blocks .highway-block {
+        padding: 40px 0;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .alcher-blocks .film-canister,
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 150px;
+        height: 293px;
+    }
+
+    .alcher-blocks .canister-text {
+        left: 15px;
+        top: 67px;
+        width: 76px;
+        height: 202px;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 19px;
+        bottom: 8px;
+        width: 13px;
+        height: 47px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 19px;
+        top: 6px;
+        width: 13px;
+        height: 63px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 5px;
+        top: 36px;
+        width: 17px;
+        height: 130px;
+        font-size: 13px;
+    }
+
+    .alcher-blocks .film-strip-container {
+        padding-left: 140px;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 140px;
+        height: 22px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 22px;
+        width: 1931px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 22px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 198px;
+        width: 1931px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 3rem;
+    }
+    
+    .alcher-blocks .main-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .alcher-blocks .highway-block {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background: #0F0F0F;
+        overflow: hidden;
+    }
+
+    .alcher-blocks .film-reel-section {
+        position: relative;
+        width: 100%;
+        max-width: 402px;
+        height: 484px;
+        min-height: 484px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #0F0F0F;
+    }
+
+    /* Film Canister */
+    .alcher-blocks .film-canister {
+        position: absolute;
+        left: 23px;
+        top: 169.5px;
+        z-index: 10;
+        width: 117px;
+        height: 228.5px;
+    }
+
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 117px;
+        height: 228.5px;
+    }
+
+    .alcher-blocks .film-canister img {
+        filter: drop-shadow(4px 2px 4.35px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Canister Text Overlay */
+    .alcher-blocks .canister-text {
+        left: 11.5px;
+        top: 52px;
+        width: 59px;
+        height: 157px;
+    }
+
+    .alcher-blocks .canister-stat {
+        color: #523C00;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 14px;
+        bottom: 6px;
+        width: 10px;
+        height: 37px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 14px;
+        top: 5px;
+        width: 10px;
+        height: 50px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 4px;
+        top: 28px;
+        width: 13px;
+        height: 102px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    /* Newspaper Card (Frame 6356941) */
+    .alcher-blocks .newspaper-card {
+        position: absolute;
+        left: 58.5px;
+        top: 117px;
+        width: 176.5px;
+        height: 212.5px;
+        z-index: 4;
+    }
+
+    .alcher-blocks .newspaper-card-inner {
+        position: relative;
+        width: 176.5px;
+        height: 212.5px;
+    }
+
+    .alcher-blocks .newspaper-card-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 176.5px;
+        height: 212.5px;
+        filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .alcher-blocks .newspaper-card-photo {
+        position: absolute;
+        left: 11px;
+        top: 41.5px;
+        width: 153px;
+        height: 160px;
+    }
+
+    .alcher-blocks .newspaper-card-title {
+        position: absolute;
+        width: 156.5px;
+        height: 11px;
+        left: 35.19px;
+        top: 7.7px;
+        font-size: 10px;
+        line-height: 11px;
+        color: #000000;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-sub {
+        position: absolute;
+        width: 156.5px;
+        height: 8px;
+        left: 32.75px;
+        top: 29px;
+        gap: 34.5px;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-glimpses {
+        width: 100px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    .alcher-blocks .newspaper-card-year {
+        width: 22px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        text-align: center;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    /* Film Strip Assembly (Frame 6356928) */
+    .alcher-blocks .film-strip-container {
+        position: absolute;
+        left: 67px;
+        top: 215px;
+        width: calc(100% - 67px);
+        height: 151.5px;
+        overflow: hidden;
+        z-index: 6;
+        padding-left: 0;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 0;
+        right: 0;
+        height: 14px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 14px;
+        width: 1207px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 14px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 123.5px;
+        width: 1207px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 2rem;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 220px;
+        height: 140px;
+    }
+    
+    .alcher-blocks .main-title {
+        font-size: 28px;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation */
+.alcher-blocks .slide img {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Enhanced visual effects */
+.alcher-blocks .slider-container::before,
+.alcher-blocks .slider-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.alcher-blocks .slider-container::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+}
+
+.alcher-blocks .slider-container::after {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+}
+
+/*about section images*/
+.about-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Optional: add rounded corners */
+
+    object-fit:fill;
+}
+
+

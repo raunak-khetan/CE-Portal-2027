@@ -1,14 +1,14 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CFA Registration - Step 1</title>
+    <title>CFA Registration - Basic Information</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{% static 'cfa/style_base.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'cfa/style_base.css' %}?v=cfa_figma_v1" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9VT4R4Z7"></script>
     <script>
@@ -21,121 +21,129 @@
 </head>
 <body>
     <!-- Navbar -->
-    <header class="navbar">
-        <div class="navbar-left">
-          <img src="{% static 'core/landing/logo.png' %}" class="logo" alt="Logo" />
-          <span>ALCHERINGA</span>
+    <header class="navbar-wrapper">
+      <nav class="nav-bar">
+        <div class="nav-brand">
+          <a href="{% url 'prelimspage' %}" class="brand-link">
+            <img src="{% static 'core/landing/logo.png' %}" class="brand-logo" alt="Logo" />
+            <div class="brand-text">
+              <span class="brand-alcheringa">ALCHERINGA</span>
+              <span class="brand-year">2027</span>
+            </div>
+          </a>
         </div>
-        <div class="navbar-right">
-
-          <!--  search input (hidden by default) next to your search icon -->
-<input type="text" id="navbar-search" placeholder="Search..." style="display:none; padding:5px; border-radius:5px; border:1px solid #ccc; margin-left:10px;">
-
+        <div class="nav-links">
+          <a href="{% url 'competitions' %}">Competitions</a>
+          <a href="{% url 'prelimspage' %}#faq">FAQs</a>
+          <a href="{% url 'prelimspage' %}#contact">Contact</a>
         </div>
-        
-        
-      </header>
-      
+        <div class="nav-action">
+          <a href="{% url 'cfa_step1' %}" class="nav-register-btn">Register</a>
+        </div>
+      </nav>
+    </header>
 
-    <!-- Progress Bar -->
+    <!-- Stepper / Progress Bar -->
     <div class="steps-container">
-        <!-- Step 1: Active -->
-        <div class="step active">
-          <div class="circle">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <p>Step 1</p>
-          <span>Basic Information</span>
+      <div class="step-track-line line-1"></div>
+      <div class="step-track-line line-2"></div>
+
+      <!-- Step 1: Active -->
+      <div class="step-item step-1 active">
+        <div class="step-box">
+          <span class="step-num">1</span>
+          <svg class="check-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
-      
-        <div class="line"></div>
-      
-        <!-- Step 2: Upcoming -->
-        <div class="step">
-          <div class="circle">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <p>Step 2</p>
-          <span>College and Fest Information</span>
-        </div>
-      
-        <div class="line"></div>
-      
-        <!-- Step 3: Upcoming -->
-        <div class="step">
-          <div class="circle">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <p>Step 3</p>
-          <span>Fest Operations</span>
-        </div>
+        <span class="step-title">Basic Information</span>
       </div>
-      
-      
-      
-      
-      
+
+      <!-- Step 2: Upcoming -->
+      <div class="step-item step-2">
+        <div class="step-box">
+          <span class="step-num">2</span>
+          <svg class="check-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span class="step-title">College and Fest information</span>
+      </div>
+
+      <!-- Step 3: Upcoming -->
+      <div class="step-item step-3">
+        <div class="step-box">
+          <span class="step-num">3</span>
+          <svg class="check-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span class="step-title">Fest Operations</span>
+      </div>
+    </div>
 
     <!-- Form Container -->
     <div class="form-container">
-        <!-- Back Arrow -->
-        <a href="{% url 'prelimspage' %}" class="back-arrow">&#8592;</a>
+      <a href="{% url 'prelimspage' %}" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="8" x2="4" y2="8"></line>
+          <polyline points="8 4 4 8 8 12"></polyline>
+        </svg>
+        <span>Back</span>
+      </a>
 
-        <h2>Basic Information</h2>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <div class="form-grid">
+      <h2 class="form-title">Basic Information</h2>
 
-                <div class="form-group">
-                    {{ form.full_name.label_tag }}
-                    {{ form.full_name }}
-                    {{ form.full_name.errors }}
-                </div>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+          </div>
 
-                <div class="form-group">
-                    {{ form.email.label_tag }}
-                    {{ form.email }}
-                    {{ form.email.errors }}
-                </div>
+          <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
 
-                <div class="form-group">
-                    {{ form.age.label_tag }}
-                    {{ form.age }}
-                    {{ form.age.errors }}
-                </div>
+          <div class="form-group">
+            <label for="{{ form.age.id_for_label }}">Age</label>
+            {{ form.age }}
+            {{ form.age.errors }}
+          </div>
 
-                <div class="form-group">
-                    {{ form.college_id_card_link.label_tag }}
-                    {{ form.college_id_card_link }}
-                    {{ form.college_id_card_link.errors }}
-                </div>
+          <div class="form-group">
+            <label for="{{ form.college_id_card_link.id_for_label }}">College ID(Google drive link)</label>
+            {{ form.college_id_card_link }}
+            {{ form.college_id_card_link.errors }}
+          </div>
 
-                <div class="form-group">
-                    {{ form.phone_number.label_tag }}
-                    {{ form.phone_number }}
-                    {{ form.phone_number.errors }}
-                </div>
+          <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Phone number</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.errors }}
+          </div>
 
-                <div class="form-group">
-                    {{ form.alternate_phone.label_tag }}
-                    {{ form.alternate_phone }}
-                    {{ form.alternate_phone.errors }}
-                </div>
+          <div class="form-group">
+            <label for="{{ form.alternate_phone.id_for_label }}">Alternate phone number(optional)</label>
+            {{ form.alternate_phone }}
+            {{ form.alternate_phone.errors }}
+          </div>
+        </div>
 
-            </div>
-
-            <!-- Next Button inside grey box -->
-            <div class="form-footer">
-                <button type="submit" class="next-btn">Next</button>
-            </div>
-        </form>
+        <div class="form-footer">
+          <button type="submit" class="next-btn">
+            <span>Next</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="6" x2="10" y2="6"></line>
+              <polyline points="6 2 10 6 6 10"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
-    
 </body>
 </html>

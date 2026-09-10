@@ -1,0 +1,2882 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;500;600;700&display=swap');
+
+/* raunak start */
+/* Base theme */
+@font-face {
+  font-family: "Sao Torpes";
+  src: url("fonts/SaoTorpes.woff2") format("woff2"),
+    url("fonts/SaoTorpes.woff") format("woff"),
+    url("fonts/SaoTorpes.ttf") format("truetype"),
+    url("fonts/SaoTorpes.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Lexend;
+  src: url("fonts/Lexend[wght].ttf") format("truetype");
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: #161616;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  position: relative;
+}
+.first-page {
+  position: relative;
+  height: 782px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* text left, image right */
+  align-items: center;
+  gap: 48px;
+  padding: 40px min(4vw, 32px);
+  padding-bottom: 180px;
+  padding-top:0;
+}
+
+/* Left column */
+.container {
+  justify-self: center;
+  margin-left: 120px;
+  margin-top: 150px;
+}
+
+.heading {
+  font-family: "Sao Torpes", Arial, sans-serif;
+  color: #bdf522;
+  letter-spacing: 0.04em;
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 0 0 16px 0;
+  font-size: 40px;
+  line-height: 105%;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.location {
+  font-family: Lexend;
+  font-size: 26px;
+  font-weight: 500;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.para {
+  font-family: Lexend;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -3%;
+  line-height: 135%;
+}
+
+.highway-page p {
+  color: #FFFFFF;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.register-btn {
+  /* Figma: Horizontal flow, Hug width/height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Figma gap */
+  padding: 14px 24px; /* top/bottom 14, left/right 24 */
+  border: 2px solid #bdf522; /* Figma border */
+  color: #bdf522;
+  background: transparent;
+  font-family: Lexend, "Sao Torpes", Arial, sans-serif;
+  font-weight: 400;
+}
+
+
+/* Right column */
+.image-container {
+  display: grid;
+  gap: 14px;
+  justify-self: start;
+  margin-top: 80px;
+  margin-left: 32px;
+}
+.flower {
+  position: absolute;
+  right: 3.5vw;
+  top: 180px;
+}
+
+.image-1 {
+  border: 4px solid #bdf522;
+  border-radius: 16px;
+  width: 566px;
+  height: 530px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Hero slider */
+.image-1 .slider-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+.image-1 .slider-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.image-1 .slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.slidebtn {
+  height: 36px;
+  width: 36px;
+  border-radius: 999px;
+  background-color: #bdf522;
+  border: 1px solid #bdf522;
+  cursor: pointer;
+}
+.slidebtn:nth-child(2) {
+  background-color: #bdf522;
+  color: #161616;
+}
+
+.slide-dots {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: 8px;
+}
+.slide-dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 999px;
+  background: #4b4f57;
+  display: inline-block;
+}
+.slide-dot.is-active {
+  background: #bdf522;
+}
+
+/* Decorative left contour star */
+.star {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0; /* keep behind interactive elements like buttons */
+}
+.decor-star {
+  width: 174.06px;
+  height: 174.06px; /* adjust as needed */
+  transform: rotate(-10deg);
+  border-radius: 75.37px;
+  overflow: hidden;
+  pointer-events: none; /* purely decorative */
+}
+.decor-star img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.font-sao-tapos,
+.font-sao-torpes {
+  font-family: "Sao Torpes", Arial, sans-serif;
+}
+
+/* Competition page */
+.competition-page {
+  padding: 32px min(4vw, 32px) 64px;
+  background-color: #202020;
+}
+
+.competition-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.competition-header .heading {
+  margin: 0;
+}
+
+.city-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* City filter button style fix */
+.city-select .city-button {
+  background: transparent;
+  color: #bdf522;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.city-select .city-button:focus {
+  outline: 2px solid #bdf522;
+  outline-offset: 2px;
+}
+.city-select .city-button:hover,
+.city-select .city-button:active {
+  background: #202020;
+  color: #bdf522
+  ;
+}
+.city-select .city-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: #1f1f1f;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+  z-index: 5;
+}
+
+
+.city-select .city-dropdown li {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+.city-select .city-dropdown li:hover,
+.city-select .city-dropdown li.is-active {
+  background: rgba(189, 245, 34, 0.12);
+  color: #bdf522;
+}
+
+.competition-subinfo {
+  margin-top: 8px;
+  color: #95c71b;
+  display: flex;
+  gap: 16px;
+}
+
+.cards-grid {
+  margin-top: 24px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: minmax(450px, auto);
+}
+
+.comp-card {
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 271px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.comp-card .card-media {
+  position: relative;
+  height: 247px;
+  overflow: hidden;
+  padding: 10px; /* create inner gap between container and image */
+}
+
+.comp-card .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background: #222;
+}
+
+.badge {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  left: auto;
+  background: #161616;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px 6px;
+  overflow: visible;
+}
+
+
+.about-the-event{
+  color:white;
+}
+
+.card-title {
+  margin: 0 0 9px; /* add more space before date/venue */
+  font-size: 20px;
+  color: #bdf522;
+  font-family: Sao Torpes;
+  line-height: 120%;
+}
+
+.card-event-type{
+  margin: 0 0 9px;
+  font-family: Lexend;
+  color:#FFFFFF99;
+
+}
+
+.card-desc {
+  margin: 0 0 12px;
+  color: #a6d63b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.card-details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: grid;
+  gap: 14px; /* increase row gap for clarity */
+}
+
+.card-details .detail-label {
+  color: #7fb115;
+  margin-right: 6px;
+  margin-top: 16px;
+}
+.detail-value {
+  color: white;
+}
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto; /* push footer to bottom */
+  
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.style-img {
+  width: 44px;
+  height: 44px;
+  margin-right: 10px;
+}
+
+/* Register button in card */
+.card-actions .register-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  color: #fff;
+  background: #222;
+  box-shadow: inset 0 0 0 1px rgba(189, 245, 34, 0.25);
+  
+  /* Add this line to shift it slightly upwards */
+  position: relative;
+  top: -6px; /* adjust this value as needed (e.g., -4px, -8px) */
+}
+
+
+
+
+.register-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  color: #fff;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(189, 245, 34, 0.25);
+  
+  /* Add these lines ↓ */
+  margin-left: auto;
+  align-self: center;
+}
+
+
+
+
+/* Participate section removed */
+
+/* registrtion form*/
+.page-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+main {
+  flex: 1;
+}
+
+aside.sidebar {
+  position: sticky;
+  top: 32px;
+  align-self: flex-start;
+  height: fit-content;
+  z-index: 2;
+}
+
+.card {
+  background: rgba(32, 32, 32, 1);
+  border-radius: 8px;
+  padding: 32px 28px;
+  margin-bottom: 32px;
+}
+.section-title {
+  color: #bdf522;
+  font-family: DM Sans, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: titlecase;
+  letter-spacing: 0%;
+}
+.member-card {
+  background: rgba(32, 32, 32, 1);
+  border-radius: 12px;
+  gap: 32px;
+}
+
+.member-card h3 {
+  color: rgba(555, 255, 255, 0.87) !important;
+  font-size: 24px !important;
+  font-weight: bold;
+  margin-bottom: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.field {
+  margin-bottom: 16px;
+  font-family: Lexend;
+  color: rgba(255, 255, 255, 0.6);
+}
+.team-detail{
+  height:50px;
+}
+
+.field label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Lexend;
+}
+
+input,
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #bdf522;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  margin-left: auto;
+}
+
+.register-btn,
+.btn {
+  background: #bdf522;
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background: #ff3b3b;
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.sidebar .card {
+  padding: 28px 22px 28px 22px;
+  width: 336px;
+  height: 400px;
+  border-radius: 14px;
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .section-title {
+  font-family: "Sao Torpes", Arial, sans-serif;
+  color: #bdf522;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+}
+
+ul.meta {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  width: 292px;
+  height: 228px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.meta li {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 0;
+}
+
+.meta-icon {
+  background: #343434;
+  border-radius: 8px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.meta-about {
+  width: 201px;
+  height: 66px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Lexend;
+}
+.meta .info {
+  display: flex;
+  gap: 2px;
+  font-family: Lexend;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: Lexend;
+  font-weight: 400;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  padding-top: 15px;
+}
+.field.gender {
+  display: block;
+  margin-bottom: 18px;
+}
+
+/* Year: same layout and styling as gender */
+.field.year {
+  display: block;
+  margin-bottom: 18px;
+}
+.field.year .year-group {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.field.year .year-box {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding:0;
+}
+.field.year .year-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.field.year .year-box span {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #232323;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.field.year .year-box input[type="radio"]:checked + span {
+  border-color: #bdf522;
+  color: #bdf522;
+  background: #181818;
+}
+
+/* Make any container that holds the radios a horizontal flex row */
+.field.gender .gender-group,
+.field.gender ul,
+.field.gender div[id^="id_gender"] {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.field.gender ul li {
+  margin: 0;
+}
+
+/* Pill style for labels regardless of exact markup */
+.field.gender ul li label,
+.field.gender label[for^="id_gender_"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #232323;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+/* Hide the native radio circle but keep it accessible */
+.field.gender input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* Selected state - cover multiple DOM orders */
+.field.gender ul li label:has(input:checked),            /* input inside label */
+.field.gender input[type="radio"]:checked + label,      /* input before label */
+.field.gender label[for^="id_gender_"]:has(+ input:checked) {
+  /* label before input */
+  border-color: #bdf522;
+  color: #bdf522;
+}
+
+/* Custom gender box (input inside label before span) */
+.field.gender .gender-box {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding:0;
+}
+.field.gender .gender-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.field.gender .gender-box span {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #444;
+  border-radius: 8px;
+
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.field.gender .gender-box input[type="radio"]:checked + span {
+  border-color: #bdf522;
+  color: #bdf522;
+}
+
+/* Disability radios styled like gender/year */
+.field.disability .disability-group {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.field.disability .disability-box {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding:0;
+}
+.field.disability .disability-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.field.disability .disability-box span {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #232323;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.field.disability .disability-box input[type="radio"]:checked + span {
+  border-color: #bdf522;
+  color: #bdf522;
+  background: #181818;
+}
+
+/* Global */
+body {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card Layouts */
+.card {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px #333;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #BDF522;
+  text-align: center;
+}
+
+.field {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+.field input,
+.field select,
+.field textarea {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.gender-group,
+.disability-group,
+.year-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gender-box,
+.disability-box,
+.year-box {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border: 1px solid #555;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.gender-box input,
+.disability-box input,
+.year-box input {
+  margin-right: 5px;
+}
+
+.register-btn {
+  background-color: #BDF522;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  color: black;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.member-card {
+  border: 1px solid #333;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+}
+
+/* making changes form here- */
+/* Container fields */
+
+
+/* Input, Select, and Radio Fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Gender, PwD, Year Radio Groups */
+.gender-group,
+.disability-group,
+.year-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Radio buttons custom look */
+.gender-box,
+.disability-box,
+.year-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+}
+
+.gender-box:hover,
+.disability-box:hover,
+.year-box:hover {
+  background-color: #333;
+}
+
+/* Highlight selected radio */
+.gender-box input[type="radio"]:checked + span,
+.disability-box input[type="radio"]:checked + span,
+.year-box input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: #BDF522;
+}
+
+/* Buttons */
+.register-btn {
+  background-color: #ccff00;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: #b4eb00;
+}
+
+/* Explicit footer button reset */
+footer button,
+footer button[type="button"],
+.footer button {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Error Styles */
+.field-error {
+  font-size: 13px;
+  color: #ff4d4d;
+  margin-top: -10px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+}
+.member-card .field label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #BDF522;
+}
+
+.member-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #BDF522;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .first-page {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    height: auto;
+    padding: 32px 24px;
+  }
+  .container {
+    margin-left: 40px;
+    margin-top: 40px;
+  }
+  .heading {
+    font-size: 32px;
+  }
+  .location {
+    font-size: 22px;
+  }
+  .para {
+    font-size: 16px;
+  }
+  .image-container {
+    margin-top: 24px;
+    margin-left: 0;
+    justify-self: center;
+  }
+  .image-1 {
+    width: 380px;
+    height: 440px;
+  }
+  .flower {
+    right: 40px;
+    top: 140px;
+    width:80px;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .comp-card {
+    width: 100%;
+  }
+  .comp-card .card-media {
+    height: 200px;
+  }
+  .badge {
+    left: auto;
+    right: 8px;
+  }
+  .participate-section {
+    height: auto;
+    padding: 32px 16px 48px;
+  }
+  .participate-section .content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .participate-section .content h2 {
+    font-size: 34px;
+  }
+  .page-wrap {
+    gap: 24px;
+  }
+  .sidebar .card {
+    width: 300px;
+    height: auto;
+  }
+}
+
+/* Laptop-ish widths (≤1000px): shrink and tuck decorative tiles */
+@media (max-width: 1000px) {
+  .participate-section .content {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .participate-section img[class^="pos-"] {
+    display: none !important;
+  }
+  .participate-section .content h2 { font-size: 36px; }
+  .participate-section .content p { font-size: 16px; }
+  /* Position rules not needed below 1000px since tiles are hidden */
+
+  /* Hero decorative elements: shrink and move away from buttons */
+  .star {
+    left: -32px;
+    bottom: -24px;
+    z-index: -1;
+  }
+  .decor-star {
+    width: 120px;
+    height: 120px;
+  }
+  .flower {
+    right: 24px;
+    top: 110px;
+    width: 120px;
+  }
+}
+
+/* Mid devices (≤900px) */
+@media (max-width: 900px) {
+  .first-page {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 28px 18px;
+  }
+  .container {
+    margin-left: 16px;
+    margin-top: 24px;
+  }
+  .heading {
+    font-size: 30px;
+  }
+  .location {
+    font-size: 20px;
+  }
+  .para {
+    font-size: 15px;
+  }
+  .image-container {
+    margin-top: 16px;
+    margin-left: 0;
+  }
+  .image-1 {
+    width: 340px;
+    height: 400px;
+  }
+  /* Decorative adjustments on tablets */
+  .star {
+    left: -20px;
+    bottom: -20px;
+  }
+  .decor-star {
+    width: 120px;
+    height: 120px;
+  }
+  .flower {
+    right: 30px;
+    top: 120px;
+    width: 90px;
+  }
+  /* Show event summary above the form on medium screens */
+  .page-wrap {
+    flex-direction: column;
+  }
+  .page-wrap > aside.sidebar {
+    order: -1;
+    margin-bottom: 12px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .card-actions {
+    margin-bottom: 12px !important;
+  }
+  .comp-card .card-media {
+    padding: 10px !important;
+    height: 180px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .comp-card .card-media img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important;
+    background: #222 !important;
+    display: block !important;
+  }
+  .card-body {
+    padding: 10px 10px 4px !important;
+    gap: 6px !important;
+  }
+  .card-details {
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+  .comp-card .card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    background: #222;
+  }
+  .first-page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 16px;
+  }
+  .container {
+    margin-left: 0;
+    margin-top: 0;
+    text-align: center;
+  }
+  .highway-page p {
+    margin-bottom: 16px;
+  }
+  .heading {
+    font-size: 28px;
+  }
+  .location {
+    font-size: 20px;
+  }
+  .para {
+    font-size: 15px;
+  }
+  .register-btn {
+    padding: 12px 18px;
+  }
+  .image-container {
+    justify-self: center;
+    margin-top: 0;
+  }
+  .image-1 {
+    width: min(88vw, 360px);
+    height: min(58vw, 280px);
+  }
+  .flower {
+    right: 12px;
+    top: 150px;
+    width: 100px;
+  }
+  .image-nav {
+    justify-content: center;
+  }
+  .slidebtn {
+    height: 30px;
+    width: 30px;
+  }
+  .slide-dot {
+    height: 5px;
+    width: 5px;
+  }
+  .star {
+    left: -18px;
+    bottom: -18px;
+  }
+  .decor-star {
+    width: 100px;
+    height: 100px;
+  }
+  .competition-page {
+    padding: 24px 16px 40px;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .comp-card {
+    width: 100%;
+  }
+  .comp-card .card-media {
+    height: 150px;
+  }
+  .card-title {
+    font-size: 16px;
+  }
+  .card-details {
+    gap: 8px;
+  }
+  /* participate-section removed */
+
+  /* Register page layout */
+  .page-wrap {
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px auto;
+  }
+  aside.sidebar {
+    position: static;
+    width: 100%;
+    order: -1; /* Move event summary to top on mobile */
+    margin-bottom: 12px;
+  }
+  .sidebar .card {
+    width: 100%;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  input,
+  select,
+  textarea {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+  .section-title {
+    font-size: 20px;
+  }
+  .member-card h3 {
+    font-size: 18px !important;
+  }
+  .actions {
+    gap: 12px;
+    justify-content: stretch;
+  }
+  .actions .register-btn,
+  .actions .btn {
+    flex: 1;
+  }
+  .meta-about {
+    font-size: 16px;
+    width: auto;
+    height: auto;
+  }
+  .meta .info {
+    font-size: 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .heading {
+    font-size: 22px;
+  }
+  .location {
+    font-size: 18px;
+  }
+  .para {
+    font-size: 13px;
+  }
+  .register-btn {
+    padding: 8px 14px;
+  }
+  .comp-card .card-media {
+    height: 110px;
+  }
+  .card-title {
+    font-size: 13px;
+  }
+  /* Smaller decorative sizes */
+  .flower {
+    right: 8px;
+    top: 16px;
+    width: 80px;
+  }
+  .star {
+    left: -16px;
+    bottom: -16px;
+  }
+  .decor-star {
+    width: 90px;
+    height: 90px;
+  }
+  .section-title {
+    font-size: 18px;
+  }
+  input,
+  select,
+  textarea {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  .style-img {
+    display: none;
+  }
+}
+
+/* Hide flower on narrow devices ≤600px */
+@media (max-width: 600px) {
+  .flower { display: none !important; }
+}
+
+/* Hide flower on screens narrower than 750px */
+@media (max-width: 750px) {
+  .flower { display: none !important; }
+}
+/* raunak end */
+
+/*sanchit start*/
+@font-face {
+	font-family: 'Carltine';
+	src: url('/static/core/fonts/CarltineMedium-MVnzn.ttf');
+}
+
+@font-face {
+	font-family: 'Bosten';
+	src: url('/static/core/fonts/bostenregular-l3ljd.otf');
+}
+
+@font-face {
+	font-family: 'CarltineBold';
+	src: url('/static/core/fonts/CarltineBold-BWxy8.ttf');
+}
+
+@font-face {
+	font-family: 'Carltinelight';
+	src: url('/static/core/fonts/CarltineLight-rgjVL.ttf');
+}
+
+
+
+	/* Font declarations */
+@font-face {
+    font-family: 'Sao Torpes';
+    src: url('fonts/saotorpes.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('fonts/Lexend[wght].ttf') format('truetype-variations');
+    font-weight: 400 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Reset and base styles */
+.alcher-blocks * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alcher-blocks body {
+    background-color: #000000;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== BLOCK STRUCTURE ===== */
+.alcher-blocks .highway-block {
+    background-color: #0F0F0F;
+    min-height: 969px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.alcher-blocks .sponsors-block {
+    background-color: #000000;
+    padding: 60px 0;
+    border-bottom: 2px solid #333333;
+}
+
+.alcher-blocks .footer-block {
+    background-color: #000000;
+    padding: 120px 0 60px 0;
+}
+
+/* ===== HIGHWAY SECTION — FILM REEL DESIGN (Figma Desktop - 2 / Component 37) ===== */
+.alcher-blocks .film-reel-section {
+    position: relative;
+    width: 1443px;
+    max-width: 100%;
+    height: 969px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+/* Film Canister (image 262 in Component 37) */
+.alcher-blocks .film-canister {
+    position: absolute;
+    left: 46px;
+    top: calc(50% - 457px / 2 + 1px);
+    z-index: 10;
+    width: 234px;
+    height: 457px;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-canister-inner {
+    position: relative;
+    width: 234px;
+    height: 457px;
+}
+
+.alcher-blocks .film-canister img {
+    width: 234px;
+    height: 457px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* Text overlay on yellow label */
+.alcher-blocks .canister-text {
+    position: absolute;
+    left: 23px;
+    top: 105px;
+    width: 118px;
+    height: 315px;
+    pointer-events: none;
+}
+
+.alcher-blocks .canister-stat {
+    position: absolute;
+    color: #111111;
+    font-family: 'Hepta Slab', serif;
+    line-height: 1;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* 21 cities: in left column at bottom */
+.alcher-blocks .canister-stat--cities {
+    left: 29px;
+    bottom: 12px;
+    width: 20px;
+    height: 73px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 36 colleges: in left column at top */
+.alcher-blocks .canister-stat--colleges {
+    left: 29px;
+    top: 10px;
+    width: 20px;
+    height: 99px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 50 Competitions: in right column centered */
+.alcher-blocks .canister-stat--competitions {
+    right: 8px;
+    top: 56px;
+    width: 27px;
+    height: 203px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Highway to Alcher Card (Frame 6356941) */
+.alcher-blocks .newspaper-card {
+    position: absolute;
+    left: 117px;
+    top: 152px;
+    z-index: 4;
+    width: 407px;
+    height: 468px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.alcher-blocks .newspaper-card-inner {
+    position: relative;
+    width: 407px;
+    height: 468px;
+}
+
+.alcher-blocks .newspaper-card-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 407px;
+    height: 468px;
+    display: block;
+    filter: drop-shadow(4px 4px 14px rgba(0, 0, 0, 0.5));
+}
+
+.alcher-blocks .newspaper-card-photo {
+    position: absolute;
+    left: 23px;
+    top: 84px;
+    width: 352px;
+    height: 360px;
+    display: block;
+}
+
+.alcher-blocks .newspaper-card-title {
+    position: absolute;
+    width: 312.97px;
+    height: 21px;
+    left: 70.51px;
+    top: 15.4px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    color: #000000;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-sub {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 69px;
+    width: 312px;
+    height: 17px;
+    left: 65.36px;
+    top: 57.99px;
+    transform: rotate(7.59deg);
+    transform-origin: 0 0;
+    pointer-events: none;
+}
+
+.alcher-blocks .newspaper-card-glimpses {
+    width: 200px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+.alcher-blocks .newspaper-card-year {
+    width: 43px;
+    height: 17px;
+    font-family: 'Hepta Slab', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: center;
+    color: rgba(15, 15, 15, 0.7);
+    white-space: nowrap;
+}
+
+/* Film Strip Assembly (Frame 6356928 inside Component 37) */
+.alcher-blocks .film-strip-container {
+    position: absolute;
+    left: 134.38px;
+    top: 347.95px;
+    width: calc(100% - 134.38px);
+    height: 303px;
+    overflow: hidden;
+    z-index: 6;
+}
+
+/* Film strip sprocket tracks (SVG assets Frame 6356925 & Frame 6356926) */
+.alcher-blocks .film-sprocket-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 28px;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.alcher-blocks .film-sprocket-track--top {
+    top: 0;
+}
+
+.alcher-blocks .film-sprocket-track--bottom {
+    bottom: 0;
+}
+
+.alcher-blocks .film-sprocket-inner {
+    display: flex;
+    width: max-content;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-sprocket-img {
+    height: 28px;
+    width: 2414px;
+    flex-shrink: 0;
+    display: block;
+    pointer-events: none;
+}
+
+/* The film strip itself (Frame 6356930) */
+.alcher-blocks .film-strip {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    align-items: stretch;
+    padding: 28px 0;
+    background-color: transparent;
+    animation: filmSlide 35s linear infinite;
+}
+
+.alcher-blocks .film-strip-svg {
+    width: 2414px;
+    height: 247px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Film strip slide animation — 3 copies of 2414px, sliding exactly 1 copy (-33.333333%) */
+@keyframes filmSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333333%); }
+}
+
+.alcher-blocks .film-strip:hover,
+.alcher-blocks .film-reel-section:hover .film-strip,
+.alcher-blocks .film-reel-section:hover .film-sprocket-inner {
+    animation-play-state: paused;
+}
+
+/* ===== SPONSORS SECTION ===== */
+.alcher-blocks .sponsors-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .sponsors-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: normal;
+    color: #BDF522;
+    margin-bottom: 4rem;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    line-height: 120%;
+}
+
+.alcher-blocks .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.alcher-blocks .sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 120px;
+    padding: 0.5rem;
+}
+
+.alcher-blocks .logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+}
+
+/* ===== FOOTER SECTION ===== */
+.alcher-blocks .footer {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.alcher-blocks .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.alcher-blocks .footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.alcher-blocks .main-message {
+    text-align: left;
+}
+
+.alcher-blocks .main-title {
+    font-family: 'Sao Torpes', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.alcher-blocks .register-btn {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 135%;
+    letter-spacing: -3%;
+    color: #161616;
+    background-color: #BDF522;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    height: fit-content;
+    min-height: 48px;
+}
+
+.alcher-blocks .register-btn:hover {
+    background-color: #BDF522;
+}
+
+.alcher-blocks .section-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #BDF522;
+    margin-bottom: 1rem;
+
+}
+
+.alcher-blocks .links-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.alcher-blocks .nav-link {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.alcher-blocks .nav-link:hover {
+    color: #BDF522;
+}
+
+.alcher-blocks .external-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.alcher-blocks .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .section-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.alcher-blocks .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alcher-blocks .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.alcher-blocks .contact-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.alcher-blocks .contact-phone {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+    font-weight: 400;
+    color: #cccccc;
+}
+
+/* Footer Bottom */
+.alcher-blocks .footer-bottom {
+    border-top: 1px solid #333333;
+    padding-top: 2rem;
+}
+
+.alcher-blocks .bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.alcher-blocks .copyright {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+.alcher-blocks .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.alcher-blocks .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.alcher-blocks .social-link:hover {
+    background-color: rgba(189, 245, 34, 0.2);
+}
+
+.alcher-blocks .social-icon {
+    width: 2rem;
+    height: 2rem;
+    filter: brightness(0) invert(1);
+}
+
+.alcher-blocks .credits {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.875rem;
+    color: #cccccc;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (min-width: 1024px) {
+    .alcher-blocks .footer-grid {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .alcher-blocks .main-message {
+        flex: 2;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(2)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3) {
+        flex: 1;
+        position: relative;
+        padding-left: 2rem;
+        text-align: left;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .alcher-blocks .footer-grid > div:nth-child(3)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .alcher-blocks .bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .alcher-blocks .highway-block {
+        padding: 40px 0;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .alcher-blocks .film-canister,
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 150px;
+        height: 293px;
+    }
+
+    .alcher-blocks .canister-text {
+        left: 15px;
+        top: 67px;
+        width: 76px;
+        height: 202px;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 19px;
+        bottom: 8px;
+        width: 13px;
+        height: 47px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 19px;
+        top: 6px;
+        width: 13px;
+        height: 63px;
+        font-size: 9px;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 5px;
+        top: 36px;
+        width: 17px;
+        height: 130px;
+        font-size: 13px;
+    }
+
+    .alcher-blocks .film-strip-container {
+        padding-left: 140px;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 140px;
+        height: 22px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 22px;
+        width: 1931px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 22px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 198px;
+        width: 1931px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 40px 0;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 3rem;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 150px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .alcher-blocks .highway-block {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background: #0F0F0F;
+        overflow: hidden;
+    }
+
+    .alcher-blocks .film-reel-section {
+        position: relative;
+        width: 100%;
+        max-width: 402px;
+        height: 484px;
+        min-height: 484px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #0F0F0F;
+    }
+
+    /* Film Canister */
+    .alcher-blocks .film-canister {
+        position: absolute;
+        left: 23px;
+        top: 169.5px;
+        z-index: 10;
+        width: 117px;
+        height: 228.5px;
+    }
+
+    .alcher-blocks .film-canister-inner,
+    .alcher-blocks .film-canister img {
+        width: 117px;
+        height: 228.5px;
+    }
+
+    .alcher-blocks .film-canister img {
+        filter: drop-shadow(4px 2px 4.35px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Canister Text Overlay */
+    .alcher-blocks .canister-text {
+        left: 11.5px;
+        top: 52px;
+        width: 59px;
+        height: 157px;
+    }
+
+    .alcher-blocks .canister-stat {
+        color: #523C00;
+    }
+
+    .alcher-blocks .canister-stat--cities {
+        left: 14px;
+        bottom: 6px;
+        width: 10px;
+        height: 37px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
+    }
+
+    .alcher-blocks .canister-stat--colleges {
+        left: 14px;
+        top: 5px;
+        width: 10px;
+        height: 50px;
+        font-size: 8.3px;
+        font-weight: 500;
+        mix-blend-mode: darken;
+    }
+
+    .alcher-blocks .canister-stat--competitions {
+        right: 4px;
+        top: 28px;
+        width: 13px;
+        height: 102px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    /* Newspaper Card (Frame 6356941) */
+    .alcher-blocks .newspaper-card {
+        position: absolute;
+        left: 58.5px;
+        top: 117px;
+        width: 176.5px;
+        height: 212.5px;
+        z-index: 4;
+    }
+
+    .alcher-blocks .newspaper-card-inner {
+        position: relative;
+        width: 176.5px;
+        height: 212.5px;
+    }
+
+    .alcher-blocks .newspaper-card-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 176.5px;
+        height: 212.5px;
+        filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .alcher-blocks .newspaper-card-photo {
+        position: absolute;
+        left: 11px;
+        top: 41.5px;
+        width: 153px;
+        height: 160px;
+    }
+
+    .alcher-blocks .newspaper-card-title {
+        position: absolute;
+        width: 156.5px;
+        height: 11px;
+        left: 35.19px;
+        top: 7.7px;
+        font-size: 10px;
+        line-height: 11px;
+        color: #000000;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-sub {
+        position: absolute;
+        width: 156.5px;
+        height: 8px;
+        left: 32.75px;
+        top: 29px;
+        gap: 34.5px;
+        transform: rotate(7.59deg);
+        transform-origin: 0 0;
+    }
+
+    .alcher-blocks .newspaper-card-glimpses {
+        width: 100px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    .alcher-blocks .newspaper-card-year {
+        width: 22px;
+        height: 8px;
+        font-size: 8px;
+        line-height: 8px;
+        text-align: center;
+        color: rgba(15, 15, 15, 0.7);
+    }
+
+    /* Film Strip Assembly (Frame 6356928) */
+    .alcher-blocks .film-strip-container {
+        position: absolute;
+        left: 67px;
+        top: 215px;
+        width: calc(100% - 67px);
+        height: 151.5px;
+        overflow: hidden;
+        z-index: 6;
+        padding-left: 0;
+    }
+
+    .alcher-blocks .film-sprocket-track {
+        left: 0;
+        right: 0;
+        height: 14px;
+    }
+
+    .alcher-blocks .film-sprocket-img {
+        height: 14px;
+        width: 1207px;
+    }
+
+    .alcher-blocks .film-strip {
+        padding: 14px 0;
+    }
+
+    .alcher-blocks .film-strip-svg {
+        height: 123.5px;
+        width: 1207px;
+    }
+    
+    .alcher-blocks .sponsors-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .footer-block {
+        padding: 30px 0;
+    }
+    
+    .alcher-blocks .sponsors-title {
+        font-size: 28px;
+        margin-bottom: 2rem;
+    }
+    
+    .alcher-blocks .sponsors-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .alcher-blocks .sponsor-logo {
+        width: 220px;
+        height: 140px;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation */
+.alcher-blocks .film-frame img {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Right edge fade for film strip */
+.alcher-blocks .film-strip-container .film-strip-fade {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    z-index: 6;
+    pointer-events: none;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+}
+
+.carousel-container {
+        position: relative;
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .section-title {
+        font-family: 'Saotorpes', sans-serif;
+        font-size: 2.5rem;
+        color: #D4FF00;
+        text-align: center;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding: 0 20px;
+      }
+
+      .carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Override the grid layout for carousel */
+      .carousel .comp-card {
+        min-width: 280px;
+        max-width: 280px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin: 0; /* Remove any default margins */
+      }
+
+      /* Ensure badges are positioned correctly */
+      .carousel .badge-type {
+        top: 40px;
+        text-align: center;
+      }
+
+      .pagination-arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .pagination {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        background-color: #444;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background-color: #bdf522;
+      }
+
+      .nav-arrows {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .nav-btn {
+        background: #222;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-btn.right {
+        background: #bdf522;
+        color: #000;
+      }
+
+      .nav-btn:hover {
+        background: #bdf522;
+        color: #000;
+      }
+
+      .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .carousel {
+          gap: 16px;
+          scroll-padding: 0 16px;
+        }
+
+        .carousel .comp-card {
+          min-width: 240px;
+          max-width: 240px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 30px;
+        }
+
+        .pagination-arrows {
+          padding: 0 16px;
+        }
+
+        .nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .carousel {
+          gap: 12px;
+          scroll-padding: 0 12px;
+        }
+
+        .carousel .comp-card {
+          min-width: 200px;
+          max-width: 200px;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 24px;
+        }
+      }
+
+.city-competitions{
+  margin-top: 15px;
+}
+
+		/* dropdown */
+
+		/* .deshboard {
+      margin-top: 0.2vw;
+      height: auto;
+      width: 34vw;
+      padding-top: 8%;
+      padding-bottom: 6vw;
+      padding-left: 1vw;
+    }
+
+    .func {
+      width: auto;
+      display: flex;
+      padding-bottom: 0vw;
+    }
+
+    .city-img-header {
+      margin-right: 18vw;
+    }
+
+    .drop-down {
+      margin-left: 0vw;
+      left: 23vw;
+    }
+
+    
+
+    .deshboard ul li {
+      margin-top: 4vw;
+      margin-bottom: 1vw;
+    }
+
+    .city-img-header {
+      height: 3.5vw;
+      padding-bottom: 2vw;
+    }
+
+    #head-img {
+      padding-top: 0;
+      /* width: 30vw; 
+      height: 14vw;
+      padding-bottom: 1vw;
+    }
+
+    .ul li a img {
+      height: 14vw;
+      padding-bottom: 2vw;
+      margin-left: -6vw;
+    } */
+
+		/* .masterdiv {
+      margin-top: 14vw;
+    } */
+
+		/* drop-city */
+		/* .dropdown-city {
+      position: absolute;
+      right: 4%;
+      top: 20%;
+      z-index: 2;
+      width: 30vw;
+      height: auto;
+      margin-right: 2vw;
+      margin-top: 0.2vw;
+      height: auto;
+      padding-bottom: 1vw;
+    }
+
+    .dropdown-city ul {
+      display: none;
+      margin-right: 3.6vw;
+    }
+
+    .dropdown-city ul li {
+      margin-bottom: 1vw;
+      list-style: none;
+    } */
+
+		/* .func-1 {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 3vw;
+      align-items: center;
+    }
+
+    .dropdown-city ul li img {
+      height: 12vw;
+      cursor: pointer;
+      margin-left: -3vw;
+    } */
+
+		/* .city-img-header1 {
+      min-width: 22vw;
+    }
+
+    .city-img-header1 a img {
+      height: 12vw;
+    } */
+		.dropdown-city ul li img {
+			width: 60%;
+			height: 100%;
+			cursor: pointer;
+		}
+
+		#down-btn {
+			height: 1.5vw;
+		}
+
+		.none {
+			width: 24vw;
+			height: 8vw;
+		}
+
+		/* para */
+		.para-2 {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.about-alcher {
+			width: 80vw;
+			height: 70vw;
+		}
+    
+		.about-alcher-inner {
+			width: 78vw;
+			height: 68vw;
+		}
+
+		.about-alcher-inner h2 {
+			font-size: 6vw;
+		}
+
+		.about-alcher-inner p {
+			font-size: 3vw;
+			width: 70vw;
+		}
+
+		.festflow-header {
+			font-size: 4vw;
+		}
+
+		.festflow-header p {
+			font-size: 3vw;
+		}
+
+		.grid {
+			display: flex;
+			justify-content: center;
+			margin-top: 7vw;
+			margin-bottom: 2vw;
+			display: grid;
+			grid-template-columns: repeat(2, 44vw);
+			text-align: center;
+			margin-left: 12vw;
+		}
+
+		.grid div {
+			padding: 1.5vw;
+			font-size: 3.4vw;
+			text-align: left;
+		}
+
+		/* second page */
+		.cartsdiv {
+			/* margin-top: 14vw; */
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 2.5vw;
+		}
+
+		.cart {
+			margin-top: 2vw;
+			width: 80vw;
+			height: 50vw;
+		}
+
+		.about-cart {
+			width: 80vw;
+			height: 50vw;
+			clip-path: polygon(2% 0, 100% 3.3%, 96% 95%, 0 100%);
+		}
+
+		.img-of-women img {
+			margin-left: 1vw;
+			width: 20vw;
+		}
+
+		.cart-content {
+			width: 50%;
+			height: 70%;
+		}
+
+		.cart-header {
+			font-size: 6vw;
+		}
+
+		.cart-header p {
+			font-size: 3vw;
+		}
+
+		.content-of-cart {
+			margin-top: 2.4vw;
+			width: 90%;
+			font-size: 2.4vw;
+		}
+
+		.cart-buttons {
+			margin-top: 2.4vw;
+			display: flex;
+			gap: 0.5vw;
+		}
+
+		.cart-register {
+			font-size: 2.4vw;
+			padding: 0.5vw;
+			width: 45%;
+			border-radius: 0.3vw;
+			border: 0.1vw solid #b86234;
+		}
+
+		.cart-register a {
+			text-decoration: none;
+		}
+
+		.cart-GUIDELINES {
+			font-size: 2.4vw;
+			padding: 0.5vw;
+			width: 45%;
+			border-radius: 0.3vw;
+			border: 0.1vw solid #b86234;
+		}
+
+		#aftermovie {
+			display: none;
+		}
+
+		#sponsers1 {
+			margin-top: 2vw;
+		}
+
+		/* .masterdiv{
+      margin-top: 8vw;
+    } */
+	}
+
+
+@media (min-width: 481px) and (max-width: 800px) {
+	.spons-audition,
+	.spons-media,
+	.spons-event {
+		gap: 1vmin;
+	}
+	.image-card {
+		width: 30%;
+	}
+}
+.venue {
+	margin-top: 5vmin;
+}
+.dropdown-select {
+	width: 100%;
+	color: #823329;
+	font-family: 'Carltine';
+	font-size: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Competition card media image */
+.comp-card .card-media .comp-img {
+	width: 247px;
+	height:247px;
+	object-fit: cover;
+	display: block;
+	padding-left: 0;
+	padding-block: 0;
+}
+
+/* Decorative image inside card footer */
+.card-actions .comps-img {
+	width: 44px;
+	height: 44px;
+	margin-right: 10px;
+	display: inline-block;
+	padding-left: 0;
+	padding-block: 0;
+}
+
+/*sanchit end*/
+input::placeholder {
+  color: #ccc !important;
+}
+/* Make placeholder text visible on dark backgrounds */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #bbb;        /* light gray color */
+  opacity: 1;         /* ensure full opacity */
+}
+
+/* For better cross-browser support */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+select::-moz-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+select:-ms-input-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #bbb !important;
+  opacity: 1 !important;
+}
