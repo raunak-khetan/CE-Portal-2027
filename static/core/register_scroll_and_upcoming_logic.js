@@ -7,18 +7,30 @@ const card = eventsGrid.querySelector(".reg-comp-card");
 const cardWidth = card.offsetWidth;
 const gap = parseFloat(getComputedStyle(eventsGrid).gap);
 
-const scrollAmount = (cardWidth + gap) * 3;
+function getScrollAmount() {
+    let cardsToMove = 3;
+
+    if (window.innerWidth < 1000) {
+        cardsToMove = 2;
+    }
+
+    if (window.innerWidth < 620) {
+        cardsToMove = 1;
+    }
+
+    return (cardWidth + gap) * cardsToMove;
+}
 
 rightArrow.addEventListener("click", () => {
     eventsGrid.scrollBy({
-        left: scrollAmount,
+        left: getScrollAmount(),
         behavior: "smooth"
     });
 });
 
 leftArrow.addEventListener("click", () => {
     eventsGrid.scrollBy({
-        left: -scrollAmount,
+        left: -getScrollAmount(),
         behavior: "smooth"
     });
 });

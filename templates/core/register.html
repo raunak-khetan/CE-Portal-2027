@@ -98,24 +98,52 @@
       </div>
 
       <nav class="home-navbar-links" id="home-navbar-links">
-        <a href="#competitions">Competitions</a>
-        <a href="#faqs">FAQs</a>
-        <a href="#contact">Contact</a>
+        <a href="/#competition-section">Competitions</a>
+        <a href="/#faq-section">FAQs</a>
+        <a href="#contacts">Contact</a>
       </nav>
 
-      <a href="#register" class="home-navbar-register">Register</a>
+      <a href="/#competition-section" class="home-navbar-register">Register</a>
 
-      <div
+      <button
+        type="button"
         class="home-navbar-hamburger"
-        onclick="
-          document
-            .getElementById('home-navbar-links')
-            .classList.toggle('is-open')
-        "
+        id="home-navbar-hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
       >
         &#9776;
-      </div>
+      </button>
     </header>
+
+    <script>
+      const hamburger = document.getElementById("home-navbar-hamburger");
+      const navLinks = document.getElementById("home-navbar-links");
+
+      hamburger.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const isOpen = navLinks.classList.toggle("is-open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+      });
+
+      navLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          navLinks.classList.remove("is-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !navLinks.contains(event.target) &&
+          !hamburger.contains(event.target)
+        ) {
+          navLinks.classList.remove("is-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
 
     <main class="hero-section">
       <div class="event-banner">

@@ -736,75 +736,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // ALL FILTERS BUTTON
+    // MOBILE FILTER BUTTON
     // =========================
 
-    if (allFiltersButton && mobileFilterPanel) {
+    if (mobileFilterButton && mobileFilterPanel) {
 
-        allFiltersButton.addEventListener(
-            "click",
-            event => {
+        mobileFilterButton.addEventListener("click", event => {
 
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
 
 
-                // =========================
-                // CLOSE CITY DROPDOWN
-                // =========================
+            // =========================
+            // CLOSE CITY DROPDOWN
+            // =========================
 
-                if (cityDropdownMenu) {
+            if (cityDropdownMenu) {
+                cityDropdownMenu.classList.remove("show");
+            }
 
-                    cityDropdownMenu
-                        .classList
-                        .remove("show");
-
-                }
-
-                if (cityButton) {
-
-                    cityButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
+            if (cityButton) {
+                cityButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
 
 
-                // =========================
-                // POSITION FILTER PANEL
-                // =========================
+            // =========================
+            // TOGGLE FILTER PANEL
+            // =========================
 
-                const isOpening =
-                    !mobileFilterPanel.classList.contains("show");
-
-
-                if (isOpening) {
-
-                    const rect =
-                        allFiltersButton.getBoundingClientRect();
+            const isOpening =
+                !mobileFilterPanel.classList.contains("show");
 
 
-                    mobileFilterPanel.style.top =
-                        `${rect.bottom + 8}px`;
+            if (isOpening) {
 
+                const rect =
+                    mobileFilterButton.getBoundingClientRect();
 
-                    mobileFilterPanel.style.right =
-                        `${window.innerWidth - rect.right}px`;
+                mobileFilterPanel.style.top =
+                    `${rect.bottom + 8}px`;
 
-                }
+                mobileFilterPanel.style.right =
+                    `${window.innerWidth - rect.right}px`;
 
+                mobileFilterPanel.style.left =
+                    "auto";
 
-                // =========================
-                // TOGGLE FILTER PANEL
-                // =========================
+                mobileFilterPanel.classList.add("show");
 
-                mobileFilterPanel
-                    .classList
-                    .toggle("show");
+            } else {
+
+                mobileFilterPanel.classList.remove("show");
 
             }
-        );
+
+        });
+
+
+        // =========================
+        // KEEP PANEL WITH BUTTON
+        // WHILE SCROLLING
+        // =========================
+
+        window.addEventListener("scroll", () => {
+
+            if (!mobileFilterPanel.classList.contains("show")) {
+                return;
+            }
+
+            const rect =
+                mobileFilterButton.getBoundingClientRect();
+
+            mobileFilterPanel.style.top =
+                `${rect.bottom + 8}px`;
+
+            mobileFilterPanel.style.right =
+                `${window.innerWidth - rect.right}px`;
+
+            mobileFilterPanel.style.left =
+                "auto";
+
+        });
 
     }
 
@@ -833,75 +848,146 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     // =========================
-    // MOBILE FILTER BUTTON
+    // DESKTOP ALL FILTERS BUTTON
     // =========================
 
-    if (mobileFilterButton && mobileFilterPanel){
+    if (allFiltersButton && mobileFilterPanel) {
 
-        mobileFilterButton.addEventListener(
-            "click",
-            event => {
+        allFiltersButton.addEventListener("click", event => {
 
-                event.stopPropagation();
+            // Only handle this for screens above 768px
+            if (window.innerWidth <= 768) {
+                return;
+            }
 
-
-                // =========================
-                // CLOSE CITY DROPDOWN
-                // =========================
-
-                if (cityDropdownMenu) {
-
-                    cityDropdownMenu
-                        .classList
-                        .remove("show");
-
-                }
-
-                if (cityButton) {
-
-                    cityButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
+            event.preventDefault();
+            event.stopPropagation();
 
 
-                // =========================
-                // POSITION MOBILE FILTER
-                // =========================
+            // =========================
+            // CLOSE CITY DROPDOWN
+            // =========================
 
-                const isOpening =
-                    !mobileFilterPanel.classList.contains("show");
+            if (cityDropdownMenu) {
+                cityDropdownMenu.classList.remove("show");
+            }
 
-                if (isOpening) {
-
-                    const rect =
-                        mobileFilterButton.getBoundingClientRect();
-
-                    mobileFilterPanel.style.top =
-                        `${rect.bottom + 8}px`;
-
-                    mobileFilterPanel.style.right =
-                        `${window.innerWidth - rect.right}px`;
-                }
+            if (cityButton) {
+                cityButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
 
 
-                // =========================
-                // TOGGLE MOBILE FILTER
-                // =========================
+            // =========================
+            // TOGGLE FILTER PANEL
+            // =========================
 
-                mobileFilterPanel
-                    .classList
-                    .toggle("show");
+            const isOpening =
+                !mobileFilterPanel.classList.contains("show");
+
+
+            if (isOpening) {
+
+                // Show first so offsetWidth is available
+                mobileFilterPanel.classList.add("show");
+
+
+                // Get All Filters button position
+                const rect =
+                    allFiltersButton.getBoundingClientRect();
+
+
+                // Position panel below the button
+                mobileFilterPanel.style.top =
+                    `${rect.bottom + 8}px`;
+
+
+                // Align right edge of panel
+                // with right edge of All Filters button
+                mobileFilterPanel.style.left =
+                    `${rect.right - mobileFilterPanel.offsetWidth}px`;
+
+                mobileFilterPanel.style.right =
+                    "auto";
+
+            } else {
+
+                mobileFilterPanel.classList.remove("show");
 
             }
-        );
+
+        });
+
+
+        // =========================
+        // KEEP PANEL WITH BUTTON
+        // WHILE SCROLLING
+        // =========================
+
+        window.addEventListener("scroll", () => {
+
+            if (
+                window.innerWidth <= 768 ||
+                !mobileFilterPanel.classList.contains("show")
+            ) {
+                return;
+            }
+
+
+            const rect =
+                allFiltersButton.getBoundingClientRect();
+
+
+            mobileFilterPanel.style.top =
+                `${rect.bottom + 8}px`;
+
+
+            mobileFilterPanel.style.left =
+                `${rect.right - mobileFilterPanel.offsetWidth}px`;
+
+
+            mobileFilterPanel.style.right =
+                "auto";
+
+        });
+
+
+        // =========================
+        // KEEP POSITION CORRECT
+        // WHEN WINDOW RESIZES
+        // =========================
+
+        window.addEventListener("resize", () => {
+
+            if (
+                window.innerWidth <= 768 ||
+                !mobileFilterPanel.classList.contains("show")
+            ) {
+                return;
+            }
+
+
+            const rect =
+                allFiltersButton.getBoundingClientRect();
+
+
+            mobileFilterPanel.style.top =
+                `${rect.bottom + 8}px`;
+
+
+            mobileFilterPanel.style.left =
+                `${rect.right - mobileFilterPanel.offsetWidth}px`;
+
+
+            mobileFilterPanel.style.right =
+                "auto";
+
+        });
 
     }
-
 
     // =========================
     // MOBILE FILTER CLOSE BUTTON

@@ -15,17 +15,22 @@ document.querySelectorAll(".card-actions .register-btn").forEach(button => {
 document.querySelectorAll(".comp-card").forEach(card => {
     card.addEventListener("click", function(event) {
 
-        // If the user clicked the Register button/link,
-        // let its normal behavior happen.
+        // If Register / Copy Link was clicked directly,
+        // let their own handlers run.
         if (event.target.closest("a, button")) {
             return;
         }
 
-        // Find the existing registration link inside the card
-        const registerLink = card.querySelector("a");
+        const registerButton = card.querySelector(".card-actions .register-btn");
 
-        if (registerLink && registerLink.href) {
-            window.location.href = registerLink.href;
+        if (registerButton) {
+            registerButton.click();
         }
     });
+});
+
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
 });
