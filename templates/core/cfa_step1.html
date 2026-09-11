@@ -96,6 +96,11 @@
 
       <form method="POST" action="">
         {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="non-field-errors" style="color: #ff6b6b; margin-bottom: 16px; font-size: 13px;">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
         <div class="form-grid">
           <div class="form-group">
             <label for="{{ form.full_name.id_for_label }}">Full Name</label>

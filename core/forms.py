@@ -208,3 +208,37 @@ class CFARegistrationStep1Form(forms.ModelForm):
             'phone_number': 'Phone number',
             'alternate_phone': 'Alternate phone number(optional)',
         }
+
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number')
+        if phone:
+            phone = phone.strip()
+            phone_validator(phone)
+        return phone
+
+    def clean_alternate_phone(self):
+        alt_phone = self.cleaned_data.get('alternate_phone')
+        if alt_phone:
+            alt_phone = alt_phone.strip()
+            phone_validator(alt_phone)
+        return alt_phone
+
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if age is not None:
+            if age < 1 or age > 100:
+                raise forms.ValidationError('Please enter a valid age.')
+        return age
+
+    def clean(self):
+        cleaned_data = super().clean()
+        phone = cleaned_data.get('phone_number')
+        alt_phone = cleaned_data.get('alternate_phone')
+
+        if phone and alt_phone:
+            digits_phone = ''.join(filter(str.isdigit, phone))[-10:]
+            digits_alt = ''.join(filter(str.isdigit, alt_phone))[-10:]
+            if digits_phone and digits_alt and digits_phone == digits_alt:
+                self.add_error('alternate_phone', 'Alternate phone number cannot be the same as your primary phone number.')
+
+        return cleaned_data

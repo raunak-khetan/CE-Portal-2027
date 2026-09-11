@@ -121,6 +121,7 @@ class TeamMember(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
         ('O', 'Others'),
+        ('P', 'Prefer not to say'),
     ]
     head = models.ForeignKey(Head, on_delete=models.CASCADE, related_name='head_members')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team_members')

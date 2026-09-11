@@ -359,6 +359,21 @@ body {
   border-color: #FD8F28;
 }
 
+.form-group input[type="date"] {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 /* Error messages */
 .errorlist {
   list-style: none;

@@ -208,10 +208,65 @@ def registrationpage(request, city_name, event_name):
             team_form = RegistrationForm(request.POST)
             member_formset = _build_member_formset(event, data=request.POST)
 
+            team_name_valid = team_name_form.is_valid()
+            team_form_valid = team_form.is_valid()
+            member_formset_valid = member_formset.is_valid()
+
+            has_custom_errors = False
+
+            # 1. Team Name Uniqueness for the Event
+            if team_name_valid:
+                team_name = team_name_form.cleaned_data.get('team_name', '').strip()
+                if Team.objects.filter(head__event=event, team_name__iexact=team_name).exists():
+                    team_name_form.add_error(
+                        'team_name',
+                        f'The team name "{team_name}" is already taken for this event. Please choose a different team name.'
+                    )
+                    has_custom_errors = True
+
+            # 2. Check duplicate phone numbers and duplicate names within the same team
+            head_phone = team_form.cleaned_data.get('phone_no', '').strip() if team_form_valid else ''
+            head_phone_digits = ''.join(filter(str.isdigit, head_phone))[-10:] if head_phone else ''
+            head_name = team_form.cleaned_data.get('name', '').strip() if team_form_valid else ''
+            head_name_clean = ' '.join(head_name.lower().split()) if head_name else ''
+
+            seen_phones = {head_phone_digits: "the Team Leader"} if head_phone_digits else {}
+            seen_names = {head_name_clean: "the Team Leader"} if head_name_clean else {}
+
+            for idx, member_form in enumerate(member_formset):
+                if hasattr(member_form, 'cleaned_data') and member_form.cleaned_data:
+                    m_phone = member_form.cleaned_data.get('phone_no', '').strip()
+                    m_phone_digits = ''.join(filter(str.isdigit, m_phone))[-10:] if m_phone else ''
+                    m_name = member_form.cleaned_data.get('name', '').strip()
+                    m_name_clean = ' '.join(m_name.lower().split()) if m_name else ''
+
+                    # Duplicate phone within the team
+                    if m_phone_digits:
+                        if m_phone_digits in seen_phones:
+                            member_form.add_error(
+                                'phone_no',
+                                f'This phone number is already used by {seen_phones[m_phone_digits]}. Each team member must have a unique phone number.'
+                            )
+                            has_custom_errors = True
+                        else:
+                            seen_phones[m_phone_digits] = f"Member {idx + 2}"
+
+                    # Duplicate name within the team
+                    if m_name_clean:
+                        if m_name_clean in seen_names:
+                            member_form.add_error(
+                                'name',
+                                f'This name is already used by {seen_names[m_name_clean]}. Each team member must have a distinct name.'
+                            )
+                            has_custom_errors = True
+                        else:
+                            seen_names[m_name_clean] = f"Member {idx + 2}"
+
             if (
-                team_name_form.is_valid()
-                and team_form.is_valid()
-                and member_formset.is_valid()
+                team_name_valid
+                and team_form_valid
+                and member_formset_valid
+                and not has_custom_errors
             ):
                 email = team_form.cleaned_data.get('email')
                 name = team_form.cleaned_data.get('name')
