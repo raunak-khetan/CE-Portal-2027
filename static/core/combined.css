@@ -46,7 +46,7 @@
 }
 
 .alcher-blocks body {
-    background-color: #161616;
+    background-color: #0f0f0f;
     font-family: 'Arial Black', 'Helvetica', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
@@ -54,10 +54,10 @@
 
 /* ===== BLOCK STRUCTURE ===== */
 .alcher-blocks {
-    background-color: #161616;
+    background-color: #0f0f0f;
 }
 .alcher-blocks .highway-block {
-    background-color: #0F0F0F;
+    background-color: #0f0f0f;
     min-height: 969px;
     width: 100%;
     margin: 0 auto;
@@ -70,7 +70,7 @@
 }
 
 .alcher-blocks .sponsors-block {
-    background-color: #161616;
+    background-color: #0f0f0f;
     padding: 60px 0;
 }
 

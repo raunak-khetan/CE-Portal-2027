@@ -24,7 +24,6 @@ body {
 /* ── Targeted browser-default resets (Tailwind preflight is disabled) ─────── */
 footer button,
 footer button[type="button"],
-#faq-section button,
 #sponsors-section button {
   background: transparent !important;
   background-color: transparent !important;
@@ -2827,4 +2826,129 @@ footer a,
         z-index: 9999;
     }
 
+}
+
+/* ── Roller, Sponsors, and FAQ Sections Background (#0f0f0f) ───────────────── */
+.alcher-blocks,
+.alcher-blocks .highway-block,
+.film-reel-section,
+#sponsors-section {
+  background-color: #0f0f0f !important;
+  background: #0f0f0f !important;
+}
+
+/* ── FAQ Section Accordion Box Styles ───────────────────────────────────────── */
+#faq-section {
+  background-color: #0f0f0f !important;
+  background: #0f0f0f !important;
+  padding: 80px 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+#faq-section > div {
+  width: 100% !important;
+  max-width: 860px !important;
+}
+
+#faq-section h1 {
+  font-family: 'Poltawski Nowy', 'Poltawski Nowy Bold', serif !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  color: #D04D28 !important;
+  margin-bottom: 28px !important;
+}
+
+#faq-section .flex-col {
+  gap: 12px !important;
+}
+
+#faq-section .faq-item {
+  background-color: #161616 !important;
+  border: 1px solid #3f3f3f !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#faq-section .faq-item:hover {
+  border-color: #555555 !important;
+  background-color: #222222 !important;
+}
+
+#faq-section .faq-item.active {
+  border-color: #666666 !important;
+  background-color: #1c1c1c !important;
+}
+
+#faq-section .faq-question {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 22px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  color: #f0f0f0 !important;
+  font-family: 'Hepta Slab', serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+#faq-section .faq-question:hover {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+#faq-section .faq-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-left: 16px !important;
+  color: #c0c0c0 !important;
+  transition: transform 0.3s ease, color 0.2s ease !important;
+}
+
+#faq-section .faq-icon svg path {
+  stroke: #c0c0c0 !important;
+  transition: stroke 0.2s ease !important;
+}
+
+#faq-section .faq-item.active .faq-icon {
+  transform: rotate(180deg) !important;
+  color: #ffffff !important;
+}
+
+#faq-section .faq-item.active .faq-icon svg path {
+  stroke: #ffffff !important;
+}
+
+#faq-section .faq-answer {
+  display: none;
+  padding: 0 22px 18px 22px !important;
+  color: #a3a3a3 !important;
+  font-family: 'Hepta Slab', serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+}
+
+#faq-section .faq-item.active .faq-answer {
+  display: block !important;
+}
+
+#faq-section .faq-answer p {
+  margin: 0 !important;
 }
