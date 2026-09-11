@@ -13,22 +13,33 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Environment mode - Fixed logic
+# Environment mode
 PROD = os.environ.get('prod', 'false').lower() == 'true'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)zfwsh_jx=vqympmk#pj_q-%t2_14-m+iq@_#)1_j9zg#q^#@q'
+# In prod this MUST come from the environment - no hardcoded fallback allowed.
+if PROD:
+    SECRET_KEY = os.environ['SECRET_KEY']  # raises KeyError loudly if missing - good, fail fast
+else:
+    SECRET_KEY = os.environ.get(
+        'SECRET_KEY',
+        'django-insecure-)zfwsh_jx=vqympmk#pj_q-%t2_14-m+iq@_#)1_j9zg#q^#@q'
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
 
-ALLOWED_HOSTS = ["*"]
+if PROD:
+    ALLOWED_HOSTS = os.environ.get(
+        'ALLOWED_HOSTS',
+        'prelims.alcheringa.co.in,ceportal.alcheringa.co.in'
+    ).split(',')
+else:
+    ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -76,21 +87,27 @@ WSGI_APPLICATION = "cityelimination.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-if not PROD:
+#
+# FIXED: previously PROD branch ignored DATABASE_URL entirely and hardcoded
+# sqlite even in production. Now both branches respect DATABASE_URL, and
+# prod requires it to be explicitly set (no silent sqlite fallback in prod).
+if PROD:
+    DATABASES = {
+        'default': dj_database_url.config(
+            env='DATABASE_URL',
+            conn_max_age=600,
+            ssl_require=True,
+        )
+    }
+    if not DATABASES['default']:
+        raise RuntimeError("DATABASE_URL must be set when prod=true")
+else:
     DATABASES = {
         'default': dj_database_url.config(
             default='sqlite:///db.sqlite3',
             conn_max_age=600,
             ssl_require=False,
         )
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
     }
 
 # Password validation
@@ -130,15 +147,15 @@ if PROD:
     # Production - MinIO storage
     DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
     STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
-    
-    MINIO_STORAGE_ENDPOINT = os.environ.get('minio_endpoint')
-    MINIO_STORAGE_ACCESS_KEY = os.environ.get('minio_access')
-    MINIO_STORAGE_SECRET_KEY = os.environ.get('minio_secret')
+
+    MINIO_STORAGE_ENDPOINT = os.environ['minio_endpoint']
+    MINIO_STORAGE_ACCESS_KEY = os.environ['minio_access']
+    MINIO_STORAGE_SECRET_KEY = os.environ['minio_secret']
     MINIO_STORAGE_USE_HTTPS = True
-    
-    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherce25media'
+
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherce27media'
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherce25static'
+    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherce27static'
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 else:
     # Development - local storage
@@ -151,23 +168,42 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'raunakkhetan470@gmail.com'
-EMAIL_HOST_PASSWORD = 'qhcv ddzb yvjg rzrn'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+if PROD and not EMAIL_HOST_PASSWORD:
+    raise RuntimeError("EMAIL_HOST_PASSWORD must be set when prod=true")
 
 # Other Settings
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
 
 # CSRF Trusted Origins
-if not PROD:
+#
+# FIXED: this block was inverted in the original file - it set the real
+# production domains as trusted only when PROD was False, and set
+# 127.0.0.1:8000 as trusted when PROD was True. That meant real prod
+# traffic from prelims.alcheringa.co.in / ceportal.alcheringa.co.in
+# would fail CSRF checks in actual production.
+if PROD:
     CSRF_TRUSTED_ORIGINS = [
         'https://prelims.alcheringa.co.in',
         'http://prelims.alcheringa.co.in',
         'http://ceportal.alcheringa.co.in',
-        'https://ceportal.alcheringa.co.in'
+        'https://ceportal.alcheringa.co.in',
     ]
 else:
     CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
+
+# Additional production security hardening
+if PROD:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
 
 LOGGING = {
     'version': 1,
@@ -180,7 +216,7 @@ LOGGING = {
     'loggers': {
         'minio_storage': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'DEBUG' if not PROD else 'INFO',
             'propagate': True,
         },
     },
