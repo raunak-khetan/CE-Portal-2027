@@ -141,6 +141,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+# The site's CSS, JavaScript, and image assets live in the project-level
+# ``static/`` directory. This must be configured in every environment so
+# ``collectstatic`` can upload those assets to the production storage backend.
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Storage Configuration
 if PROD:
@@ -159,7 +163,6 @@ if PROD:
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 else:
     # Development - local storage
-    STATICFILES_DIRS = [BASE_DIR / "static"]
     STATIC_ROOT = BASE_DIR / "staticfiles"
     MEDIA_ROOT = BASE_DIR / "media"
 
