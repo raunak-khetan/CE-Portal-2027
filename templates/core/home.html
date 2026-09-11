@@ -1,20 +1,26 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'core/fonts/poltawski-nowy-webfont/style.css' %}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-  <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'core/favicon.ico' %}"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poltawski+Nowy:ital,wght@0,500;1,500&display=swap"
-  />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poltawski+Nowy:ital,wght@0,500;1,500&display=swap"
+    />
 
    <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -43,46 +49,54 @@
   <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}?v=cfa_figma_exact_v2" />
   <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=roller_figma_v1" />
 
-   <link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-		/>
-		<link
-			rel="icon"
-			type="image/x-icon"
-			href="{% static 'core/favicon.ico' %}"
-		/>
-		<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'core/favicon.ico' %}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Alcheringa City Eliminations Portal | Alcheringa IIT Guwahati</title>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-QX9VT4R4Z7');
+      gtag("config", "G-QX9VT4R4Z7");
     </script>
-</head>
+  </head>
 
-<body class="bg-dark text-white font-serif overflow-x-hidden m-0 p-0">
-  <!-- Navbar -->
+  <body class="bg-dark text-white font-serif overflow-x-hidden m-0 p-0">
+    <!-- Navbar -->
     <!-- Gowtham code start -->
 
-  <header class="home-navbar">
-    <div class="home-navbar-brand">
-      <img
-        src="{% static 'core/asset/alcher-logo.svg' %}"
-        class="home-navbar-logo"
-        alt="Alcheringa"
-      />
+    <header class="home-navbar">
+      <div class="home-navbar-brand">
+        <img
+          src="{% static 'core/asset/alcher-logo.svg' %}"
+          class="home-navbar-logo"
+          alt="Alcheringa"
+        />
 
-      <div class="home-navbar-brand-text">
-        <span class="home-navbar-title">ALCHERINGA</span>
-        <span class="home-navbar-year">2027</span>
+        <div class="home-navbar-brand-text">
+          <span class="home-navbar-title">ALCHERINGA</span>
+          <span class="home-navbar-year">2027</span>
+        </div>
       </div>
-    </div>
 
     <nav class="home-navbar-links" id="home-navbar-links">
       <a href="#competition-section">Competitions</a>
@@ -92,47 +106,228 @@
 
     <a href="#competition-section" class="home-navbar-register">Register</a>
 
-    <div
-      class="home-navbar-hamburger"
-      onclick="
-        document
-          .getElementById('home-navbar-links')
-          .classList.toggle('is-open')
-      "
-    >
-      &#9776;
+      <button
+        type="button"
+        class="home-navbar-hamburger"
+        id="home-navbar-hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        &#9776;
+      </button>
+    </header>
+
+    <script>
+      const hamburger = document.getElementById("home-navbar-hamburger");
+      const navLinks = document.getElementById("home-navbar-links");
+
+      hamburger.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const isOpen = navLinks.classList.toggle("is-open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+      });
+
+      navLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          navLinks.classList.remove("is-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !navLinks.contains(event.target) &&
+          !hamburger.contains(event.target)
+        ) {
+          navLinks.classList.remove("is-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+
+    <section class="hero-content">
+      <video
+        class="hero-video hero-video-desktop"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        fetchpriority="high"
+      >
+        <source
+          src="{% static 'core/asset/Final_compressed.mp4' %}"
+          type="video/mp4"
+        />
+      </video>
+
+      <video
+        class="hero-video hero-video-mobile"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="{% static 'core/asset/mobile_compressed.mp4' %}"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="keyboard-wrap">
+        <div class="keyboard-canvas">
+          <img
+            src="{% static 'core/asset/keyboard.svg' %}"
+            class="keyboard"
+            alt=""
+          />
+
+          <a
+            onclick="
+              document
+                .getElementById('competition-section')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            "
+            class="register-btn"
+            aria-label="Register"
+          >
+            <img
+              src="{% static 'core/asset/register-idle.svg' %}"
+              class="register-btn-state register-btn-state--idle"
+              alt=""
+            />
+
+            <img
+              src="{% static 'core/asset/register-hover.svg' %}"
+              class="register-btn-state register-btn-state--hover"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-strip"></div>
+    </section>
+
+    <section class="stats-wrapper">
+      <div class="stats-section">
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-number">
+              <span class="counter" data-target="21">0</span>+
+            </span>
+            <span class="stat-label">Cities</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-number">
+              <span class="counter" data-target="36">0</span>+
+            </span>
+            <span class="stat-label">Colleges</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-number">
+              <span class="counter" data-target="50">0</span>+
+            </span>
+            <span class="stat-label">Competitions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CD -->
+
+    <div class="cd-clip">
+      <div class="cd-glimpses-wrap" id="cdSpin">
+        <div class="cd-canvas">
+          <img
+            src="{% static 'core/asset/cd-glimpses.svg' %}"
+            loading="lazy"
+            decoding="async"
+            class="cd-glimpses cd-main"
+            alt="Glimpses"
+          />
+
+          <img
+            src="{% static 'core/asset/cd-glimpses.svg' %}"
+            loading="lazy"
+            decoding="async"
+            class="cd-glimpses cd-trail cd-trail-1"
+            alt=""
+          />
+
+          <img
+            src="{% static 'core/asset/cd-glimpses.svg' %}"
+            loading="lazy"
+            decoding="async"
+            class="cd-glimpses cd-trail cd-trail-2"
+            alt=""
+          />
+
+          <img
+            src="{% static 'core/asset/cd-glimpses.svg' %}"
+            loading="lazy"
+            decoding="async"
+            class="cd-glimpses cd-trail cd-trail-3"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
-  </header>
 
+    <!-- Section 2 -->
 
-  <!-- Hero -->
+    <section class="about-section">
+      <div class="about-section__intro">
+        <h2>
+          <span>What is</span>
+          <span>Highway to Alcheringa?</span>
+        </h2>
 
-  <section class="hero-content">
+        <p>
+          Highway to Alcher is your direct route to the spotlight at Alcheringa,
+          IIT Guwahati's annual cultural fest! This pan-India competition series
+          unearths the nation's brightest talents, giving them a chance to
+          perform on the grand stage. Get ready to showcase your skills and
+          kickstart your journey to stardom!
+        </p>
+      </div>
 
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      fetchpriority="high"
-    >
-      <source
-        src="{% static 'core/asset/Final_compressed.mp4' %}"
-        type="video/mp4"
-      />
-    </video>
+      <div class="about-section__fest">
+        <h2>
+          <span>Alcheringa-</span>
+          <span>North East India’s</span>
+          <span>largest Cultural fest</span>
+        </h2>
 
-    <div class="keyboard-wrap">
-      <div class="keyboard-canvas">
+        <p>
+          Alcheringa is the annual cultural festival of IIT Guwahati, an
+          electrifying celebration of art, music, dance, and drama. Join us for
+          an unforgettable experience where talent converges and creativity
+          knows no bounds.
+        </p>
+      </div>
+
+      <div class="about-section__keyboard">
         <img
-          src="{% static 'core/asset/keyboard.svg' %}"
-          class="keyboard"
+          src="{% static 'core/asset/keyboard_no_shade.svg' %}"
+          loading="lazy"
+          decoding="async"
           alt=""
         />
 
-        <a onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });" class="register-btn" aria-label="Register">
+        <a
+          onclick="
+            document
+              .getElementById('competition-section')
+              ?.scrollIntoView({ behavior: 'smooth' })
+          "
+          class="register-btn-2"
+          aria-label="Register"
+        >
           <img
             src="{% static 'core/asset/register-idle.svg' %}"
             class="register-btn-state register-btn-state--idle"
@@ -146,214 +341,84 @@
           />
         </a>
       </div>
-    </div>
 
-  </section>
+      <div class="about-section__camera">
+        <img
+          src="{% static 'core/asset/camera.svg' %}"
+          loading="lazy"
+          decoding="async"
+          alt=""
+        />
+      </div>
 
+      <div class="about-section__cassette">
+        <img
+          src="{% static 'core/asset/casset.svg' %}"
+          loading="lazy"
+          decoding="async"
+          alt=""
+        />
+      </div>
 
-  <!-- Stats -->
-
-  <section class="stats-wrapper">
-    <div class="stats-section">
-      <div class="stats-row">
-
-        <div class="stat-box">
-          <span class="stat-number">
-            <span class="counter" data-target="21">0</span>+
-          </span>
-          <span class="stat-label">Cities</span>
+      <div class="about-gallery">
+        <div class="about-gallery__photo about-gallery__photo--1">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
         </div>
 
-        <div class="stat-box">
-          <span class="stat-number">
-            <span class="counter" data-target="36">0</span>+
-          </span>
-          <span class="stat-label">Colleges</span>
+        <div class="about-gallery__photo about-gallery__photo--2">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
         </div>
 
-        <div class="stat-box">
-          <span class="stat-number">
-            <span class="counter" data-target="50">0</span>+
-          </span>
-          <span class="stat-label">Competitions</span>
+        <div class="about-gallery__photo about-gallery__photo--3">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
         </div>
 
+        <div class="about-gallery__photo about-gallery__photo--4">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--5">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--6">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--7">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--8">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--9">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--10">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--11">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--12">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--13">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
+
+        <div class="about-gallery__photo about-gallery__photo--14">
+          <img src="{% static 'core/asset/photo.svg' %}" alt="" />
+        </div>
       </div>
-    </div>
-  </section>
-
-
-  <!-- CD -->
-
-  <div class="cd-clip">
-    <div class="cd-glimpses-wrap" id="cdSpin">
-      <div class="cd-canvas">
-
-        <img
-          src="{% static 'core/asset/cd-glimpses.svg' %}"
-          loading="lazy"
-          decoding="async"
-          class="cd-glimpses cd-main"
-          alt="Glimpses"
-        />
-
-        <img
-          src="{% static 'core/asset/cd-glimpses.svg' %}"
-          loading="lazy"
-          decoding="async"
-          class="cd-glimpses cd-trail cd-trail-1"
-          alt=""
-        />
-
-        <img
-          src="{% static 'core/asset/cd-glimpses.svg' %}"
-          loading="lazy"
-          decoding="async"
-          class="cd-glimpses cd-trail cd-trail-2"
-          alt=""
-        />
-
-        <img
-          src="{% static 'core/asset/cd-glimpses.svg' %}"
-          loading="lazy"
-          decoding="async"
-          class="cd-glimpses cd-trail cd-trail-3"
-          alt=""
-        />
-
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Section 2 -->
-
-  <section class="about-section">
-
-    <div class="about-section__intro">
-      <h2>
-        <span>What is</span>
-        <span>Highway to Alcheringa?</span>
-      </h2>
-
-      <p>
-        Highway to Alcher is your direct route to the spotlight at
-        Alcheringa, IIT Guwahati's annual cultural fest! This pan-India
-        competition series unearths the nation's brightest talents, giving
-        them a chance to perform on the grand stage. Get ready to showcase
-        your skills and kickstart your journey to stardom!
-      </p>
-    </div>
-
-    <div class="about-section__fest">
-      <h2>
-        <span>Alcheringa-</span>
-        <span>North East India’s</span>
-        <span>largest Cultural fest</span>
-      </h2>
-
-      <p>
-        Alcheringa is the annual cultural festival of IIT Guwahati, an
-        electrifying celebration of art, music, dance, and drama. Join us
-        for an unforgettable experience where talent converges and
-        creativity knows no bounds.
-      </p>
-    </div>
-
-    <div class="about-section__keyboard">
-      <img
-        src="{% static 'core/asset/keyboard_no_shade.svg' %}"
-        loading="lazy"
-        decoding="async"
-        alt=""
-      />
-
-      <a onclick="document.getElementById('competition-section')?.scrollIntoView({ behavior: 'smooth' });" class="register-btn-2" aria-label="Register">
-        <img
-          src="{% static 'core/asset/register-idle.svg' %}"
-          class="register-btn-state register-btn-state--idle"
-          alt=""
-        />
-
-        <img
-          src="{% static 'core/asset/register-hover.svg' %}"
-          class="register-btn-state register-btn-state--hover"
-          alt=""
-        />
-      </a>
-    </div>
-
-    <div class="about-section__camera">
-      <img
-        src="{% static 'core/asset/camera.svg' %}"
-        loading="lazy"
-        decoding="async"
-        alt=""
-      />
-    </div>
-
-    <div class="about-section__cassette">
-      <img
-        src="{% static 'core/asset/casset.svg' %}"
-        loading="lazy"
-        decoding="async"
-        alt=""
-      />
-    </div>
-
-    <div class="about-gallery">
-
-      <div class="about-gallery__photo about-gallery__photo--1">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--2">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--3">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--4">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--5">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--6">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--7">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--8">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--9">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--10">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--11">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-      <div class="about-gallery__photo about-gallery__photo--12">
-        <img src="{% static 'core/asset/photo.svg' %}" alt="" />
-      </div>
-
-    </div>
-  </section>
-  <!-- Gowtham code end -->
+    </section>
+    <!-- Gowtham code end -->
 
    <!-- santosh start -->
   <section id="competition-section" class="competition-page">
@@ -600,9 +665,9 @@
               <button class="filter-button category-filter" data-filter="{{ category.id }}">{{ category.name }}</button>
             {% endfor %}
 
-            <span class="filter-divider">
-              <img src="/static/core/asset/Line-Divider.png" alt="|">
-            </span>
+              <span class="filter-divider">
+                <img src="/static/core/asset/Line-Divider.png" alt="|" />
+              </span>
 
             <button type="button" class="filter-button" data-filter="upcoming">Upcoming</button>
             <button type="button" class="filter-button" data-filter="next-month">Next Month</button>
@@ -801,53 +866,177 @@
       </section>
       <!-- yash end -->
 
-  <!-- Raunak  -->
-  <!-- FAQ Section -->
+    <!-- Raunak  -->
+    <!-- FAQ Section -->
     <section id="faq-section" class="py-20 px-8 flex justify-center">
       <div class="w-full max-w-[800px]">
-        <h1 class="font-heading text-brand text-4xl italic font-bold text-left mb-8">Any Questions?</h1>
+        <h1
+          class="font-heading text-brand text-4xl italic font-bold text-left mb-8"
+        >
+          Any Questions?
+        </h1>
         <div class="flex flex-col gap-4">
           <!-- Item 1 -->
-          <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+          <div
+            class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]"
+          >
+            <button
+              class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]"
+            >
               Aamir Khan ko bula lenge ni maam un leti aana h?
-              <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180">
-                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span
+                class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"
+              >
+                <svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="#888888"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </span>
             </button>
-            <div class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"><p>Answer goes here.</p></div>
+            <div
+              class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"
+            >
+              <p>Answer goes here.</p>
+            </div>
           </div>
           <!-- Item 2 -->
-          <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+          <div
+            class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]"
+          >
+            <button
+              class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]"
+            >
               Aamir Khan ko bula lenge ni maam un leti aana h?
-              <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span
+                class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"
+                ><svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="#888888"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
             </button>
-            <div class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"><p>Answer goes here.</p></div>
+            <div
+              class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"
+            >
+              <p>Answer goes here.</p>
+            </div>
           </div>
           <!-- Item 3 -->
-          <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+          <div
+            class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]"
+          >
+            <button
+              class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]"
+            >
               Aamir Khan ko bula lenge ni maam un leti aana h?
-              <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span
+                class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"
+                ><svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="#888888"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
             </button>
-            <div class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"><p>Answer goes here.</p></div>
+            <div
+              class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"
+            >
+              <p>Answer goes here.</p>
+            </div>
           </div>
           <!-- Item 4 -->
-          <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+          <div
+            class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]"
+          >
+            <button
+              class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]"
+            >
               Aamir Khan ko bula lenge ni maam un leti aana h?
-              <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span
+                class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"
+                ><svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="#888888"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
             </button>
-            <div class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"><p>Answer goes here.</p></div>
+            <div
+              class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"
+            >
+              <p>Answer goes here.</p>
+            </div>
           </div>
           <!-- Item 7 -->
-          <div class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]">
-            <button class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]">
+          <div
+            class="faq-item bg-[#161616] rounded-[10px] border-2 border-[#3F3F3F]"
+          >
+            <button
+              class="faq-question w-full text-left font-hepta bg-transparent border-none text-[#ddd] text-base py-[10px] px-[28px] cursor-pointer flex justify-between items-center hover:bg-[#222]"
+            >
               Aamir Khan ko bula lenge ni maam un leti aana h?
-              <span class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span
+                class="faq-icon transition-transform duration-300 ease flex items-center [.active_&]:rotate-180"
+                ><svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="#888888"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
             </button>
-            <div class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"><p>Answer goes here.</p></div>
+            <div
+              class="faq-answer hidden px-6 pb-5 text-[#aaa] text-[0.95rem] leading-relaxed [.active_&]:block"
+            >
+              <p>Answer goes here.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -856,23 +1045,31 @@
     <!-- Sponsors Block -->
     <section id="sponsors-section" class="py-16 px-8 text-center">
       <div class="max-w-[1000px] mx-auto">
-        <h1 class="font-heading text-brand text-4xl italic font-bold text-center mb-8 mt-8">Sponsors</h1>
-        <h1 class="font-heading text-brand text-4xl italic font-bold text-center mb-8 mt-8">Media Partners</h1>
-        
+        <h1
+          class="font-heading text-brand text-4xl italic font-bold text-center mb-8 mt-8"
+        >
+          Sponsors
+        </h1>
+        <h1
+          class="font-heading text-brand text-4xl italic font-bold text-center mb-8 mt-8"
+        >
+          Media Partners
+        </h1>
+
         <div class="flex flex-wrap justify-center gap-12 mb-12">
           <!-- First Row -->
+
           <div class="flex items-center justify-center h-[80px] w-[120px]">
-            <img src="{% static 'core/asset/asian logo.svg' %}" alt="Asian" class="max-w-full max-h-full object-contain grayscale brightness-200 transition-[filter] duration-300 ease hover:grayscale-0 hover:brightness-100" style="scale:3;">
+            <img
+              src="{% static 'core/asset/redbull.png' %}"
+              alt="Lucknow-Pulse"
+              class="max-w-full max-h-full object-contain grayscale brightness-200 transition-[filter] duration-300 ease hover:grayscale-0 hover:brightness-100"
+            />
           </div>
-          
-          <div class="flex items-center justify-center h-[80px] w-[120px]">
-            <img src="{% static 'core/asset/LucknowPulse.png' %}" alt="Lucknow-Pulse" class="max-w-full max-h-full object-contain grayscale brightness-200 transition-[filter] duration-300 ease hover:grayscale-0 hover:brightness-100">
-          </div>
-          
         </div>
       </div>
     </section>
-  
+
     <!-- Footer Block -->
     <footer id="contacts" class="bg-[#1E1E1E] text-white pt-12 pb-8 sm:pb-10 px-5 sm:px-8 md:px-10 lg:px-8">
       <div class="max-w-[1240px] mx-auto">
@@ -884,7 +1081,7 @@
             <h2 class="m-0 font-heading italic text-[28px] sm:text-[34px] md:text-[38px] lg:text-[36px] font-bold leading-[1.2] text-white mb-6 sm:mb-8 lg:mb-[48px] max-w-lg">
               The Journey Continues,<br>See You at Alcheringa!
             </h2>
-            <button 
+            <button
               type="button"
               style="background: transparent !important; background-color: transparent !important; padding: 0 !important; border: none !important; border-radius: 0 !important; outline: none !important;"
               class="border-none p-0 bg-transparent cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none block" 
@@ -903,7 +1100,15 @@
                 <li>
                   <a href="#about" class="text-[#c7c7c7] no-underline inline-flex items-center gap-2 transition-all duration-200 hover:text-white group">
                     <span>About Us</span>
-                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <line x1="7" y1="17" x2="17" y2="7"></line>
                       <polyline points="7 7 17 7 17 17"></polyline>
                     </svg>
@@ -912,7 +1117,15 @@
                 <li>
                   <a href="#competition-section" class="text-[#c7c7c7] no-underline inline-flex items-center gap-2 transition-all duration-200 hover:text-white group">
                     <span>Schedule</span>
-                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <line x1="7" y1="17" x2="17" y2="7"></line>
                       <polyline points="7 7 17 7 17 17"></polyline>
                     </svg>
@@ -921,7 +1134,15 @@
                 <li>
                   <a href="#sponsors-section" class="text-[#c7c7c7] no-underline inline-flex items-center gap-2 transition-all duration-200 hover:text-white group">
                     <span>Sponsors</span>
-                    <svg class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      class="w-3.5 h-3.5 text-[#888] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <line x1="7" y1="17" x2="17" y2="7"></line>
                       <polyline points="7 7 17 7 17 17"></polyline>
                     </svg>
@@ -937,7 +1158,6 @@
               <img src="{% static 'core/landing/Casset.png' %}" alt="Contact Us" class="block w-full h-auto object-contain mx-auto">
             </div>
           </div>
-
         </div>
 
         <!-- Bottom Section Bar -->
@@ -952,27 +1172,37 @@
             <div class="flex items-center justify-center gap-6 sm:gap-7 text-[#9e9e9e] order-1 lg:order-2">
               <a href="https://www.instagram.com/alcheringaiitg/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1 flex items-center justify-center" aria-label="Instagram">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
                 </svg>
               </a>
               <a href="https://www.youtube.com/channel/UCQfsLKaY4a1Mx75hnaZDoxw" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1 flex items-center justify-center" aria-label="YouTube">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  />
                 </svg>
               </a>
               <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1 flex items-center justify-center" aria-label="LinkedIn">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  />
                 </svg>
               </a>
               <a href="https://x.com/alcheringaiitg" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1 flex items-center justify-center" aria-label="X">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  />
                 </svg>
               </a>
               <a href="https://www.facebook.com/alcheringaiitg" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-white hover:scale-110 p-1 flex items-center justify-center" aria-label="Facebook">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.667 5H18V0h-3.889C10.5 0 9 1.556 9 4.667V8z"/>
+                  <path
+                    d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.667 5H18V0h-3.889C10.5 0 9 1.556 9 4.667V8z"
+                  />
                 </svg>
               </a>
             </div>
@@ -985,83 +1215,80 @@
         </div>
       </div>
     </footer>
-  
 
-<!-- Alcher Blocks JS -->
-<script src="{% static 'core/combined.js' %}"></script>
-  <!--raunak end-->
+    <!-- Alcher Blocks JS -->
+    <script src="{% static 'core/combined.js' %}"></script>
+    <!--raunak end-->
 
-  <script>
-    const cdSpin = document.getElementById("cdSpin");
-    const cdTrails = cdSpin.querySelectorAll(".cd-trail");
+    <script>
+      const cdSpin = document.getElementById("cdSpin");
+      const cdTrails = cdSpin.querySelectorAll(".cd-trail");
 
-    let cdSpun = false;
-    let cdAnimating = false;
+      let cdSpun = false;
+      let cdAnimating = false;
 
-    cdSpin.addEventListener("click", () => {
-      if (cdAnimating) return;
+      cdSpin.addEventListener("click", () => {
+        if (cdAnimating) return;
 
-      cdAnimating = true;
-      cdSpin.classList.toggle("is-spun");
-      cdSpun = !cdSpun;
+        cdAnimating = true;
+        cdSpin.classList.toggle("is-spun");
+        cdSpun = !cdSpun;
 
-      cdTrails.forEach((trail) => {
-        trail.classList.add("is-peak");
+        cdTrails.forEach((trail) => {
+          trail.classList.add("is-peak");
+        });
+
+        setTimeout(() => {
+          cdTrails.forEach((trail) => {
+            trail.classList.remove("is-peak");
+          });
+        }, 150);
+
+        setTimeout(() => {
+          cdAnimating = false;
+        }, 750);
       });
 
-      setTimeout(() => {
-        cdTrails.forEach((trail) => {
-          trail.classList.remove("is-peak");
-        });
-      }, 150);
+      const counters = document.querySelectorAll(".counter");
 
-      setTimeout(() => {
-        cdAnimating = false;
-      }, 750);
-    });
+      const animateCounter = (counter) => {
+        const target = Number(counter.dataset.target);
+        const duration = 1400;
+        const startTime = performance.now();
 
-    const counters = document.querySelectorAll(".counter");
+        const update = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          const currentValue = Math.floor(easedProgress * target);
 
-    const animateCounter = (counter) => {
-      const target = Number(counter.dataset.target);
-      const duration = 1400;
-      const startTime = performance.now();
+          counter.textContent = currentValue;
 
-      const update = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-        const currentValue = Math.floor(easedProgress * target);
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target;
+          }
+        };
 
-        counter.textContent = currentValue;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        } else {
-          counter.textContent = target;
-        }
+        requestAnimationFrame(update);
       };
 
-      requestAnimationFrame(update);
-    };
+      const statsObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              counters.forEach(animateCounter);
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
 
-    const statsObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            counters.forEach(animateCounter);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    statsObserver.observe(document.querySelector(".stats-section"));
-  </script>
-  <script src="{% static 'core/home_register.js' %}"></script>
-  <script src="{% static 'core/filter.js' %}"></script>
-  
-</body>
+      statsObserver.observe(document.querySelector(".stats-section"));
+    </script>
+    <script src="{% static 'core/home_register.js' %}"></script>
+    <script src="{% static 'core/filter.js' %}"></script>
+  </body>
 </html>
-  
