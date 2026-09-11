@@ -337,10 +337,20 @@
     100% { transform: translateX(-33.333333%); }
 }
 
+/* Pause ONLY when hovering directly over the film strip images */
 .alcher-blocks .film-strip:hover,
-.alcher-blocks .film-reel-section:hover .film-strip,
-.alcher-blocks .film-reel-section:hover .film-sprocket-inner {
-    animation-play-state: paused;
+.alcher-blocks .film-strip-svg:hover {
+    animation-play-state: paused !important;
+}
+
+.alcher-blocks .film-strip-container:has(.film-strip:hover) .film-sprocket-inner,
+.alcher-blocks .film-strip:hover ~ .film-sprocket-track .film-sprocket-inner {
+    animation-play-state: paused !important;
+}
+
+.alcher-blocks .film-strip,
+.alcher-blocks .film-strip-svg {
+    cursor: pointer;
 }
 
 /* ===== SPONSORS SECTION ===== */

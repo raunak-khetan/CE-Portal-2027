@@ -33,11 +33,27 @@ class PureAutoSlider {
         // Clone slides for seamless infinite loop
         this.createInfiniteLoop();
         
+        // Handle hover to pause/resume animation when hovering over film strip images
+        this.handleHover();
+        
         // Handle visibility change (pause when tab is not visible)
         this.handleVisibilityChange();
         
         // Add performance optimizations
         this.optimizePerformance();
+    }
+    
+    handleHover() {
+        if (!this.slideTrack) return;
+        
+        // Pause ONLY when mouse is hovering directly over the film strip images
+        this.slideTrack.addEventListener('mouseenter', () => {
+            this.pause();
+        });
+        
+        this.slideTrack.addEventListener('mouseleave', () => {
+            this.resume();
+        });
     }
     
     createInfiniteLoop() {
@@ -87,12 +103,20 @@ class PureAutoSlider {
     }
 }
 
-// Initialize slider when DOM is loaded
+// Initialize slider when DOM is loaded or immediately if already loaded
+function initAutoSlider() {
+    if (!window.autoSlider) {
+        window.autoSlider = new PureAutoSlider();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAutoSlider);
+} else {
+    initAutoSlider();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    const slider = new PureAutoSlider();
-    
-    // Make slider globally accessible
-    window.autoSlider = slider;
     
     // Add smooth fade-in effect for images
     const images = document.querySelectorAll('.film-frame img');

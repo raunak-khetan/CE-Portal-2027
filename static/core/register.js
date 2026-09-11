@@ -1,4 +1,4 @@
-document.querySelector(".copy-btn").addEventListener("click", function () {
+document.querySelector(".copy-link").addEventListener("click", function () {
     const currentUrl = window.location.href; // Get current page URL
 
     navigator.clipboard.writeText(currentUrl)

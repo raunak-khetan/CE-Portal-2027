@@ -393,15 +393,15 @@ body {
 
 .reg-comp-card {
   flex-shrink: 0;
-  width: 25%;
+  width: 250px;
 }
 
 @media (max-width: 768px) {
 
   /* Main container */
   .hero-section {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
   }
 
 
@@ -495,7 +495,7 @@ body {
   }
 
   .reg-comp-card {
-    width: 70%;
+    width: 250px;
   }
 
   .mobile-about-section {
