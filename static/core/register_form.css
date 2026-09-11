@@ -30,9 +30,9 @@ body {
 }
 
 body {
-  background:#000 url("../landing/glitter.png") center top / cover no-repeat;
-  color:var(--white);
-  font-family:"Hepta Slab",serif;
+  background: #000 url("landing/glitter.png") center top / cover no-repeat fixed;
+  color: var(--white);
+  font-family: "Hepta Slab", serif;
 }
 
 button,
