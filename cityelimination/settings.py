@@ -153,9 +153,9 @@ if PROD:
     MINIO_STORAGE_SECRET_KEY = os.environ['minio_secret']
     MINIO_STORAGE_USE_HTTPS = True
 
-    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherce27media'
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherce25media'
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherce27static'
+    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherce25static'
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 else:
     # Development - local storage
@@ -168,8 +168,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'raunakkhetan470@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 if PROD and not EMAIL_HOST_PASSWORD:
     raise RuntimeError("EMAIL_HOST_PASSWORD must be set when prod=true")
 
@@ -196,6 +197,11 @@ else:
 
 # Additional production security hardening
 if PROD:
+    # Dokku's nginx proxy terminates SSL and forwards requests to Gunicorn
+    # as plain HTTP internally. Without this header, Django can't tell the
+    # original request was HTTPS and SECURE_SSL_REDIRECT loops forever
+    # (redirect -> proxy forwards as http -> redirect again).
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
