@@ -19,7 +19,7 @@
 }
 
 body {
-  background-image: url("/static/core/asset/register-background.svg");
+  background-image: url("asset/register-background.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

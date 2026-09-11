@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Sao Torpes';
-  src: url('/static/core/fonts/SaoTorpes.otf') format('opentype');
+  src: url('../fonts/SaoTorpes.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,7 +39,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('/static/core/landing/glitter.png') center / cover no-repeat;
+  background: url('glitter.png') center / cover no-repeat;
   content: '';
   opacity: 0.9;
   pointer-events: none;
@@ -66,7 +66,7 @@ body {
   height: 55.5%;
   overflow: hidden;
   border-radius: 12% 12% 14% 14% / 14% 14% 14% 14%;
-  background: #002400 url('/static/core/landing/tv_bg.png') center / cover;
+  background: #002400 url('tv_bg.png') center / cover;
   box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.55);
   filter: none;
   animation: tv-screen-scan 4s linear infinite;

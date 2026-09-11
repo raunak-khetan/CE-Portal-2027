@@ -3,8 +3,7 @@
 /* Font declarations */
 @font-face {
     font-family: 'Sao Torpes';
-    src: url('fonts/saotorpes.otf') format('opentype'),
-         url('/static/core/fonts/SaoTorpes.otf') format('opentype');
+    src: url('fonts/saotorpes.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -12,8 +11,7 @@
 
 @font-face {
     font-family: 'Lexend';
-    src: url('fonts/Lexend[wght].ttf') format('truetype-variations'),
-         url('/static/core/fonts/Lexend[wght].ttf') format('truetype-variations');
+    src: url('fonts/Lexend[wght].ttf') format('truetype-variations');
     font-weight: 400 600;
     font-style: normal;
     font-display: swap;
@@ -21,24 +19,21 @@
 
 @font-face {
     font-family: 'Bosten';
-    src: url('fonts/bostenregular-l3ljd.otf') format('opentype'),
-         url('/static/core/fonts/bostenregular-l3ljd.otf') format('opentype');
+    src: url('fonts/bostenregular-l3ljd.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Carltine';
-    src: url('fonts/CarltineRegular-K7z5l.ttf') format('truetype'),
-         url('/static/core/fonts/CarltineRegular-K7z5l.ttf') format('truetype');
+    src: url('fonts/CarltineRegular-K7z5l.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'CarltineBold';
-    src: url('fonts/CarltineBold-BWxy8.ttf') format('truetype'),
-         url('/static/core/fonts/CarltineBold-BWxy8.ttf') format('truetype');
+    src: url('fonts/CarltineBold-BWxy8.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }

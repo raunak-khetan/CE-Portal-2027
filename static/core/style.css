@@ -1406,22 +1406,22 @@ label {
 /*sanchit start*/
 @font-face {
 	font-family: 'Carltine';
-	src: url('/static/core/fonts/CarltineMedium-MVnzn.ttf');
+	src: url('fonts/CarltineMedium-MVnzn.ttf');
 }
 
 @font-face {
 	font-family: 'Bosten';
-	src: url('/static/core/fonts/bostenregular-l3ljd.otf');
+	src: url('fonts/bostenregular-l3ljd.otf');
 }
 
 @font-face {
 	font-family: 'CarltineBold';
-	src: url('/static/core/fonts/CarltineBold-BWxy8.ttf');
+	src: url('fonts/CarltineBold-BWxy8.ttf');
 }
 
 @font-face {
 	font-family: 'Carltinelight';
-	src: url('/static/core/fonts/CarltineLight-rgjVL.ttf');
+	src: url('fonts/CarltineLight-rgjVL.ttf');
 }
 
 

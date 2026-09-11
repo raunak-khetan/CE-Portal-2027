@@ -666,7 +666,7 @@
             {% endfor %}
 
               <span class="filter-divider">
-                <img src="/static/core/asset/Line-Divider.png" alt="|" />
+                <img src="{% static 'core/asset/linediv.png' %}" alt="|" />
               </span>
 
             <button type="button" class="filter-button" data-filter="upcoming">Upcoming</button>
@@ -681,7 +681,7 @@
           </div>
           <div class="clear-filter">
             <button type="button" class="clear-filter-button" id="clear-filter">
-              <img src="/static/core/asset/close-line.png"
+              <img src="{% static 'core/asset/close-line.png' %}"
                 alt="X"
                 class="wrong-symbol">
               <p>Delete Filters</p>

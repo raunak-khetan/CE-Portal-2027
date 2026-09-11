@@ -30,7 +30,7 @@ body {
 }
 
 body {
-  background:#000 url("/static/core/asset/reg_form_bg.svg") center top / cover no-repeat;
+  background:#000 url("asset/reg_form_bg.svg") center top / cover no-repeat;
   color:var(--white);
   font-family:"Hepta Slab",serif;
 }
