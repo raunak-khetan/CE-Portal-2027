@@ -224,8 +224,12 @@
                     <p class="size-heading">team size</p>
                     {% if event.event_type  == "solo" %}
                       <p class="members-min-and-max">solo</p>
+                    {% elif not event.max_participants %}
+                      <p class="members-min-and-max">{{ event.min_participants }}+ members</p>
+                    {% elif event.min_participants == event.max_participants %}
+                      <p class="members-min-and-max">{{ event.min_participants }} members</p>
                     {% else %}
-                      <p class="members-min-and-max">{{event.min_participants}}-{{event.max_participants}} members</p>                    
+                      <p class="members-min-and-max">{{ event.min_participants }}-{{ event.max_participants }} members</p>                    
                     {% endif %}
                   </div>
                 </div>
