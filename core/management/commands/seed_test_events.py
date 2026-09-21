@@ -162,6 +162,7 @@ class Command(BaseCommand):
                     "venue": c_spec["venue"],
                     "state": c_spec["state"],
                     "time": now().date() + timedelta(days=60),
+                    "deadline": now().date() + timedelta(days=45),
                     "guidelines": f"Welcome to Alcheringa prelims in {c_spec['name']}! Report to the venue 1 hour prior to event start time. Carry valid college ID cards.",
                     "image": c_spec["image"],
                     "collab": False

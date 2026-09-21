@@ -69,6 +69,7 @@ class Command(BaseCommand):
                 name=city_name,
                 venue=venue,
                 time=event_date,
+                deadline=event_date - timedelta(days=random.randint(7, 14)),
                 state=state,
                 guidelines=f"General competition rules apply for {city_name}. Please check individual event guidelines.",
                 image="image_uploads/city_pic/Frame.png"  # Default image

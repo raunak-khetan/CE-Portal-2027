@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 
 def city_list(request):
-    cities = City.objects.all().values('name')  # Query to get city names
+    cities = City.objects.all().values('name', 'time', 'deadline', 'venue', 'state')  # Query to get cities
     return JsonResponse(list(cities), safe=False)
 
 
@@ -35,7 +35,14 @@ def get_city_events(request, city_name):
 
     data = {
         'time': city.time.strftime('%d %b %Y') if city.time else None,
-        'events': [{'name': event.name} for event in events],
+        'deadline': city.deadline.strftime('%d %b %Y') if city.deadline else None,
+        'events': [
+            {
+                'name': event.name,
+                'deadline': (city.deadline or event.deadline).strftime('%d %b %Y') if (city.deadline or event.deadline) else None,
+            }
+            for event in events
+        ],
     }
 
     return JsonResponse(data)
@@ -99,11 +106,13 @@ def detailspage(request, city_name, event_name):
             else:
                 image_url = 'static/core/assets/CompetitionPhoto.jpg'
 
+            effective_deadline = city_item.deadline or event_item.deadline
             competitions.append({
                 "city": city_item.name,
                 "title": event_item.name,
                 "subtitle": event_item.description,
                 "date": city_item.time.strftime("%a, %d %b, %Y") if city_item.time else "No date",
+                "deadline": effective_deadline.strftime("%a, %d %b, %Y") if effective_deadline else "No deadline",
                 "venue": city_item.venue,
                 "image": image_url,
                 "type": event_item.event_type.capitalize() if event_item.event_type else "N/A",

@@ -36,7 +36,7 @@ DEBUG = not PROD
 if PROD:
     ALLOWED_HOSTS = os.environ.get(
         'ALLOWED_HOSTS',
-        'prelims.alcheringa.co.in,ceportal.alcheringa.co.in'
+        'prelims.alcheringa.co.in,ceportal.alcheringa.co.in,highwaytoalcher.alcheringa.co.in'
     ).split(',')
 else:
     ALLOWED_HOSTS = ["*"]
@@ -194,6 +194,8 @@ if PROD:
         'http://prelims.alcheringa.co.in',
         'http://ceportal.alcheringa.co.in',
         'https://ceportal.alcheringa.co.in',
+        'http://highwaytoalcher.alcheringa.co.in',
+        'https://highwaytoalcher.alcheringa.co.in',
     ]
 else:
     CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']

@@ -213,7 +213,7 @@
                   </svg>
                   <div class="deadline-div">
                     <p class="deadline-heading">Registration Deadline</p>
-                    <p class="deadline-date">{{event.deadline|date:'D, d M'}}</p>
+                    <p class="deadline-date">{% if city.deadline %}{{ city.deadline|date:'D, d M' }}{% elif event.deadline %}{{ event.deadline|date:'D, d M' }}{% else %}TBA{% endif %}</p>
                   </div>
                 </div>
                 <div class="no-of-members">

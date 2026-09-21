@@ -15,6 +15,11 @@ class City(models.Model):
         upload_to="image_uploads/city_pic/",null=True)
     state = models.CharField(max_length=100,default='None')
     collab = models.BooleanField(null=True,default=False)
+    deadline = models.DateField(null=True, blank=True, verbose_name="Registration Deadline")
+
+    @property
+    def registration_deadline(self):
+        return self.deadline
 
     def __str__(self):
         return self.name
@@ -68,6 +73,10 @@ class Event(models.Model):
             if self.min_participants or self.max_participants:
                 raise ValidationError("Min and Max participants should be empty for solo events.")
     
+    @property
+    def registration_deadline(self):
+        return self.deadline
+
     def __str__(self):
         return self.name
 
