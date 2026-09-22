@@ -4,71 +4,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    <title>Highway to Alcher 2027</title>
+    <meta
+      name="description"
+      content="Official nationwide prelims and city auditions for Alcheringa, the annual cultural festival of IIT Guwahati. Compete across India in dance, music, drama, and fine arts to perform on the grand stage."
     />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{% static 'core/favicon.ico' %}"
+    <meta
+      name="keywords"
+      content="Alcheringa, IIT Guwahati, Highway to Alcher, city eliminations, prelims, auditions, cultural fest, dance competition, music competition"
     />
+    <meta name="robots" content="index, follow" />
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://highwaytoalcher.alcheringa.co.in{{ request.path }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Highway to Alcher - IIT Guwahati" />
+    <meta property="og:title" content="Highway to Alcher 2027 | Alcheringa City Eliminations" />
+    <meta property="og:description" content="Represent your city at Alcheringa, IIT Guwahati. Register now for regional auditions and city eliminations nationwide."/>
+    <meta property="og:url" content="https://highwaytoalcher.alcheringa.co.in/" />
+    <meta property="og:image" content="https://highwaytoalcher.alcheringa.co.in{% static 'core/asset/newspaper-card.jpg' %}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Highway to Alcher 2027 | Alcheringa City Eliminations" />
+    <meta name="twitter:description" content="Represent your city at Alcheringa, IIT Guwahati. Register now for regional auditions nationwide."/>
+    <meta name="twitter:image" content="https://highwaytoalcher.alcheringa.co.in{% static 'core/asset/newspaper-card.jpg' %}" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R7MQF6MWT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6R7MQF6MWT');
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poltawski+Nowy:ital,wght@0,500;1,500&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Hepta+Slab:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poltawski+Nowy:ital,wght@0,500;1,500&display=swap"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
 
-   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      corePlugins: {
-        preflight: false,
-      },
-      theme: {
-        extend: {
-          colors: {
-            dark: '#0f0f0f',
-            brand: '#A33A11',
-          },
-          fontFamily: {
-            body: ['Hepta Slab', 'serif'],
-            heading: ['Poltawski Nowy Bold', 'serif'],
-            hepta: ['Hepta Slab', 'serif'],
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              dark: '#0f0f0f',
+              brand: '#A33A11',
+            },
+            fontFamily: {
+              body: ['Hepta Slab', 'serif'],
+              heading: ['Poltawski Nowy Bold', 'serif'],
+              hepta: ['Hepta Slab', 'serif'],
+            }
           }
         }
       }
-    }
-  </script>
-  <link rel="stylesheet" href="{% static 'core/home.css' %}" />
+    </script>
+    <link rel="stylesheet" href="{% static 'core/home.css' %}" />
 
-  <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
-  <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}?v=cfa_figma_exact_v2" />
-  <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=roller_figma_v1" />
+    <link rel="stylesheet" href="{% static 'core/landing/landing.css' %}">
+    <link rel="stylesheet" href="{% static 'core/landing/cfa.css' %}?v=cfa_figma_exact_v2" />
+    <link rel="stylesheet" href="{% static 'core/combined.css' %}?v=roller_figma_v1" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{% static 'core/favicon.ico' %}"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Google tag (gtag.js) -->
+    
 
-    <title>Alcheringa City Eliminations Portal | Alcheringa IIT Guwahati</title>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {

@@ -420,3 +420,15 @@ def test_view(request):
 def home(request):
     about_images = AboutImage.objects.all().order_by('order')
     return render(request, 'core/home.html', {'about_images': about_images})
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /cfa/step-3/",
+        "Allow: /",
+        "",
+        "Sitemap: https://highwaytoalcher.alcheringa.co.in/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")

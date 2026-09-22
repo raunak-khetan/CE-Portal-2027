@@ -23,6 +23,8 @@ from core.sitemaps import StaticViewSitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
+from core import views as core_views
+
 sitemaps = {
     'static': StaticViewSitemap,
 }
@@ -30,7 +32,8 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('core.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('robots.txt', core_views.robots_txt, name='robots_txt'),
 ]
 
 if settings.DEBUG:
