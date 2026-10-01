@@ -888,7 +888,8 @@
 
     const html = emptyMemberTemplate.innerHTML
       .replaceAll("__NUM_DISPLAY__", index + 2)
-      .replaceAll("__NUM__", index);
+      .replaceAll("__NUM__", index)
+      .replaceAll("__prefix__", index);  // Django empty_form uses __prefix__ as placeholder
 
     membersContainer.insertAdjacentHTML("beforeend", html);
 
@@ -915,24 +916,21 @@
       }
 
       card.querySelectorAll("[name]").forEach((field) => {
-        field.name = field.name.replace(
-          `members-${oldIndex}-`,
-          `members-${newIndex}-`
-        );
+        field.name = field.name
+          .replace(`members-${oldIndex}-`, `members-${newIndex}-`)
+          .replace(`members-__prefix__-`, `members-${newIndex}-`);  // fallback for un-reindexed clone
       });
 
       card.querySelectorAll("[id]").forEach((field) => {
-        field.id = field.id.replace(
-          `members-${oldIndex}-`,
-          `members-${newIndex}-`
-        );
+        field.id = field.id
+          .replace(`members-${oldIndex}-`, `members-${newIndex}-`)
+          .replace(`members-__prefix__-`, `members-${newIndex}-`);
       });
 
       card.querySelectorAll("label[for]").forEach((label) => {
-        label.htmlFor = label.htmlFor.replace(
-          `members-${oldIndex}-`,
-          `members-${newIndex}-`
-        );
+        label.htmlFor = label.htmlFor
+          .replace(`members-${oldIndex}-`, `members-${newIndex}-`)
+          .replace(`members-__prefix__-`, `members-${newIndex}-`);
       });
 
     });
@@ -964,13 +962,7 @@
 
   addMemberButton.addEventListener("click", addMember);
 
-  document.querySelector(".registration-form").addEventListener("submit", () => {
-  console.log("TOTAL_FORMS:", totalForms.value);
-
-  membersContainer.querySelectorAll("[name]").forEach((field) => {
-    console.log(field.name, "=", field.value);
-  });
-});
+  // (debug submit listener removed)
 
   reindexMembers();
 </script>
