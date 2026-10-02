@@ -3,7 +3,7 @@ import logging
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from django.db import transaction
+from django.db import models, transaction
 from django.forms import modelformset_factory
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -15,6 +15,7 @@ from .models import (
     CFARegistration,
     Category,
     City,
+    CityEventConfig,
     Event,
     Head,
     Team,
@@ -49,7 +50,9 @@ def get_city_events(request, city_name):
 
 
 def prelimspage(request):
-    cities = City.objects.all().prefetch_related('events')
+    cities = City.objects.all().prefetch_related('events').order_by(
+        models.F('time').asc(nulls_last=True)
+    )
     about_images = AboutImage.objects.all().order_by('order')
     categories = Category.objects.all()
 
@@ -204,6 +207,18 @@ def _save_team_registration(team_form, team_name_form, member_formset, event, ci
 def registrationpage(request, city_name, event_name):
     city = get_object_or_404(City, name=city_name)
     event = get_object_or_404(Event, name=event_name)
+
+    # --- Check if registration is closed for this specific event+city ---
+    config = CityEventConfig.objects.filter(city=city, event=event).first()
+    registration_closed = config is not None and not config.is_registration_open
+
+    if registration_closed:
+        return render(request, 'core/register_form.html', {
+            'event': event,
+            'city': city,
+            'registration_closed': True,
+        })
+    # ---------------------------------------------------------------------
 
     team_name_form = None
     team_form = None

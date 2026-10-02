@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ExportActionMixin
-from .models import City, Event, Head, Team, TeamMember, Category
+from .models import City, Event, Head, Team, TeamMember, Category, CityEventConfig
 from .models import CFARegistration
 from .models import AboutImage
 
@@ -55,6 +55,15 @@ class EventInline(admin.TabularInline):
     extra = 1
     autocomplete_fields = ['event']
 
+
+class CityEventConfigInline(admin.TabularInline):
+    model = CityEventConfig
+    extra = 0
+    autocomplete_fields = ['event']
+    fields = ('event', 'is_registration_open')
+    verbose_name = "Event Registration Status"
+    verbose_name_plural = "Event Registration Status (per City)"
+
 # Updated admin classes with export functionality
 @admin.register(City)
 class CityAdmin(ImportExportModelAdmin):
@@ -62,7 +71,7 @@ class CityAdmin(ImportExportModelAdmin):
     list_display = ('name', 'venue', 'time', 'deadline', 'state', 'collab')
     search_fields = ('name', 'venue', 'state')
     list_filter = ('state', 'time', 'deadline')
-    inlines = [EventInline]
+    inlines = [EventInline, CityEventConfigInline]
 
     fieldsets = (
         (None, {
@@ -183,3 +192,13 @@ class AboutImageAdmin(admin.ModelAdmin):
     ordering = ['order']
 
 admin.site.register(Category)
+
+
+@admin.register(CityEventConfig)
+class CityEventConfigAdmin(admin.ModelAdmin):
+    list_display = ('event', 'city', 'is_registration_open')
+    list_filter = ('is_registration_open', 'city', 'event')
+    list_editable = ('is_registration_open',)
+    search_fields = ('event__name', 'city__name')
+    autocomplete_fields = ['city', 'event']
+    ordering = ('city__name', 'event__name')

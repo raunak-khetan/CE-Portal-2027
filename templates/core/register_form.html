@@ -46,6 +46,28 @@
 
 <div class="registration-page">
   <main class="registration-main">
+
+    {% if registration_closed %}
+    <div class="registration-closed-card">
+      <div class="closed-icon">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h2 class="closed-title">Registration Closed</h2>
+      <p class="closed-message">
+        Registrations for <strong>{{ event.name }}</strong> in <strong>{{ city.name }}</strong>
+        are currently closed.
+      </p>
+      <p class="closed-sub">
+        This event may still be open for registration in other cities.
+        Please check the <a href="{% url 'prelimspage' %}#competition-section">competitions page</a>
+        for more details.
+      </p>
+      <a class="closed-back-btn" href="{% url 'prelimspage' %}#competition-section">
+        ← Back to Competitions
+      </a>
+    </div>
+
+    {% else %}
     <form
       class="registration-form"
       method="post"
@@ -746,6 +768,8 @@
       </div>
 
     </form>
+
+    {% endif %}{# registration_closed #}
 
     <aside class="event-sidebar">
 

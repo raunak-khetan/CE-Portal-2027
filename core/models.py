@@ -81,6 +81,31 @@ class Event(models.Model):
         return self.name
 
 
+class CityEventConfig(models.Model):
+    """
+    Controls per-city-per-event registration status.
+    Create one record for each (city, event) pair where you want to
+    override the default (open). If no record exists the registration
+    is treated as open.
+    """
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='event_configs')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='city_configs')
+    is_registration_open = models.BooleanField(
+        default=True,
+        verbose_name="Registration Open",
+        help_text="Uncheck to close registration for this event in this city only. Other cities are not affected."
+    )
+
+    class Meta:
+        unique_together = ('city', 'event')
+        verbose_name = "City-Event Registration Config"
+        verbose_name_plural = "City-Event Registration Configs"
+
+    def __str__(self):
+        status = "Open" if self.is_registration_open else "Closed"
+        return f"{self.event.name} in {self.city.name} — {status}"
+
+
 class Head(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
