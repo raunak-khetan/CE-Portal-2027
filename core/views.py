@@ -1,4 +1,5 @@
 import logging
+from datetime import date
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -50,9 +51,30 @@ def get_city_events(request, city_name):
 
 
 def prelimspage(request):
-    cities = City.objects.all().prefetch_related('events').order_by(
-        models.F('time').asc(nulls_last=True)
-    )
+    today = date.today()
+    all_cities = City.objects.all().prefetch_related('events')
+
+    # Split into upcoming (date >= today) and past (date < today) or no date
+    upcoming = []
+    past = []
+    no_date = []
+
+    for city in all_cities:
+        if city.time is None:
+            no_date.append(city)
+        elif city.time >= today:
+            upcoming.append(city)
+        else:
+            past.append(city)
+
+    # Upcoming: nearest date first
+    upcoming.sort(key=lambda c: c.time)
+    # Past: most recent first (so just-passed cities are above very old ones)
+    past.sort(key=lambda c: c.time, reverse=True)
+
+    # Final order: upcoming → no date → past
+    cities = upcoming + no_date + past
+
     about_images = AboutImage.objects.all().order_by('order')
     categories = Category.objects.all()
 

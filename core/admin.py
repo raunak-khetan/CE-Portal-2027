@@ -60,9 +60,9 @@ class CityEventConfigInline(admin.TabularInline):
     model = CityEventConfig
     extra = 0
     autocomplete_fields = ['event']
-    fields = ('event', 'is_registration_open')
-    verbose_name = "Event Registration Status"
-    verbose_name_plural = "Event Registration Status (per City)"
+    fields = ('event', 'is_registration_open', 'event_date', 'deadline')
+    verbose_name = "Event Registration Status & Date"
+    verbose_name_plural = "Event Registration Status & Dates (per City)"
 
 # Updated admin classes with export functionality
 @admin.register(City)
@@ -196,9 +196,21 @@ admin.site.register(Category)
 
 @admin.register(CityEventConfig)
 class CityEventConfigAdmin(admin.ModelAdmin):
-    list_display = ('event', 'city', 'is_registration_open')
+    list_display = ('event', 'city', 'is_registration_open', 'event_date', 'deadline')
     list_filter = ('is_registration_open', 'city', 'event')
-    list_editable = ('is_registration_open',)
+    list_editable = ('is_registration_open', 'event_date', 'deadline')
     search_fields = ('event__name', 'city__name')
     autocomplete_fields = ['city', 'event']
-    ordering = ('city__name', 'event__name')
+    ordering = ('city__name', 'event__name')
+    fieldsets = (
+        ('City & Event', {
+            'fields': ('city', 'event')
+        }),
+        ('Registration', {
+            'fields': ('is_registration_open',)
+        }),
+        ('City-Specific Dates', {
+            'fields': ('event_date', 'deadline'),
+            'description': 'Leave blank to fall back to the global Event dates.'
+        }),
+    )

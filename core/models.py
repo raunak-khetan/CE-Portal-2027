@@ -83,10 +83,10 @@ class Event(models.Model):
 
 class CityEventConfig(models.Model):
     """
-    Controls per-city-per-event registration status.
+    Controls per-city-per-event registration status AND dates.
     Create one record for each (city, event) pair where you want to
-    override the default (open). If no record exists the registration
-    is treated as open.
+    override the defaults. If no record exists the registration
+    is treated as open and the global Event date is used.
     """
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='event_configs')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='city_configs')
@@ -95,15 +95,34 @@ class CityEventConfig(models.Model):
         verbose_name="Registration Open",
         help_text="Uncheck to close registration for this event in this city only. Other cities are not affected."
     )
+    event_date = models.DateField(
+        null=True, blank=True,
+        verbose_name="City-Specific Event Date",
+        help_text="Override the global event date for this competition in this city only. Leave blank to use the event's default date."
+    )
+    deadline = models.DateField(
+        null=True, blank=True,
+        verbose_name="City-Specific Registration Deadline",
+        help_text="Override the global registration deadline for this competition in this city only. Leave blank to use the event's default deadline."
+    )
 
     class Meta:
         unique_together = ('city', 'event')
         verbose_name = "City-Event Registration Config"
         verbose_name_plural = "City-Event Registration Configs"
 
+    def get_event_date(self):
+        """Returns city-specific date if set, otherwise falls back to the global Event date."""
+        return self.event_date or self.event.event_date
+
+    def get_deadline(self):
+        """Returns city-specific deadline if set, otherwise falls back to the global Event deadline."""
+        return self.deadline or self.event.deadline
+
     def __str__(self):
         status = "Open" if self.is_registration_open else "Closed"
-        return f"{self.event.name} in {self.city.name} — {status}"
+        date_str = f" | Date: {self.event_date}" if self.event_date else ""
+        return f"{self.event.name} in {self.city.name} — {status}{date_str}"
 
 
 class Head(models.Model):
