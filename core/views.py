@@ -180,8 +180,8 @@ def detailspage(request, city_name, event_name):
 
     # Effective date/deadline for the currently focused city+event
     focused_pair = city_event_dates.get(f"{city.id}_{event.id}", {})
-    effective_event_date = focused_pair.get('event_date') or city.time
-    effective_deadline   = focused_pair.get('deadline')   or city.deadline or event.deadline
+    effective_event_date = focused_pair.get('event_date') or event.event_date or city.time
+    effective_deadline   = focused_pair.get('deadline')   or event.deadline   or city.deadline
 
     return render(request, 'core/register.html', {
         'event': event,
@@ -277,8 +277,8 @@ def registrationpage(request, city_name, event_name):
     registration_closed = config is not None and not config.is_registration_open
 
     # Effective date/deadline for this specific city+event
-    effective_event_date = (config.event_date if config and config.event_date else None) or city.time
-    effective_deadline   = (config.deadline   if config and config.deadline   else None) or city.deadline or event.deadline
+    effective_event_date = (config.event_date if config and config.event_date else None) or event.event_date or city.time
+    effective_deadline   = (config.deadline   if config and config.deadline   else None) or event.deadline   or city.deadline
 
     if registration_closed:
         return render(request, 'core/register_form.html', {

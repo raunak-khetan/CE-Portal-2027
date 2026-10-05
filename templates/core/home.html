@@ -696,7 +696,7 @@
                 class="comp-card"
                 data-index="{{ forloop.counter }}"
                 data-category-id="{{ event.category_id }}"
-                data-event-date="{% with key=city.id|stringformat:'s'|add:'_'|add:event.id|stringformat:'s' %}{% with pair=city_event_dates|city_event_date:key %}{% if pair.event_date %}{{ pair.event_date|date:'c' }}{% else %}{{ city.time|date:'c' }}{% endif %}{% endwith %}{% endwith %}"
+                data-event-date="{% with key=city.id|stringformat:'s'|add:'_'|add:event.id|stringformat:'s' %}{% with pair=city_event_dates|city_event_date:key %}{% if pair.event_date %}{{ pair.event_date|date:'c' }}{% elif event.event_date %}{{ event.event_date|date:'c' }}{% elif city.time %}{{ city.time|date:'c' }}{% endif %}{% endwith %}{% endwith %}"
                 data-city-id="{{ city.id }}"
               >
                 <div class="card-media">
@@ -739,7 +739,7 @@
                         <span class="detail-value">
                           {% with key=city.id|stringformat:'s'|add:'_'|add:event.id|stringformat:'s' %}
                           {% with pair=city_event_dates|city_event_date:key %}
-                          {% if pair.event_date %}{{ pair.event_date|date:'D, d M, Y' }}{% elif city.time %}{{ city.time|date:'D, d M, Y' }}{% else %}TBA{% endif %}
+                          {% if pair.event_date %}{{ pair.event_date|date:'D, d M, Y' }}{% elif event.event_date %}{{ event.event_date|date:'D, d M, Y' }}{% elif city.time %}{{ city.time|date:'D, d M, Y' }}{% else %}TBA{% endif %}
                           {% endwith %}{% endwith %}
                         </span>
                       </div>
