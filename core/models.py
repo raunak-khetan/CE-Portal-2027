@@ -112,12 +112,12 @@ class CityEventConfig(models.Model):
         verbose_name_plural = "City-Event Registration Configs"
 
     def get_event_date(self):
-        """Returns city-specific date if set, otherwise falls back to the global Event date."""
-        return self.event_date or self.event.event_date
+        """Returns city-specific date if set, otherwise falls back to the city time."""
+        return self.event_date or self.city.time
 
     def get_deadline(self):
-        """Returns city-specific deadline if set, otherwise falls back to the global Event deadline."""
-        return self.deadline or self.event.deadline
+        """Returns city-specific deadline if set, otherwise falls back to the city deadline."""
+        return self.deadline or self.city.deadline or self.event.deadline
 
     def __str__(self):
         status = "Open" if self.is_registration_open else "Closed"

@@ -28,28 +28,18 @@ logger = logging.getLogger(__name__)
 
 def _build_city_event_dates():
     """
-    Returns a dict keyed by "{city_id}_{event_id}" with the effective
-    event_date and deadline for that pair, falling back to the global
-    Event values when no city-specific override exists.
+    Returns a dict keyed by "{city_id}_{event_id}" with the city-event-specific
+    event_date and deadline configured in CityEventConfig.
 
-    String keys are used so Django templates can look them up via a filter.
-
-    Example:
-        dates["3_7"] = {'event_date': <date>, 'deadline': <date|None>}
+    Only explicitly set overrides on CityEventConfig are returned here,
+    so views and templates cleanly fall back to city.time and city.deadline.
     """
-    configs = CityEventConfig.objects.select_related('event').all()
-    config_map = {f"{c.city_id}_{c.event_id}": c for c in configs}
-
-    # Pre-fetch all events once so we can fall back to global dates
-    from .models import Event as _Event
-    events = {e.id: e for e in _Event.objects.all()}
-
+    configs = CityEventConfig.objects.all()
     result = {}
-    for key, cfg in config_map.items():
-        ev = events.get(cfg.event_id)
-        result[key] = {
-            'event_date': cfg.event_date or (ev.event_date if ev else None),
-            'deadline':   cfg.deadline   or (ev.deadline   if ev else None),
+    for c in configs:
+        result[f"{c.city_id}_{c.event_id}"] = {
+            'event_date': c.event_date,
+            'deadline': c.deadline,
         }
     return result
 
@@ -180,8 +170,8 @@ def detailspage(request, city_name, event_name):
 
     # Effective date/deadline for the currently focused city+event
     focused_pair = city_event_dates.get(f"{city.id}_{event.id}", {})
-    effective_event_date = focused_pair.get('event_date') or event.event_date or city.time
-    effective_deadline   = focused_pair.get('deadline')   or event.deadline   or city.deadline
+    effective_event_date = focused_pair.get('event_date') or city.time
+    effective_deadline   = focused_pair.get('deadline')   or city.deadline or event.deadline
 
     return render(request, 'core/register.html', {
         'event': event,
@@ -277,8 +267,8 @@ def registrationpage(request, city_name, event_name):
     registration_closed = config is not None and not config.is_registration_open
 
     # Effective date/deadline for this specific city+event
-    effective_event_date = (config.event_date if config and config.event_date else None) or event.event_date or city.time
-    effective_deadline   = (config.deadline   if config and config.deadline   else None) or event.deadline   or city.deadline
+    effective_event_date = (config.event_date if config and config.event_date else None) or city.time
+    effective_deadline   = (config.deadline   if config and config.deadline   else None) or city.deadline or event.deadline
 
     if registration_closed:
         return render(request, 'core/register_form.html', {
