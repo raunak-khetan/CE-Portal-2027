@@ -9,7 +9,7 @@ from .models import AboutImage
 class CityResource(resources.ModelResource):
     class Meta:
         model = City
-        fields = ('id', 'name', 'venue', 'state', 'time', 'deadline', 'guidelines', 'collab')
+        fields = ('id', 'name', 'venue', 'state', 'time', 'end_date', 'custom_date', 'deadline', 'guidelines', 'collab')
 
 class EventResource(resources.ModelResource):
     class Meta:
@@ -60,22 +60,22 @@ class CityEventConfigInline(admin.TabularInline):
     model = CityEventConfig
     extra = 0
     autocomplete_fields = ['event']
-    fields = ('event', 'is_registration_open', 'event_date', 'deadline')
-    verbose_name = "Event Registration Status & Date"
-    verbose_name_plural = "Event Registration Status & Dates (per City)"
+    fields = ('event', 'is_registration_open')
+    verbose_name = "Event Registration Status"
+    verbose_name_plural = "Event Registration Status (per City)"
 
 # Updated admin classes with export functionality
 @admin.register(City)
 class CityAdmin(ImportExportModelAdmin):
     resource_class = CityResource
-    list_display = ('name', 'venue', 'time', 'deadline', 'state', 'collab')
+    list_display = ('name', 'venue', 'time', 'end_date', 'custom_date', 'deadline', 'state', 'collab')
     search_fields = ('name', 'venue', 'state')
     list_filter = ('state', 'time', 'deadline')
     inlines = [EventInline, CityEventConfigInline]
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'venue', 'state', 'time', 'deadline', 'image', 'collab')
+            'fields': ('name', 'venue', 'state', 'time', 'end_date', 'custom_date', 'deadline', 'image', 'collab')
         }),
         ('Details', {
             'fields': ('guidelines',),
@@ -196,9 +196,9 @@ admin.site.register(Category)
 
 @admin.register(CityEventConfig)
 class CityEventConfigAdmin(admin.ModelAdmin):
-    list_display = ('event', 'city', 'is_registration_open', 'event_date', 'deadline')
+    list_display = ('event', 'city', 'is_registration_open')
     list_filter = ('is_registration_open', 'city', 'event')
-    list_editable = ('is_registration_open', 'event_date', 'deadline')
+    list_editable = ('is_registration_open',)
     search_fields = ('event__name', 'city__name')
     autocomplete_fields = ['city', 'event']
     ordering = ('city__name', 'event__name')
@@ -208,9 +208,5 @@ class CityEventConfigAdmin(admin.ModelAdmin):
         }),
         ('Registration', {
             'fields': ('is_registration_open',)
-        }),
-        ('City-Specific Dates', {
-            'fields': ('event_date', 'deadline'),
-            'description': 'Leave blank to fall back to the global Event dates.'
         }),
     )

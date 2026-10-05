@@ -824,7 +824,7 @@
           <div class="event-meta">
             <div class="event-meta-item">
               <img src="{% static 'core/asset/calendar.svg' %}" class="event-meta-icon" alt="">
-              <span>{% if effective_event_date %}{{ effective_event_date|date:"D, d M Y" }}{% else %}TBA{% endif %}</span>
+              <span>{{ city.date_display }}</span>
             </div>
             <div class="event-meta-item">
               <img src="{% static 'core/asset/location-reg.svg' %}" class="event-meta-icon" alt="">

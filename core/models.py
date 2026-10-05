@@ -9,7 +9,15 @@ class City(models.Model):
     name = models.CharField(max_length=100, unique=True)
     events = models.ManyToManyField('Event', related_name='cities')
     venue = models.CharField(max_length=100, default="None")
-    time = models.DateField(null=True, blank=True)
+    time = models.DateField(null=True, blank=True, verbose_name="Event Start Date")
+    end_date = models.DateField(null=True, blank=True, verbose_name="Event End Date (Optional)")
+    custom_date = models.CharField(
+        max_length=60,
+        blank=True,
+        null=True,
+        verbose_name="Custom Date (e.g. 10-11 Oct)",
+        help_text="Custom display text like '10-11 Oct'. Overrides standard date formatting."
+    )
     guidelines = models.TextField(default="None")
     image = models.ImageField(
         upload_to="image_uploads/city_pic/",null=True)
@@ -20,6 +28,18 @@ class City(models.Model):
     @property
     def registration_deadline(self):
         return self.deadline
+
+    @property
+    def date_display(self):
+        if self.custom_date and self.custom_date.strip():
+            return self.custom_date.strip()
+        if not self.time:
+            return "TBA"
+        if not self.end_date or self.end_date == self.time:
+            return self.time.strftime("%d %b, %Y")
+        if self.time.month == self.end_date.month and self.time.year == self.end_date.year:
+            return f"{self.time.day}-{self.end_date.day} {self.time.strftime('%b, %Y')}"
+        return f"{self.time.strftime('%d %b')} - {self.end_date.strftime('%d %b, %Y')}"
 
     def __str__(self):
         return self.name
