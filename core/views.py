@@ -26,6 +26,34 @@ from .models import (
 logger = logging.getLogger(__name__)
 
 
+def _build_city_event_dates():
+    """
+    Returns a dict keyed by "{city_id}_{event_id}" with the effective
+    event_date and deadline for that pair, falling back to the global
+    Event values when no city-specific override exists.
+
+    String keys are used so Django templates can look them up via a filter.
+
+    Example:
+        dates["3_7"] = {'event_date': <date>, 'deadline': <date|None>}
+    """
+    configs = CityEventConfig.objects.select_related('event').all()
+    config_map = {f"{c.city_id}_{c.event_id}": c for c in configs}
+
+    # Pre-fetch all events once so we can fall back to global dates
+    from .models import Event as _Event
+    events = {e.id: e for e in _Event.objects.all()}
+
+    result = {}
+    for key, cfg in config_map.items():
+        ev = events.get(cfg.event_id)
+        result[key] = {
+            'event_date': cfg.event_date or (ev.event_date if ev else None),
+            'deadline':   cfg.deadline   or (ev.deadline   if ev else None),
+        }
+    return result
+
+
 def city_list(request):
     cities = City.objects.all().values('name', 'time', 'deadline', 'venue', 'state')  # Query to get cities
     return JsonResponse(list(cities), safe=False)
@@ -89,11 +117,14 @@ def prelimspage(request):
                 first_reg_url = None
             break
 
+    city_event_dates = _build_city_event_dates()
+
     return render(request, 'core/home.html', {
         'cities': cities,
         'first_reg_url': first_reg_url,
         'about_images': about_images,
         'categories': categories,
+        'city_event_dates': city_event_dates,
     })
 
 
@@ -121,6 +152,7 @@ def detailspage(request, city_name, event_name):
 
     competitions = []
     cities = City.objects.prefetch_related('events').all()
+    city_event_dates = _build_city_event_dates()
 
     for city_item in cities:
         for event_item in city_item.events.all():
@@ -131,12 +163,14 @@ def detailspage(request, city_name, event_name):
             else:
                 image_url = 'static/core/assets/CompetitionPhoto.jpg'
 
-            effective_deadline = city_item.deadline or event_item.deadline
+            pair = city_event_dates.get(f"{city_item.id}_{event_item.id}", {})
+            effective_date     = pair.get('event_date') or city_item.time
+            effective_deadline = pair.get('deadline')   or city_item.deadline or event_item.deadline
             competitions.append({
                 "city": city_item.name,
                 "title": event_item.name,
                 "subtitle": event_item.description,
-                "date": city_item.time.strftime("%a, %d %b, %Y") if city_item.time else "No date",
+                "date": effective_date.strftime("%a, %d %b, %Y") if effective_date else "No date",
                 "deadline": effective_deadline.strftime("%a, %d %b, %Y") if effective_deadline else "No deadline",
                 "venue": city_item.venue,
                 "image": image_url,
@@ -144,11 +178,19 @@ def detailspage(request, city_name, event_name):
                 "collab": city_item.collab,
             })
 
+    # Effective date/deadline for the currently focused city+event
+    focused_pair = city_event_dates.get(f"{city.id}_{event.id}", {})
+    effective_event_date = focused_pair.get('event_date') or city.time
+    effective_deadline   = focused_pair.get('deadline')   or city.deadline or event.deadline
+
     return render(request, 'core/register.html', {
         'event': event,
         'city': city,
         'competitions': competitions,
         'cities': cities,
+        'city_event_dates': city_event_dates,
+        'effective_event_date': effective_event_date,
+        'effective_deadline': effective_deadline,
     })
 
 def _build_member_formset(event, data=None):
@@ -233,6 +275,10 @@ def registrationpage(request, city_name, event_name):
     # --- Check if registration is closed for this specific event+city ---
     config = CityEventConfig.objects.filter(city=city, event=event).first()
     registration_closed = config is not None and not config.is_registration_open
+
+    # Effective date/deadline for this specific city+event
+    effective_event_date = (config.event_date if config and config.event_date else None) or city.time
+    effective_deadline   = (config.deadline   if config and config.deadline   else None) or city.deadline or event.deadline
 
     if registration_closed:
         return render(request, 'core/register_form.html', {
@@ -368,6 +414,8 @@ def registrationpage(request, city_name, event_name):
         'member_formset': member_formset,
         'min_participants': event.min_participants,
         'max_participants': event.max_participants,
+        'effective_event_date': effective_event_date,
+        'effective_deadline': effective_deadline,
     })
 
 def cfa_register_step1(request):
