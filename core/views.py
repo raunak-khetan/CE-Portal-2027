@@ -483,4 +483,4 @@ def robots_txt(request):
         "",
         "Sitemap: https://highwaytoalcher.alcheringa.co.in/sitemap.xml",
     ]
-    return HttpResponse("\n".join(lines), content_type="text/plain")
+    return HttpResponse("\n".join(lines), content_type="text/plain")

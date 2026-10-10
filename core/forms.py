@@ -35,7 +35,7 @@ class RegistrationForm(forms.ModelForm):
             'gender': forms.RadioSelect(),
             'phone_no': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': '+91 |'
+                'placeholder': ''
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
@@ -132,7 +132,7 @@ class MemberForm(forms.ModelForm):
             }),
             'phone_no': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': '+91 |'
+                'placeholder': ''
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
