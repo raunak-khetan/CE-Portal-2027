@@ -1,14 +1,9 @@
 from django import forms
-from django.core.validators import RegexValidator
 from django.forms import modelformset_factory
 
 from .models import Head, Team, TeamMember, YEAR_CHOICES, CFARegistration
 
 
-phone_validator = RegexValidator(
-    regex=r'^(?:\+91[\s-]?)?[6-9]\d{9}$',
-    message='Enter a valid 10-digit mobile number.'
-)
 
 
 # Registration form
@@ -80,11 +75,8 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_phone_no(self):
         phone = self.cleaned_data.get('phone_no')
-
         if phone:
             phone = phone.strip()
-            phone_validator(phone)
-
         return phone
 
 
@@ -178,11 +170,8 @@ class MemberForm(forms.ModelForm):
 
     def clean_phone_no(self):
         phone = self.cleaned_data.get('phone_no')
-
         if phone:
             phone = phone.strip()
-            phone_validator(phone)
-
         return phone
 
 
@@ -213,14 +202,12 @@ class CFARegistrationStep1Form(forms.ModelForm):
         phone = self.cleaned_data.get('phone_number')
         if phone:
             phone = phone.strip()
-            phone_validator(phone)
         return phone
 
     def clean_alternate_phone(self):
         alt_phone = self.cleaned_data.get('alternate_phone')
         if alt_phone:
             alt_phone = alt_phone.strip()
-            phone_validator(alt_phone)
         return alt_phone
 
     def clean_age(self):
@@ -229,16 +216,4 @@ class CFARegistrationStep1Form(forms.ModelForm):
             if age < 1 or age > 100:
                 raise forms.ValidationError('Please enter a valid age.')
         return age
-
-    def clean(self):
-        cleaned_data = super().clean()
-        phone = cleaned_data.get('phone_number')
-        alt_phone = cleaned_data.get('alternate_phone')
-
-        if phone and alt_phone:
-            digits_phone = ''.join(filter(str.isdigit, phone))[-10:]
-            digits_alt = ''.join(filter(str.isdigit, alt_phone))[-10:]
-            if digits_phone and digits_alt and digits_phone == digits_alt:
-                self.add_error('alternate_phone', 'Alternate phone number cannot be the same as your primary phone number.')
-
-        return cleaned_data
+
