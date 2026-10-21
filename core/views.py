@@ -79,6 +79,11 @@ def prelimspage(request):
     # Final order: upcoming → no date → past
     cities = upcoming + no_date + past
 
+    # Pin Delhi cities to the top
+    delhi_cities = [c for c in cities if 'delhi' in c.name.lower()]
+    other_cities = [c for c in cities if 'delhi' not in c.name.lower()]
+    cities = delhi_cities + other_cities
+
     about_images = AboutImage.objects.all().order_by('order')
     categories = Category.objects.all()
 
